@@ -75,7 +75,7 @@ var $uses = array('User','Company','TmpUser');
             }
     }
     public function complete() {
-    	
+
 	}
 	public function logout() {
 	   $this->redirect($this->Auth->logout());

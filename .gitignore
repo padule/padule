@@ -1,7 +1,7 @@
-tmp/*
-[Cc]onfig/core.php
-[Cc]onfig/database.php
-app/tmp/*
-app/[Cc]onfig/core.php
-app/[Cc]onfig/database.php
+cake/tmp/*
+cake/[Cc]onfig/core.php
+cake/[Cc]onfig/database.php
+cake/app/tmp/*
+cake/app/[Cc]onfig/core.php
+cake/app/[Cc]onfig/database.php
 !empty
