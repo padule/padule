@@ -109,4 +109,13 @@ class SeekerSchedulesController extends AppController {
 
 		$this->redirect(array('controller' => 'schedules','action' => 'view',0 => $lock['Schedule']['Group']['id']));
 	}
+
+    public function index($param = '') {
+
+        if(!$event = $this->Event->find('first',array('conditions' => array('url' => $this->here)))) {
+            throw new NotFoundException("不正なURLです。");
+        }
+
+        $this->set('eventId',$event['Event']['id']);
+    }
 }

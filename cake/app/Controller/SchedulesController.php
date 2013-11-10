@@ -169,13 +169,4 @@ var $uses = array('Schedule','Lock','Event','User','JobSeeker');
 	public function added() {
 
 	}
-
-    public function seeker($param = '') {
-
-        if(!$event = $this->Event->find('first',array('conditions' => array('url' => $this->here)))) {
-            throw new NotFoundException("不正なURLです。");
-        }
-
-        $this->set('eventId',$event['Event']['id']);
-    }
 }
