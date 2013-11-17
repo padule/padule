@@ -300,7 +300,23 @@ padding: 7px 9px;
 </head>
 
 <body>
-<!-- /.carousel -->
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li>
+                        <a id="brand" href="/">
+                            Padule
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+    <!-- /.carousel -->
 <div class="container">
         <?php echo $this->Form->create(array('class' => 'form-signin')) ?>
             <h3>PADULE ログイン</h3>
