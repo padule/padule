@@ -62,7 +62,7 @@ class EventsController extends AppController {
         $text = $this->request->data['text'];
 
         $rand =  md5(uniqid(rand(), true));
-        $url = '/schedules/seeker/'.$rand;
+        $url = '/seeker_schedules/index/'.$rand;
 
         $savedata = array(
             'user_id' => $this->Auth->user('id'),
