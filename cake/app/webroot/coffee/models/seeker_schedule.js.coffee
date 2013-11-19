@@ -1,5 +1,5 @@
 class padule.Models.SeekerSchedule extends Backbone.Model
-  urlRoot: "#{padule.base_url}/seeker_schedules"
+  urlRoot: "/seeker_schedules"
   localStorage: new Store "seeker_schedule"
   parse: (resp)->
     if resp.responseText

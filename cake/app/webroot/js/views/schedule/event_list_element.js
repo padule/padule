@@ -15,9 +15,7 @@
 
     EventListElement.prototype.tagName = 'li';
 
-    EventListElement.prototype.template = function() {
-      return JST['templates/event'];
-    };
+    EventListElement.prototype.template = JST['templates/event'];
 
     EventListElement.prototype.events = {
       'click .delete-event-button': 'deleteEvent',

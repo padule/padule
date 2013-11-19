@@ -1,6 +1,5 @@
 class padule.Models.Event extends Backbone.Model
-  urlRoot: "#{padule.base_url}/events"
-  localStorage: new Store "event"
+  urlRoot: "/events"
   parse: (resp)->
     if resp.responseText
       resp.responseText

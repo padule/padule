@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    Schedule.prototype.urlRoot = "" + padule.base_url + "/schedules";
+    Schedule.prototype.urlRoot = "/schedules";
 
     Schedule.prototype.localStorage = new Store("schedule");
 

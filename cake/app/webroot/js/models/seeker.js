@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    Seeker.prototype.urlRoot = "" + padule.base_url + "/seekers";
+    Seeker.prototype.urlRoot = "/seekers";
 
     Seeker.prototype.localStorage = new Store("seeker");
 

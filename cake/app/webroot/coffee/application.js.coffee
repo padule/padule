@@ -17,8 +17,6 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.padule.base_url = "/padule/cake"
-
 window.padule.initialize = ->
   new padule.Routers.Schedules
   if Backbone.history && !Backbone.History.started

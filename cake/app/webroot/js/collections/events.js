@@ -13,7 +13,7 @@
 
     Events.prototype.model = padule.Models.Event;
 
-    Events.prototype.url = "" + padule.base_url + "/events";
+    Events.prototype.url = "/events";
 
     Events.prototype.localStorage = new Store("event");
 

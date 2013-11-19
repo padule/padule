@@ -1,7 +1,7 @@
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["cake/app/webroot/coffee/templates/event.jst"] = function(__obj) {
+window.JST["templates/event"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -50,7 +50,7 @@ window.JST["cake/app/webroot/coffee/templates/event.jst"] = function(__obj) {
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["cake/app/webroot/coffee/templates/schedule_control.jst"] = function(__obj) {
+window.JST["templates/schedule_control"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -103,7 +103,7 @@ window.JST["cake/app/webroot/coffee/templates/schedule_control.jst"] = function(
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["cake/app/webroot/coffee/templates/schedule_status.jst"] = function(__obj) {
+window.JST["templates/schedule_status"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -160,7 +160,7 @@ window.JST["cake/app/webroot/coffee/templates/schedule_status.jst"] = function(_
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["cake/app/webroot/coffee/templates/schedule_th.jst"] = function(__obj) {
+window.JST["templates/schedule_th"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';
@@ -209,7 +209,7 @@ window.JST["cake/app/webroot/coffee/templates/schedule_th.jst"] = function(__obj
 if (!window.JST) {
   window.JST = {};
 }
-window.JST["cake/app/webroot/coffee/templates/seeker_schedule_status.jst"] = function(__obj) {
+window.JST["templates/seeker_schedule_status"] = function(__obj) {
   var _safe = function(value) {
     if (typeof value === 'undefined' && value == null)
       value = '';

@@ -1,7 +1,6 @@
 class padule.Views.EventListElement extends Backbone.View
   tagName: 'li'
-  template: ->
-    JST['templates/event']
+  template: JST['templates/event']
 
   events:
     'click .delete-event-button' : 'deleteEvent'

@@ -13,7 +13,7 @@
 
     SeekerSchedules.prototype.model = padule.Models.SeekerSchedule;
 
-    SeekerSchedules.prototype.url = "" + padule.base_url + "/seeker_schedules";
+    SeekerSchedules.prototype.url = "/seeker_schedules";
 
     SeekerSchedules.prototype.localStorage = new Store("seeker_schedule");
 

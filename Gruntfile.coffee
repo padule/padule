@@ -34,8 +34,10 @@ module.exports = (grunt)->
           'cake/app/View/SeekerSchedules/index.ctp': 'cake/app/View/SeekerSchedules/index.haml'
     eco:
       app:
+        options:
+          basePath: 'cake/app/webroot/coffee'
         files:
-          'cake/app/webroot/js/templates/templates.js': ['cake/app/webroot/coffee/templates/*.jst.eco']
+          'cake/app/webroot/js/templates/templates.js': ['cake/app/webroot/coffee/templates/*.eco']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib'

@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    SeekerSchedule.prototype.urlRoot = "" + padule.base_url + "/seeker_schedules";
+    SeekerSchedule.prototype.urlRoot = "/seeker_schedules";
 
     SeekerSchedule.prototype.localStorage = new Store("seeker_schedule");
 

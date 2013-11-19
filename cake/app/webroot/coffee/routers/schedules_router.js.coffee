@@ -1,10 +1,6 @@
 class padule.Routers.Schedules extends Backbone.Router
   routes:
-    '/' : 'schedules'
-    'schedule/' : 'schedules'
-    'schedule/index' : 'schedules'
-    'padule/cake/events.html' : 'schedules'
-
+    'events.html' : 'schedules'
     'schedule/seeker/' : 'seeker_schedules'
     'seeker_schedule/index' : 'seeker_schedules'
 

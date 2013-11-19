@@ -1,6 +1,6 @@
 class padule.Collections.Schedules extends Backbone.Collection
   model: padule.Models.Schedule
-  url: "#{padule.base_url}/schedules"
+  url: "/schedules"
   localStorage: new Store("schedule")
   parse: (resp)->
     if _.isArray(resp)

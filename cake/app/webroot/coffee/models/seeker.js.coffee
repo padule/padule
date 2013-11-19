@@ -1,5 +1,5 @@
 class padule.Models.Seeker extends Backbone.Model
-  urlRoot: "#{padule.base_url}/seekers"
+  urlRoot: "/seekers"
   localStorage: new Store "seeker"
   parse: (resp)->
     if resp.responseText

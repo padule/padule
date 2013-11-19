@@ -11,7 +11,7 @@
       return _ref;
     }
 
-    User.prototype.urlRoot = "" + padule.base_url + "/users/1";
+    User.prototype.urlRoot = "/users/1";
 
     User.prototype.initialize = function() {
       return this.fetch();

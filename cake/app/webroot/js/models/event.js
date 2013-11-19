@@ -11,9 +11,7 @@
       return _ref;
     }
 
-    Event.prototype.urlRoot = "" + padule.base_url + "/events";
-
-    Event.prototype.localStorage = new Store("event");
+    Event.prototype.urlRoot = "/events";
 
     Event.prototype.parse = function(resp) {
       if (resp.responseText) {

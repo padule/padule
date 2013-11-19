@@ -13,7 +13,7 @@
 
     Schedules.prototype.model = padule.Models.Schedule;
 
-    Schedules.prototype.url = "" + padule.base_url + "/schedules";
+    Schedules.prototype.url = "/schedules";
 
     Schedules.prototype.localStorage = new Store("schedule");
 

@@ -1,6 +1,4 @@
 (function() {
-  window.padule.base_url = "/padule/cake";
-
   window.padule.initialize = function() {
     new padule.Routers.Schedules;
     if (Backbone.history && !Backbone.History.started) {
