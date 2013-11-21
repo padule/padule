@@ -12,7 +12,7 @@
     }
 
     Schedules.prototype.routes = {
-      'events.html': 'schedules',
+      'users/mypage': 'schedules',
       'seeker_schedules/index/:id': 'seeker_schedules'
     };
 

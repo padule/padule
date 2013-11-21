@@ -3,10 +3,10 @@
   <head>
     <title>Padule</title>
     <link href='favicon.ico' rel='shortcut icon'>
-    <link href='./css/bootstrap.min.css' rel='stylesheet'>
-    <link href='./css/datepicker.css' rel='stylesheet'>
-    <link href='./css/padule.css' rel='stylesheet'>
-    <link href='./css/schedule.css' rel='stylesheet'>
+    <link href='../../css/bootstrap.min.css' rel='stylesheet'>
+    <link href='../../css/datepicker.css' rel='stylesheet'>
+    <link href='../../css/padule.css' rel='stylesheet'>
+    <link href='../../css/schedule.css' rel='stylesheet'>
     <meta content='スケジュール,調整' name='keywords'>
     <meta content='スケジュール,調整' name='description'>
     <meta content='Padule' property='og:title'>
@@ -100,49 +100,49 @@
     <script>
       if (window.padule == null) window.padule = { Models: {}, Collections: {}, Views: {},Routers: {} };
     </script>
-    <script src='js/libs/jquery-2.0.3.min.js'></script>
-    <script src='js/libs/bootstrap.min.js'></script>
-    <script src='js/libs/bootstrap-datepicker.js'></script>
-    <script src='js/libs/bootstrap-timepicker.min.js'></script>
-    <script src='js/libs/json2.js'></script>
-    <script src='js/libs/dateformat.js'></script>
-    <script src='js/libs/underscore.js'></script>
-    <script src='js/libs/backbone.js'></script>
-    <script src='js/libs/backbone.localStorage.js'></script>
-    <script src='js/application.js'></script>
-    <script src='js/padule.js'></script>
-    <script src='js/libs/jquery.mockjax.js'></script>
+    <script src='../../js/libs/jquery-2.0.3.min.js'></script>
+    <script src='../../js/libs/bootstrap.min.js'></script>
+    <script src='../../js/libs/bootstrap-datepicker.js'></script>
+    <script src='../../js/libs/bootstrap-timepicker.min.js'></script>
+    <script src='../../js/libs/json2.js'></script>
+    <script src='../../js/libs/dateformat.js'></script>
+    <script src='../../js/libs/underscore.js'></script>
+    <script src='../../js/libs/backbone.js'></script>
+    <script src='../../js/libs/backbone.localStorage.js'></script>
+    <script src='../../js/application.js'></script>
+    <script src='../../js/padule.js'></script>
+    <script src='../../js/libs/jquery.mockjax.js'></script>
     <!-- template -->
-    <script src='js/templates/templates.js'></script>
+    <script src='../../js/templates/templates.js'></script>
     <!-- model -->
-    <script src='js/models/event.js'></script>
-    <script src='js/models/schedule.js'></script>
-    <script src='js/models/seeker.js'></script>
-    <script src='js/models/seeker_schedule.js'></script>
-    <script src='js/models/user.js'></script>
+    <script src='../../js/models/event.js'></script>
+    <script src='../../js/models/schedule.js'></script>
+    <script src='../../js/models/seeker.js'></script>
+    <script src='../../js/models/seeker_schedule.js'></script>
+    <script src='../../js/models/user.js'></script>
     <!-- collection -->
-    <script src='js/collections/events.js'></script>
-    <script src='js/collections/schedules.js'></script>
-    <script src='js/collections/seeker_schedules.js'></script>
+    <script src='../../js/collections/events.js'></script>
+    <script src='../../js/collections/schedules.js'></script>
+    <script src='../../js/collections/seeker_schedules.js'></script>
     <!-- view -->
-    <script src='js/views/schedule/alert_modal.js'></script>
-    <script src='js/views/schedule/event.js'></script>
-    <script src='js/views/schedule/event_list.js'></script>
-    <script src='js/views/schedule/event_list_element.js'></script>
-    <script src='js/views/schedule/info_area.js'></script>
-    <script src='js/views/schedule/schedule.js'></script>
-    <script src='js/views/schedule/schedule_control.js'></script>
-    <script src='js/views/schedule/schedule_table.js'></script>
-    <script src='js/views/schedule/schedule_tbody.js'></script>
-    <script src='js/views/schedule/schedule_tbody_th.js'></script>
-    <script src='js/views/schedule/schedule_tbody_tr.js'></script>
-    <script src='js/views/schedule/schedule_td.js'></script>
-    <script src='js/views/schedule/schedule_tfoot.js'></script>
-    <script src='js/views/schedule/schedule_thead.js'></script>
-    <script src='js/views/schedule/schedule_thead_th.js'></script>
-    <script src='js/views/schedule/schedule_thead_tr.js'></script>
-    <script src='js/views/schedule/user_info.js'></script>
+    <script src='../../js/views/schedule/alert_modal.js'></script>
+    <script src='../../js/views/schedule/event.js'></script>
+    <script src='../../js/views/schedule/event_list.js'></script>
+    <script src='../../js/views/schedule/event_list_element.js'></script>
+    <script src='../../js/views/schedule/info_area.js'></script>
+    <script src='../../js/views/schedule/schedule.js'></script>
+    <script src='../../js/views/schedule/schedule_control.js'></script>
+    <script src='../../js/views/schedule/schedule_table.js'></script>
+    <script src='../../js/views/schedule/schedule_tbody.js'></script>
+    <script src='../../js/views/schedule/schedule_tbody_th.js'></script>
+    <script src='../../js/views/schedule/schedule_tbody_tr.js'></script>
+    <script src='../../js/views/schedule/schedule_td.js'></script>
+    <script src='../../js/views/schedule/schedule_tfoot.js'></script>
+    <script src='../../js/views/schedule/schedule_thead.js'></script>
+    <script src='../../js/views/schedule/schedule_thead_th.js'></script>
+    <script src='../../js/views/schedule/schedule_thead_tr.js'></script>
+    <script src='../../js/views/schedule/user_info.js'></script>
     <!-- router -->
-    <script src='js/routers/schedules_router.js'></script>
+    <script src='../../js/routers/schedules_router.js'></script>
   </body>
 </html>

@@ -36,7 +36,7 @@ class AppController extends Controller {
     var $components = array(
         'Session',
         'Auth' => Array(
-            'loginRedirect' => '/events.html',
+            'loginRedirect' => Array('controller' => 'users', 'action' => 'mypage'),
             'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
             'loginAction' => Array('controller' => 'users', 'action' => 'login'),
             'authError' => 'Did you really think you are allowed to see that?',

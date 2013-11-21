@@ -129,7 +129,5 @@ class EventsController extends AppController {
         $this->render('json');
 
     }
-    public function padule() {
 
-    }
 }

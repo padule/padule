@@ -30,8 +30,8 @@ module.exports = (grunt)->
     haml:
       dist:
         files:
-          'cake/app/webroot/events.html': 'cake/app/webroot/events.haml'
           'cake/app/View/SeekerSchedules/index.ctp': 'cake/app/View/SeekerSchedules/index.haml'
+          'cake/app/View/Users/mypage.ctp': 'cake/app/View/Users/mypage.haml'
     eco:
       app:
         options:
