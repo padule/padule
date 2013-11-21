@@ -28,11 +28,11 @@
     };
 
     SeekerSchedule.prototype.types = {
-      "default": -1,
-      ng: 0,
-      ok: 1,
-      confirmed: 2,
-      temp: 3
+      "default": '-1',
+      ng: '0',
+      ok: '1',
+      confirmed: '2',
+      temp: '3'
     };
 
     SeekerSchedule.prototype.initialize = function(models, options) {
