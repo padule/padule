@@ -39,12 +39,15 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
       contents: 'よろしいですか？'
       callback: =>
         @seeker.set 'event_id', @event.id
-        @seeker.save {},
+        @seeker.save null,
           success: (seeker)=>
             @collection.each (schedule)=>
-              schedule.seeker_schedules.last().set 'seeker_id', seeker.id
-              schedule.seeker_schedules.last().save {},
+              seeker_schedule = schedule.seeker_schedules.last()
+              seeker_schedule.set 'seeker_id', seeker.id
+              seeker_schedule.set 'schedule_id', schedule.id
+              seeker_schedule.save {},
                 success: (seeker_schedule)=>
+                  console.log "success"
                   @afterSending()
 
   afterSending: ->
@@ -79,4 +82,4 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
       return false
 
   setText: (e)->
-    @seeker.set 'text', $(e.currentTarget).val()
+    @seeker.set 'comment', $(e.currentTarget).val()

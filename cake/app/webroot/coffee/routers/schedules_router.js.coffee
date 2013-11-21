@@ -1,8 +1,7 @@
 class padule.Routers.Schedules extends Backbone.Router
   routes:
     'events.html' : 'schedules'
-    'schedule/seeker/' : 'seeker_schedules'
-    'seeker_schedule/index' : 'seeker_schedules'
+    'seeker_schedules/index/:id' : 'seeker_schedules'
 
   schedules: ->
     new padule.Views.UserInfo

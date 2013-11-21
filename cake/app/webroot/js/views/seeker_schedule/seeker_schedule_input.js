@@ -54,12 +54,16 @@
         contents: 'よろしいですか？',
         callback: function() {
           _this.seeker.set('event_id', _this.event.id);
-          return _this.seeker.save({}, {
+          return _this.seeker.save(null, {
             success: function(seeker) {
               return _this.collection.each(function(schedule) {
-                schedule.seeker_schedules.last().set('seeker_id', seeker.id);
-                return schedule.seeker_schedules.last().save({}, {
+                var seeker_schedule;
+                seeker_schedule = schedule.seeker_schedules.last();
+                seeker_schedule.set('seeker_id', seeker.id);
+                seeker_schedule.set('schedule_id', schedule.id);
+                return seeker_schedule.save({}, {
                   success: function(seeker_schedule) {
+                    console.log("success");
                     return _this.afterSending();
                   }
                 });
@@ -108,7 +112,7 @@
     };
 
     SeekerScheduleInput.prototype.setText = function(e) {
-      return this.seeker.set('text', $(e.currentTarget).val());
+      return this.seeker.set('comment', $(e.currentTarget).val());
     };
 
     return SeekerScheduleInput;

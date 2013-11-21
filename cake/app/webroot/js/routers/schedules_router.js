@@ -13,8 +13,7 @@
 
     Schedules.prototype.routes = {
       'events.html': 'schedules',
-      'schedule/seeker/': 'seeker_schedules',
-      'seeker_schedule/index': 'seeker_schedules'
+      'seeker_schedules/index/:id': 'seeker_schedules'
     };
 
     Schedules.prototype.schedules = function() {
