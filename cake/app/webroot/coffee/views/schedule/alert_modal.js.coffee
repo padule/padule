@@ -3,12 +3,12 @@ class padule.Views.AlertModal extends Backbone.View
 
   events:
     'click #alertOK': ->
+      @trigger "clickOk:#{@model.cid}"
       @$el.modal 'hide'
-      @callback()
-      @
 
-  render: (options={})->
+  show: (options = {})->
+    @model = options.model
+
     @$el.find('.modal-title').html options.title
     @$el.find('.modal-body').html options.contents
-    @callback = options.callback
     @$el.modal 'show'

@@ -34,13 +34,13 @@
     ScheduleTbodyTh.prototype.deleteSchedule = function(e) {
       var _this = this;
       e.preventDefault();
-      return padule.modal.render({
+      return padule.modal.show({
         title: 'スケジュールを削除',
         contents: "『" + this.start_time + "』の日程を削除してよろしいですか？",
         callback: function() {
           return _this.model.destroy({
             success: function() {
-              padule.info_area.render({
+              padule.info_area.show({
                 text: 'スケジュールを削除しました',
                 class_name: 'label-info'
               });

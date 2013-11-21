@@ -15,19 +15,18 @@
 
     AlertModal.prototype.events = {
       'click #alertOK': function() {
-        this.$el.modal('hide');
-        this.callback();
-        return this;
+        this.trigger("clickOk:" + this.model.cid);
+        return this.$el.modal('hide');
       }
     };
 
-    AlertModal.prototype.render = function(options) {
+    AlertModal.prototype.show = function(options) {
       if (options == null) {
         options = {};
       }
+      this.model = options.model;
       this.$el.find('.modal-title').html(options.title);
       this.$el.find('.modal-body').html(options.contents);
-      this.callback = options.callback;
       return this.$el.modal('show');
     };
 

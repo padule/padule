@@ -17,7 +17,7 @@
       return _.bindAll(this);
     };
 
-    InfoArea.prototype.render = function(options) {
+    InfoArea.prototype.show = function(options) {
       var _this = this;
       if (options == null) {
         options = {};

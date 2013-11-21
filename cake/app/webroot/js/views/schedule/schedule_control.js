@@ -54,7 +54,7 @@
       this.collection.push(new_schedule);
       return new_schedule.saveByEvent({
         success: function() {
-          return padule.info_area.render({
+          return padule.info_area.show({
             text: 'スケジュールを追加しました。',
             class_name: 'label-info'
           });
@@ -66,7 +66,7 @@
       var date;
       date = this.datepicker.val();
       if (!padule.checkDateFormat(date)) {
-        padule.info_area.render({
+        padule.info_area.show({
           text: '日づけのフォーマットが正しく入力してください。',
           class_name: 'label-danger'
         });

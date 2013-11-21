@@ -1,11 +1,17 @@
 class padule.Views.EventList extends Backbone.View
   el: $ "#eventList"
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
     @listenTo @collection, 'add', @render
 
-  render: (_event)->
+    @modal = options.modal
+    @infoArea = options.infoArea
+
+  render: (model)->
     view = new padule.Views.EventListElement
-      model: _event
+      model: model
+      modal: @modal
+      infoArea: @infoArea
+
     @$el.append view.render().el

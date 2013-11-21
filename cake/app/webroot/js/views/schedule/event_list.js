@@ -13,15 +13,22 @@
 
     EventList.prototype.el = $("#eventList");
 
-    EventList.prototype.initialize = function() {
+    EventList.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
-      return this.listenTo(this.collection, 'add', this.render);
+      this.listenTo(this.collection, 'add', this.render);
+      this.modal = options.modal;
+      return this.infoArea = options.infoArea;
     };
 
-    EventList.prototype.render = function(_event) {
+    EventList.prototype.render = function(model) {
       var view;
       view = new padule.Views.EventListElement({
-        model: _event
+        model: model,
+        modal: this.modal,
+        infoArea: this.infoArea
       });
       return this.$el.append(view.render().el);
     };

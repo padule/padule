@@ -1,4 +1,4 @@
-<button type="button" class="delete-event-button close pull-right">
+<button type="button" class="js-delete-event-btn close pull-right">
   &times;
 </button>
 <a href="#">

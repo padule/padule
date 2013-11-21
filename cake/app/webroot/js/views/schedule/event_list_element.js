@@ -18,7 +18,7 @@
     EventListElement.prototype.template = JST['templates/event'];
 
     EventListElement.prototype.events = {
-      'click .delete-event-button': 'deleteEvent',
+      'click .js-delete-event-btn': 'deleteEvent',
       'click a': 'showSchedule',
       'dblclick a': 'editEvent',
       'keypress input[type=text]': 'updateOnEnter'
@@ -29,9 +29,21 @@
         options = {};
       }
       _.bindAll(this);
+      this.modal = options.modal;
+      this.infoArea = options.infoArea;
       this.listenTo(this.model, 'change', this.render);
-      return this.listenTo(this.model, 'unactive', function() {
+      this.listenTo(this.model, 'unactive', function() {
         return this.$el.removeClass('active');
+      });
+      this.listenTo(this.model, 'destroy', function() {
+        this.remove();
+        return this.infoArea.show({
+          text: 'イベントを削除しました',
+          class_name: 'label-info'
+        });
+      });
+      return this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
+        return this.model.destroy();
       });
     };
 
@@ -47,14 +59,15 @@
     };
 
     EventListElement.prototype.close = function() {
-      var value;
+      var value,
+        _this = this;
       value = this.input.val();
       if (value) {
         this.model.save({
           title: value
         }, {
           success: function() {
-            return padule.info_area.render({
+            return _this.infoArea.show({
               text: 'スケジュールを追加しました。',
               class_name: 'label-info'
             });
@@ -76,22 +89,11 @@
     };
 
     EventListElement.prototype.deleteEvent = function(e) {
-      var _this = this;
       e.preventDefault();
-      return padule.modal.render({
+      return this.modal.show({
         title: 'イベントを削除',
         contents: "『" + (this.model.get('title')) + "』を削除してよろしいですか？",
-        callback: function() {
-          return _this.model.destroy({
-            success: function() {
-              padule.info_area.render({
-                text: 'イベントを削除しました',
-                class_name: 'label-info'
-              });
-              return this.remove();
-            }
-          });
-        }
+        model: this.model
       });
     };
 

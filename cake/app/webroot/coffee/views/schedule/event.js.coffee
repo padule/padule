@@ -8,8 +8,13 @@ class padule.Views.Event extends Backbone.View
     _.bindAll @
     @listenTo @collection, 'sync', @endLoading
 
+    @modal = new padule.Views.AlertModal
+    @infoArea = new padule.Views.InfoArea
+
     new padule.Views.EventList
       collection: @collection
+      modal: @modal
+      infoArea: @infoArea
 
     new padule.Views.UserInfo
       model: new padule.Models.User

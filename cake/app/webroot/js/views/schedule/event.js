@@ -20,8 +20,12 @@
     Event.prototype.initialize = function() {
       _.bindAll(this);
       this.listenTo(this.collection, 'sync', this.endLoading);
+      this.modal = new padule.Views.AlertModal;
+      this.infoArea = new padule.Views.InfoArea;
       new padule.Views.EventList({
-        collection: this.collection
+        collection: this.collection,
+        modal: this.modal,
+        infoArea: this.infoArea
       });
       new padule.Views.UserInfo({
         model: new padule.Models.User

@@ -6,8 +6,6 @@ class padule.Routers.Schedules extends Backbone.Router
   mypage: ->
     new padule.Views.Event
       collection: new padule.Collections.Events
-    window.padule.modal = new padule.Views.AlertModal
-    window.padule.info_area = new padule.Views.InfoArea
 
   seeker_schedules: ->
     event_id = $('.seeker-schedule-container').attr 'data-eventid'

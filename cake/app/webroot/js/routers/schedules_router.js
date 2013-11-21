@@ -17,11 +17,9 @@
     };
 
     Schedules.prototype.mypage = function() {
-      new padule.Views.Event({
+      return new padule.Views.Event({
         collection: new padule.Collections.Events
       });
-      window.padule.modal = new padule.Views.AlertModal;
-      return window.padule.info_area = new padule.Views.InfoArea;
     };
 
     Schedules.prototype.seeker_schedules = function() {

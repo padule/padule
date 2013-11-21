@@ -22,7 +22,7 @@ window.JST["templates/event"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<button type="button" class="delete-event-button close pull-right">\n  &times;\n</button>\n<a href="#">\n  <span>'));
+      _print(_safe('<button type="button" class="js-delete-event-btn close pull-right">\n  &times;\n</button>\n<a href="#">\n  <span>'));
     
       _print(this.event.title);
     

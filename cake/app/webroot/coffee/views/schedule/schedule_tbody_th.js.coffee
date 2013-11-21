@@ -16,13 +16,13 @@ class padule.Views.ScheduleTbodyTh extends Backbone.View
 
   deleteSchedule: (e)->
     e.preventDefault()
-    padule.modal.render
+    padule.modal.show
       title: 'スケジュールを削除'
       contents: "『#{@start_time}』の日程を削除してよろしいですか？"
       callback: =>
         @model.destroy
           success: =>
-            padule.info_area.render
+            padule.info_area.show
               text: 'スケジュールを削除しました'
               class_name: 'label-info'
             @remove()

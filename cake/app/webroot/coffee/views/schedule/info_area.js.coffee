@@ -4,7 +4,7 @@ class padule.Views.InfoArea extends Backbone.View
   initialize: ->
     _.bindAll @
 
-  render: (options={})->
+  show: (options={})->
     @$('.label').addClass(options.class_name).html options.text
     @$el.removeClass('show').addClass 'show'
     setTimeout =>

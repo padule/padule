@@ -31,14 +31,14 @@ class padule.Views.ScheduleControl extends Backbone.View
     @collection.push new_schedule
     new_schedule.saveByEvent
       success: ->
-        padule.info_area.render
+        padule.info_area.show
           text: 'スケジュールを追加しました。'
           class_name: 'label-info'
 
   _validateDatetime: ->
     date = @datepicker.val()
     unless padule.checkDateFormat date
-      padule.info_area.render
+      padule.info_area.show
         text: '日づけのフォーマットが正しく入力してください。'
         class_name: 'label-danger'
       return false
