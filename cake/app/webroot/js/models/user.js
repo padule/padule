@@ -11,10 +11,14 @@
       return _ref;
     }
 
-    User.prototype.urlRoot = "/users/1";
+    User.prototype.urlRoot = '/users';
 
-    User.prototype.initialize = function() {
-      return this.fetch();
+    User.prototype.parse = function(resp) {
+      if (resp.responseText) {
+        return resp.responseText;
+      } else {
+        return resp;
+      }
     };
 
     return User;

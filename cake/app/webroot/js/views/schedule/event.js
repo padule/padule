@@ -23,6 +23,9 @@
       new padule.Views.EventList({
         collection: this.collection
       });
+      new padule.Views.UserInfo({
+        model: new padule.Models.User
+      });
       this.startLoading();
       return this.collection.fetch();
     };

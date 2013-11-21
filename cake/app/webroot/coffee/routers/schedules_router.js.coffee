@@ -1,11 +1,9 @@
 class padule.Routers.Schedules extends Backbone.Router
   routes:
-    'users/mypage' : 'schedules'
+    'users/mypage' : 'mypage'
     'seeker_schedules/index/:id' : 'seeker_schedules'
 
-  schedules: ->
-    new padule.Views.UserInfo
-      model: new padule.Models.User
+  mypage: ->
     new padule.Views.Event
       collection: new padule.Collections.Events
     window.padule.modal = new padule.Views.AlertModal

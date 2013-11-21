@@ -7,8 +7,13 @@ class padule.Views.Event extends Backbone.View
   initialize: ->
     _.bindAll @
     @listenTo @collection, 'sync', @endLoading
+
     new padule.Views.EventList
       collection: @collection
+
+    new padule.Views.UserInfo
+      model: new padule.Models.User
+
     @startLoading()
     @collection.fetch()
 

@@ -15,9 +15,11 @@
 
     UserInfo.prototype.initialize = function() {
       _.bindAll(this);
-      return this.listenTo(this.model, 'sync', function() {
-        return this.$el.find('.dropdown a').append(this.model.get('name'));
+      this.listenTo(this.model, 'sync', function(model) {
+        return this.$el.find('.dropdown a').append(model.get('name'));
       });
+      this.model.set('id', this.$el.attr('data-userid'));
+      return this.model.fetch();
     };
 
     return UserInfo;

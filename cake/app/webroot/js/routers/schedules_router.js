@@ -12,14 +12,11 @@
     }
 
     Schedules.prototype.routes = {
-      'users/mypage': 'schedules',
+      'users/mypage': 'mypage',
       'seeker_schedules/index/:id': 'seeker_schedules'
     };
 
-    Schedules.prototype.schedules = function() {
-      new padule.Views.UserInfo({
-        model: new padule.Models.User
-      });
+    Schedules.prototype.mypage = function() {
       new padule.Views.Event({
         collection: new padule.Collections.Events
       });

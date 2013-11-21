@@ -167,6 +167,9 @@ var $uses = array('User','Company','TmpUser');
         if(!($this->Auth->user())) {
             $this->redirect(array('controller' => 'users','action' => 'login'));
         }
+
+        $user = $this->Auth->user();
+        $this->set('userId', $user['id']);
     }
 
 }

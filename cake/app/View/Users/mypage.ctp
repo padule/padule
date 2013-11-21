@@ -27,19 +27,19 @@
         <div class='info-area pull-left'>
           <span class='label'></span>
         </div>
-        <ul class='nav navbar-nav pull-right' id='userInfo'>
-          <li class='dropdown'>
-            <a class='pull-right' data-toggle='dropdown' href='#'>
-              <i class='glyphicon glyphicon-user'></i>
-            </a>
-            <ul class='dropdown-menu'>
-              <li>
-                <a href='#'>
-                  ログアウト
-                </a>
-              </li>
-            </ul>
-          </li>
+        <ul class='nav navbar-nav pull-right' id='userInfo' data-userid='<?php echo $userId; ?>'>
+        <li class='dropdown'>
+          <a class='pull-right' data-toggle='dropdown' href='#'>
+            <i class='glyphicon glyphicon-user'></i>
+          </a>
+          <ul class='dropdown-menu'>
+            <li>
+              <a href='#'>
+                ログアウト
+              </a>
+            </li>
+          </ul>
+        </li>
         </ul>
       </div>
     </div>

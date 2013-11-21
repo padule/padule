@@ -29,15 +29,19 @@
         .info-area.pull-left
           %span.label
 
-        %ul#userInfo.nav.navbar-nav.pull-right
-          %li.dropdown
-            %a{:href=>"#", :data=>{:toggle=>'dropdown'}, :class=> 'pull-right'}
-              %i.glyphicon.glyphicon-user
+        :plain
+          <ul class='nav navbar-nav pull-right' id='userInfo' data-userid='<?php echo $userId; ?>'>
 
-            %ul.dropdown-menu
-              %li
-                %a{:href=>"#"}
-                  ログアウト
+        %li.dropdown
+          %a{:href=>"#", :data=>{:toggle=>'dropdown'}, :class=> 'pull-right'}
+            %i.glyphicon.glyphicon-user
+
+          %ul.dropdown-menu
+            %li
+              %a{:href=>"#"}
+                ログアウト
+        :plain
+          </ul>
 
     .schedule-container.container-fluid
       .row-fluid
