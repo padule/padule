@@ -22,11 +22,15 @@ window.JST["templates/event"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<button type="button" class="js-delete-event-btn close pull-right">\n  &times;\n</button>\n<a href="#">\n  <span>'));
+      _print(_safe('<button type="button" class="js-delete-event-btn delete-button close">\n  &times;\n</button>\n<a href="#">\n  <span>'));
     
       _print(this.event.title);
     
-      _print(_safe('</span>\n</a>\n<input class="edit" type="text" class="form-control" placeholder="スケジュール名を入力">\n'));
+      _print(_safe('</span>\n</a>\n<div class="edit-container">\n  <input class="edit" type="text" class="form-control" placeholder="スケジュール名を入力" value="'));
+    
+      _print(this.event.title);
+    
+      _print(_safe('">\n</div>\n'));
     
     }).call(this);
     

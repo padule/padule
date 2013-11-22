@@ -1,12 +1,17 @@
 class padule.Views.EventListElement extends Backbone.View
   tagName: 'li'
+  className: 'event'
   template: JST['templates/event']
 
   events:
     'click .js-delete-event-btn' : 'deleteEvent'
     'click a' : 'showSchedule'
     'dblclick a' : 'editEvent'
-    'keypress input[type=text]': 'updateOnEnter'
+    'keypress .edit': (e)->
+      if e.keyCode is 13 then @close()
+    'blur .edit': ->
+      @$el.removeClass 'editing'
+      if @model.isNew() and !@model.get('title') then @remove()
 
   initialize: (options = {})->
     _.bindAll @
@@ -28,22 +33,19 @@ class padule.Views.EventListElement extends Backbone.View
     @listenTo @modal, "clickOk:#{@model.cid}", ->
       @model.destroy()
 
-  updateOnEnter: (e)->
-    if e.keyCode is 13
-      @close()
+    @listenTo @model, 'sync', ->
+      @infoArea.show
+        text: 'スケジュールを保存しました。'
+        class_name: 'label-info'
 
   editEvent: ->
     @$el.addClass 'editing'
-    @input.focus()
+    @focus()
 
   close: ->
     value = @input.val()
     if value
-      @model.save {title: value},
-        success: =>
-          @infoArea.show
-            text: 'スケジュールを追加しました。'
-            class_name: 'label-info'
+      @model.save {title: value}
       @$el.removeClass 'editing'
 
   render: =>
@@ -51,7 +53,8 @@ class padule.Views.EventListElement extends Backbone.View
       event: @model.toJSON()
     @input = @$('.edit')
     if @model.isNew()
-      @$el.addClass('editing');
+      @$el.addClass 'editing'
+      @focus()
     @
 
   deleteEvent: (e)->
@@ -69,3 +72,8 @@ class padule.Views.EventListElement extends Backbone.View
 
     new padule.Views.Schedule
       collection: new padule.Collections.Schedules false, _event: @model
+
+  focus: ->
+    setTimeout =>
+      @input.focus()
+    , 0

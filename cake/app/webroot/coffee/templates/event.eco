@@ -1,7 +1,9 @@
-<button type="button" class="js-delete-event-btn close pull-right">
+<button type="button" class="js-delete-event-btn delete-button close">
   &times;
 </button>
 <a href="#">
   <span><%= @event.title %></span>
 </a>
-<input class="edit" type="text" class="form-control" placeholder="スケジュール名を入力">
+<div class="edit-container">
+  <input class="edit" type="text" class="form-control" placeholder="スケジュール名を入力" value="<%= @event.title %>">
+</div>

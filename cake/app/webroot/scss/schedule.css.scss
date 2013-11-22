@@ -72,35 +72,61 @@ body > .seeker-schedule-container {
   }
 
   #eventList {
-    li {
-      @include transition-duration(0.1s);
+    $event-list-margin: 10px;
+
+    .event {
+      position: relative;
       @include line-bottom;
+      @include transition-duration(0.1s);
+
+      .delete-button {
+        position: absolute;
+        top: $event-list-margin;
+        right: $event-list-margin;
+        font-size: 18px;
+        display: none;
+      }
+
+      .edit-container {
+        padding: 6px;
+        display: none;
+        .edit {
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          padding-left: 4px;
+        }
+        input[type="text"]:focus {
+          outline: 0;
+          border-color: $orange1 * 1.1 !important;
+        }
+      }
+
       &.active {
         @include gradient-top-lighten($gray1);
-        a {
+        font-weight: bold;
+        border-left: 6px solid $orange1;
+        cursor: default;
+        > a {
           @include gradient-top-lighten($gray1);
-          font-weight: bold;
-          border-left: 6px solid $orange1;
-          cursor: default;
         }
       }
-      .edit {
-        display: none;
-        margin: 6px;
-        width: 80%;
-      }
-      &.editing {
-        .edit {
-          display: block;
-        }
-        a {
-          display: none;
-        }
-      }
+
       &:hover {
         background-color: $gray4;
-        .close {
+        .delete-button {
           display: block;
+        }
+      }
+
+      &.editing {
+        .delete-button {
+          display: none !important;
+        }
+        .edit-container {
+          display: block;
+        }
+        > a {
+          display: none;
         }
       }
     }
@@ -115,12 +141,6 @@ body > .seeker-schedule-container {
       &:hover {
         background-color: $gray4;
       }
-    }
-    .close {
-      padding-top: 10px;
-      padding-right: 10px;
-      font-size: 18px;
-      display: none;
     }
   }
 }

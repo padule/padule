@@ -15,13 +15,25 @@
 
     EventListElement.prototype.tagName = 'li';
 
+    EventListElement.prototype.className = 'event';
+
     EventListElement.prototype.template = JST['templates/event'];
 
     EventListElement.prototype.events = {
       'click .js-delete-event-btn': 'deleteEvent',
       'click a': 'showSchedule',
       'dblclick a': 'editEvent',
-      'keypress input[type=text]': 'updateOnEnter'
+      'keypress .edit': function(e) {
+        if (e.keyCode === 13) {
+          return this.close();
+        }
+      },
+      'blur .edit': function() {
+        this.$el.removeClass('editing');
+        if (this.model.isNew() && !this.model.get('title')) {
+          return this.remove();
+        }
+      }
     };
 
     EventListElement.prototype.initialize = function(options) {
@@ -42,36 +54,28 @@
           class_name: 'label-info'
         });
       });
-      return this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
+      this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
         return this.model.destroy();
       });
-    };
-
-    EventListElement.prototype.updateOnEnter = function(e) {
-      if (e.keyCode === 13) {
-        return this.close();
-      }
+      return this.listenTo(this.model, 'sync', function() {
+        return this.infoArea.show({
+          text: 'スケジュールを保存しました。',
+          class_name: 'label-info'
+        });
+      });
     };
 
     EventListElement.prototype.editEvent = function() {
       this.$el.addClass('editing');
-      return this.input.focus();
+      return this.focus();
     };
 
     EventListElement.prototype.close = function() {
-      var value,
-        _this = this;
+      var value;
       value = this.input.val();
       if (value) {
         this.model.save({
           title: value
-        }, {
-          success: function() {
-            return _this.infoArea.show({
-              text: 'スケジュールを追加しました。',
-              class_name: 'label-info'
-            });
-          }
         });
         return this.$el.removeClass('editing');
       }
@@ -84,6 +88,7 @@
       this.input = this.$('.edit');
       if (this.model.isNew()) {
         this.$el.addClass('editing');
+        this.focus();
       }
       return this;
     };
@@ -108,6 +113,13 @@
           _event: this.model
         })
       });
+    };
+
+    EventListElement.prototype.focus = function() {
+      var _this = this;
+      return setTimeout(function() {
+        return _this.input.focus();
+      }, 0);
     };
 
     return EventListElement;
