@@ -3,11 +3,18 @@ module.exports = (grunt)->
     pkg: grunt.file.readJSON 'package.json'
     watch:
       coffee:
-        files: ['cake/app/webroot/coffee/**/*.coffee']
+        files: ['cake/app/webroot/coffee/**/*.coffee', 'cake/app/webroot/coffee/*.coffee', 'cake/app/webroot/coffee/**/**/*.coffee']
         tasks: 'coffee'
       compass:
         files: ['cake/app/webroot/scss/**/*.scss']
         tasks: 'compass'
+      haml:
+        files: ['cake/app/webroot/**/*.haml', 'cake/app/View/**/*.haml']
+        tasks: 'haml'
+      eco:
+        files: ['cake/app/webroot/coffee/templates/*.eco']
+        tasks: 'eco'
+
     coffee:
       compile:
         files: [
@@ -20,11 +27,24 @@ module.exports = (grunt)->
     compass:
       dist:
         options: {}
+    haml:
+      dist:
+        files:
+          'cake/app/View/SeekerSchedules/index.ctp': 'cake/app/View/SeekerSchedules/index.haml'
+          'cake/app/View/Users/mypage.ctp': 'cake/app/View/Users/mypage.haml'
+    eco:
+      app:
+        options:
+          basePath: 'cake/app/webroot/coffee'
+        files:
+          'cake/app/webroot/js/templates/templates.js': ['cake/app/webroot/coffee/templates/*.eco']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib'
   grunt.loadNpmTasks 'grunt-compass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-haml'
+  grunt.loadNpmTasks 'grunt-eco'
 
   grunt.registerTask 'default', ['watch']
   return

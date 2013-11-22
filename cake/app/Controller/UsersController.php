@@ -77,7 +77,7 @@ var $uses = array('User','Company','TmpUser');
             }
     }
     public function complete() {
-    	
+
 	}
 	public function logout() {
 	   $this->redirect($this->Auth->logout());
@@ -161,6 +161,15 @@ var $uses = array('User','Company','TmpUser');
 
             }
         }
+    }
+
+    public function mypage() {
+        if(!($this->Auth->user())) {
+            $this->redirect(array('controller' => 'users','action' => 'login'));
+        }
+
+        $user = $this->Auth->user();
+        $this->set('userId', $user['id']);
     }
 
 }
