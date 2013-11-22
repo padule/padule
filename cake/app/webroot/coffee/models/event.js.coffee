@@ -8,7 +8,7 @@ class padule.Models.Event extends Backbone.Model
 
   defaults:
     title: ""
-    url: "http://padule.me"
+    url: ""
     text: ""
     enabled: true
 

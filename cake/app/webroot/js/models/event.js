@@ -23,7 +23,7 @@
 
     Event.prototype.defaults = {
       title: "",
-      url: "http://padule.me",
+      url: "",
       text: "",
       enabled: true
     };

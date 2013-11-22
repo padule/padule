@@ -33,7 +33,8 @@ class padule.Views.EventListElement extends Backbone.View
     @listenTo @modal, "clickOk:#{@model.cid}", ->
       @model.destroy()
 
-    @listenTo @model, 'sync', ->
+    @listenTo @model, 'sync', (model)->
+      @model = model
       @infoArea.show
         text: 'スケジュールを保存しました。'
         class_name: 'label-info'
@@ -45,7 +46,8 @@ class padule.Views.EventListElement extends Backbone.View
   close: ->
     value = @input.val()
     if value
-      @model.save {title: value}
+      @model.set 'title', value
+      @model.save()
       @$el.removeClass 'editing'
 
   render: =>

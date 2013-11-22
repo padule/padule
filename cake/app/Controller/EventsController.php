@@ -73,7 +73,11 @@ class EventsController extends AppController {
 
         if($this->Event->save($savedata)) {
             $this->responseText = array(
-                'id' => $this->Event->getLastInsertID()
+                'id' => $this->Event->getLastInsertID(),
+                'user_id' => $this->Auth->user('id'),
+                'title' => $title,
+                'text' => $text,
+                'url' => $url
             );
             $this->env = true;
         } else {

@@ -57,7 +57,8 @@
       this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
         return this.model.destroy();
       });
-      return this.listenTo(this.model, 'sync', function() {
+      return this.listenTo(this.model, 'sync', function(model) {
+        this.model = model;
         return this.infoArea.show({
           text: 'スケジュールを保存しました。',
           class_name: 'label-info'
@@ -74,9 +75,8 @@
       var value;
       value = this.input.val();
       if (value) {
-        this.model.save({
-          title: value
-        });
+        this.model.set('title', value);
+        this.model.save();
         return this.$el.removeClass('editing');
       }
     };
