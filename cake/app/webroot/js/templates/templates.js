@@ -79,11 +79,11 @@ window.JST["templates/schedule_control"] = function(__obj) {
     
       _print(this.event.title);
     
-      _print(_safe('</h3>\n  <p>\n    共有URL : '));
+      _print(_safe('</h3>\n  <div class="input-group">\n    <span class="input-group-addon">共有URL</span>\n    <input class="form-control" type="text" value="'));
     
       _print(this.event.url);
     
-      _print(_safe('\n  </p>\n</div>\n'));
+      _print(_safe('" onclick="this.select(0,this.value.length)">\n  </div>\n</div>\n'));
     
     }).call(this);
     
