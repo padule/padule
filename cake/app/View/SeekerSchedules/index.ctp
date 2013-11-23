@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Padule</title>
-    <link href='favicon.ico' ref='shortcut icon'>
+    <link href='../../img/favicon.ico' rel='shortcut icon'>
     <link href='../../css/bootstrap.min.css' rel='stylesheet'>
     <link href='../../css/datepicker.css' rel='stylesheet'>
     <link href='../../css/padule.css' rel='stylesheet'>
