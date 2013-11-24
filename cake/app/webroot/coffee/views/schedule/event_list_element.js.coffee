@@ -49,6 +49,7 @@ class padule.Views.EventListElement extends Backbone.View
       @model.set 'title', value
       @model.save()
       @$el.removeClass 'editing'
+      @showSchedule()
 
   render: =>
     @$el.html @template
@@ -57,6 +58,11 @@ class padule.Views.EventListElement extends Backbone.View
     if @model.isNew()
       @$el.addClass 'editing'
       @focus()
+
+    active_event_id = window.localStorage.getItem @model.className
+    if active_event_id? && active_event_id is @model.id
+      @showSchedule()
+
     @
 
   deleteEvent: (e)->
@@ -67,10 +73,12 @@ class padule.Views.EventListElement extends Backbone.View
       model: @model
 
   showSchedule: (e)->
-    e.preventDefault()
+    e?.preventDefault()
     @model.collection.each (event)->
       event.trigger 'unactive'
     @$el.addClass 'active'
+
+    window.localStorage.setItem @model.className, @model.id
 
     new padule.Views.Schedule
       collection: new padule.Collections.Schedules false, _event: @model

@@ -6,6 +6,8 @@ class padule.Models.Event extends Backbone.Model
     else
       resp
 
+  className: 'padule.Models.Event'
+
   defaults:
     title: ""
     url: ""

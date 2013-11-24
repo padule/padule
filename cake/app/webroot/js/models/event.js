@@ -21,6 +21,8 @@
       }
     };
 
+    Event.prototype.className = 'padule.Models.Event';
+
     Event.prototype.defaults = {
       title: "",
       url: "",
