@@ -20,7 +20,6 @@ class padule.Views.Schedule extends Backbone.View
     @controlContainer = @$ '.control-container'
     @buttonContainer = @$ '.button-container'
 
-    @listenTo @collection, 'sync', @_clear
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
     @listenTo @collection.event, 'change', @render
@@ -49,12 +48,29 @@ class padule.Views.Schedule extends Backbone.View
 
     @control = new padule.Views.ScheduleControl
       collection: @collection
+      info_area: @info_area
     @controlContainer.html @control.render().el
+
+    @updateInfoArea()
 
     @enableConfirmButton()
     @buttonContainer.show()
 
     @endLoading()
+
+  updateInfoArea: ->
+    if @collection.length <= 0
+      @info_area.show
+        text: 'まだ日程が登録されていません。'
+        class_name: 'label-warning'
+        ms: 20000
+    else if @collection.at(0)?.seeker_schedules.length <= 0
+      @info_area.show
+        text: 'まだ求職者からの日程登録はありません。'
+        class_name: 'label-warning'
+        ms: 20000
+    else
+      @info_area.hide()
 
   startLoading: ->
     @$el.addClass 'loading'

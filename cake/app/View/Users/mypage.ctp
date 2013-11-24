@@ -48,8 +48,7 @@
         <div id='eventSidebar'>
           <ul class='nav' id='eventList'></ul>
           <div id='addEventButtonContainer'>
-            <button class='add-event-btn btn btn-default'>
-              <i class='glyphicon glyphicon-plus'></i>
+            <button class='add-event-btn btn btn-primary'>
               スケジュール追加
             </button>
           </div>

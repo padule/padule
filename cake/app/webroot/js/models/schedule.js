@@ -38,13 +38,16 @@
       }
     };
 
-    Schedule.prototype.saveByEvent = function() {
-      var options;
+    Schedule.prototype.saveByEvent = function(options) {
+      if (options == null) {
+        options = {};
+      }
       this.seeker_schedules.each(function(seeker_schedule) {
         return seeker_schedule.save();
       });
       options = {
-        url: this.url() + "?event_id=" + this.get('event_id')
+        url: this.url() + "?event_id=" + this.get('event_id'),
+        success: options.success()
       };
       return this.save(null, options);
     };

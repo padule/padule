@@ -57,7 +57,7 @@
         };
       } else if (this.model.isOK()) {
         return {
-          btn_class_name: 'btn-primary',
+          btn_class_name: 'btn-info',
           icon_class_name: 'glyphicon-thumbs-up',
           text: '◯'
         };

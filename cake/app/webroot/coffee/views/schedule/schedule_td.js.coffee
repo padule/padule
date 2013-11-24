@@ -33,7 +33,7 @@ class padule.Views.ScheduleTd extends Backbone.View
       icon_class_name: 'glyphicon-ok'
       text: '確定'
     else if @model.isOK()
-      btn_class_name: 'btn-primary'
+      btn_class_name: 'btn-info'
       icon_class_name: 'glyphicon-thumbs-up'
       text: '◯'
     else if @model.isNG()
