@@ -52,6 +52,14 @@
       return this.collection.fetchByEvent();
     };
 
+    Schedule.prototype.setTableHeight = function() {
+      var height;
+      console.log($('.control-container').height());
+      console.log($('.button-container').height());
+      height = $(window).height() - $('.control-container').height() - $('.button-container').height() - $('.padule-nav').height() - 65;
+      return this.$('.schedule-table-container').height(height);
+    };
+
     Schedule.prototype.clear = function() {
       this.tableContainer.empty();
       return this.controlContainer.empty();
@@ -70,6 +78,7 @@
       });
       this.controlContainer.html(this.control.render().el);
       this.updateInfoArea();
+      this.setTableHeight();
       this.enableConfirmButton();
       this.buttonContainer.show();
       return this.endLoading();
