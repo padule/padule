@@ -152,27 +152,38 @@ body > #scheduleContents {
 #scheduleContents {
   position: relative;
   margin-left: $sidebar-width;
-  padding: $margin2;
   height: 100%;
   min-height: 100%;
   background-color: $gray2;
 
   .schedule-table-container {
+    width: auto;
     font-size: $font-size1;
-    background-color: $white1;
-    @include box-emboss;
-    table {
-      margin-bottom: $margin2;
-    }
     .no-event {
       padding: $margin1;
       font-size: $font-size2;
     }
+    .schedule-table {
+      background-color: $white1;
+      width: auto;
+      border: 1px solid #ddd;
+      @include box-emboss;
+      margin: $margin1;
+      margin-bottom: $margin2;
+    }
+  }
+
+  .add-button-container {
+    margin: $margin1;
   }
 
   th, td {
-    text-align: center;
     vertical-align: middle;
+    text-align: center;
+  }
+
+  thead th {
+    border-bottom: 1px solid #ddd;
   }
 
   tbody th {
@@ -181,7 +192,6 @@ body > #scheduleContents {
     .schedule-delete-button {
       width: 20px;
       font-size: 18px;
-      display: none;
     }
     .schedule-time {
       width: 150px;
@@ -218,14 +228,21 @@ body > #scheduleContents {
 }
 
 .control-container {
-  margin-bottom: $margin2;
+  padding: $margin1;
+  // @include line-bottom;
+  border: 1px solid $gray4;
   button, a {
     width: 100%;
   }
   .event-contents {
+    border-bottom: 1px solid $gray1;
+
     h3 {
       margin-top: 0;
       font-weight: bold;
+    }
+    >.row {
+      margin-bottom: $margin1;
     }
   }
 
@@ -237,10 +254,10 @@ body > #scheduleContents {
     width: 120px;
   }
   #scheduleTimepicker {
-    width: 120px;
+    width: 90px;
   }
   #addScheduleButton {
-    width: 120px;
+    width: auto;
   }
 }
 

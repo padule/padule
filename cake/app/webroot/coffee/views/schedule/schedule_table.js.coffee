@@ -1,6 +1,6 @@
 class padule.Views.ScheduleTable extends Backbone.View
   tagName: 'table'
-  className: 'table table-hover table-condensed'
+  className: 'table table-hover table-condensed schedule-table'
 
   initialize: ->
     _.bindAll @
