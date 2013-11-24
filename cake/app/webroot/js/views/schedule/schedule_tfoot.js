@@ -24,7 +24,7 @@
         view = new padule.Views.ScheduleTfootTr({
           collection: this.collection
         });
-        this.$el.html(view.render()["else"]);
+        this.$el.html(view.render().el);
       }
       return this;
     };

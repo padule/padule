@@ -11,10 +11,23 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
   initialize: (options={})->
     _.bindAll @
     @event = @collection.event
+    @modal = new padule.Views.AlertModal
     @seeker = options.seeker
 
+    @listenTo @modal, "clickOk:#{@collection.cid}", ->
+      @seeker.set 'event_id', @event.id
+      @seeker.save()
     @listenTo @event, 'sync', @render_event_info
     @listenTo @seeker, 'change', @changeSendButtonEnable
+    @listenTo @seeker, 'sync', (seeker)->
+      @seeker = seeker
+      @collection.each (schedule)=>
+        seeker_schedule = schedule.seeker_schedules.last()
+        seeker_schedule.set 'seeker_id', seeker.id
+        seeker_schedule.set 'schedule_id', schedule.id
+        seeker_schedule.save {},
+          success: (seeker_schedule)=>
+            @afterSending()
 
     @event_container = @$ '.event-container'
     @seeker_container = @$ '.seeker-container'
@@ -24,8 +37,6 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
       collection: @collection
       seeker: @seeker
 
-    @modal = new padule.Views.AlertModal
-
     @collection.fetchByEvent()
     @event.fetch()
 
@@ -34,21 +45,10 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
     @event_container.find('.text').html @event.get 'text'
 
   sendSeekerSchedule: ->
-    @modal.render
+    @modal.show
+      model: @collection
       title: 'スケジュールを送信します'
       contents: 'よろしいですか？'
-      callback: =>
-        @seeker.set 'event_id', @event.id
-        @seeker.save null,
-          success: (seeker)=>
-            @collection.each (schedule)=>
-              seeker_schedule = schedule.seeker_schedules.last()
-              seeker_schedule.set 'seeker_id', seeker.id
-              seeker_schedule.set 'schedule_id', schedule.id
-              seeker_schedule.save {},
-                success: (seeker_schedule)=>
-                  console.log "success"
-                  @afterSending()
 
   afterSending: ->
     @$('.necessary').attr 'disabled', true

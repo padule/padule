@@ -9,7 +9,7 @@ class padule.Views.ScheduleTfootTr extends Backbone.View
 
   renderOne: (seeker_schedule)->
     view = new padule.Views.ScheduleTFootTd
-      model: seeker_schedule
+      model: seeker_schedule.seeker
     @$el.append view.render().el
 
   render: ->

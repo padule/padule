@@ -24,7 +24,7 @@
     ScheduleTfootTr.prototype.renderOne = function(seeker_schedule) {
       var view;
       view = new padule.Views.ScheduleTFootTd({
-        model: seeker_schedule
+        model: seeker_schedule.seeker
       });
       return this.$el.append(view.render().el);
     };

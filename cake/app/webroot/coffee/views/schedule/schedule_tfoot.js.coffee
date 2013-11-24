@@ -9,5 +9,5 @@ class padule.Views.ScheduleTfoot extends Backbone.View
     if @collection.length > 0
       view = new padule.Views.ScheduleTfootTr
         collection: @collection
-      @$el.html view.render().else
+      @$el.html view.render().el
     @
