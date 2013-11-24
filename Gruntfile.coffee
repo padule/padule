@@ -32,6 +32,7 @@ module.exports = (grunt)->
         files:
           'cake/app/View/SeekerSchedules/index.ctp': 'cake/app/View/SeekerSchedules/index.haml'
           'cake/app/View/Users/mypage.ctp': 'cake/app/View/Users/mypage.haml'
+          'cake/app/View/Users/login.ctp': 'cake/app/View/Users/login.haml'
     eco:
       app:
         options:
