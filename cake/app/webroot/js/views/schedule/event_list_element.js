@@ -77,11 +77,13 @@
       if (value) {
         this.model.set('title', value);
         this.model.save();
-        return this.$el.removeClass('editing');
+        this.$el.removeClass('editing');
+        return this.showSchedule();
       }
     };
 
     EventListElement.prototype.render = function() {
+      var active_event_id;
       this.$el.html(this.template({
         event: this.model.toJSON()
       }));
@@ -89,6 +91,10 @@
       if (this.model.isNew()) {
         this.$el.addClass('editing');
         this.focus();
+      }
+      active_event_id = window.localStorage.getItem(this.model.className);
+      if ((active_event_id != null) && active_event_id === this.model.id) {
+        this.showSchedule();
       }
       return this;
     };
@@ -103,11 +109,14 @@
     };
 
     EventListElement.prototype.showSchedule = function(e) {
-      e.preventDefault();
+      if (e != null) {
+        e.preventDefault();
+      }
       this.model.collection.each(function(event) {
         return event.trigger('unactive');
       });
       this.$el.addClass('active');
+      window.localStorage.setItem(this.model.className, this.model.id);
       return new padule.Views.Schedule({
         collection: new padule.Collections.Schedules(false, {
           _event: this.model

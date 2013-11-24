@@ -35,6 +35,9 @@
       this.timepicker = this.$('#scheduleTimepicker');
       this._initDatepicker();
       this._initTimepicker();
+      if (this.collection.length <= 0) {
+        this.focus(this.datepicker);
+      }
       return this;
     };
 
@@ -102,6 +105,13 @@
         showMeridian: false,
         modalBackdrop: true
       });
+    };
+
+    ScheduleControl.prototype.focus = function(input) {
+      var _this = this;
+      return setTimeout(function() {
+        return input.focus();
+      }, 0);
     };
 
     return ScheduleControl;

@@ -17,6 +17,10 @@ class padule.Views.ScheduleControl extends Backbone.View
     @timepicker = @$('#scheduleTimepicker')
     @_initDatepicker()
     @_initTimepicker()
+
+    if @collection.length <= 0
+      @focus @datepicker
+
     @
 
   toggleAddButton: =>
@@ -65,3 +69,8 @@ class padule.Views.ScheduleControl extends Backbone.View
       defaultTime: false
       showMeridian: false
       modalBackdrop: true
+
+  focus: (input)->
+    setTimeout =>
+      input.focus()
+    , 0
