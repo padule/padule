@@ -26,6 +26,7 @@
       this.listenTo(this.collection, 'sync', this._clear);
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
+      this.listenTo(this.collection.event, 'change', this.render);
       this.clear();
       this.startLoading();
       return this.collection.fetchByEvent();

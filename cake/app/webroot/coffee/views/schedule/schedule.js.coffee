@@ -14,6 +14,7 @@ class padule.Views.Schedule extends Backbone.View
     @listenTo @collection, 'sync', @_clear
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
+    @listenTo @collection.event, 'change', @render
 
     @clear()
     @startLoading()
