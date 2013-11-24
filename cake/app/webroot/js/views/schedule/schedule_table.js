@@ -20,7 +20,10 @@
       this.thead = new padule.Views.ScheduleThead({
         collection: this.collection
       });
-      return this.tbody = new padule.Views.ScheduleTbody({
+      this.tbody = new padule.Views.ScheduleTbody({
+        collection: this.collection
+      });
+      return this.tfoot = new padule.Views.ScheduleTfoot({
         collection: this.collection
       });
     };
@@ -28,6 +31,7 @@
     ScheduleTable.prototype.render = function() {
       this.$el.append(this.thead.render().el);
       this.$el.append(this.tbody.render().el);
+      this.$el.append(this.tfoot.render().el);
       return this;
     };
 

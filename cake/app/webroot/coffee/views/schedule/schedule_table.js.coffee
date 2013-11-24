@@ -8,8 +8,11 @@ class padule.Views.ScheduleTable extends Backbone.View
       collection: @collection
     @tbody = new padule.Views.ScheduleTbody
       collection: @collection
+    @tfoot = new padule.Views.ScheduleTfoot
+      collection: @collection
 
   render: ->
     @$el.append @thead.render().el
     @$el.append @tbody.render().el
+    @$el.append @tfoot.render().el
     @

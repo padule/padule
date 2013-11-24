@@ -138,6 +138,8 @@
     <script src='../../js/views/schedule/schedule_tbody_tr.js'></script>
     <script src='../../js/views/schedule/schedule_td.js'></script>
     <script src='../../js/views/schedule/schedule_tfoot.js'></script>
+    <script src='../../js/views/schedule/schedule_tfoot_tr.js'></script>
+    <script src='../../js/views/schedule/schedule_tfoot_td.js'></script>
     <script src='../../js/views/schedule/schedule_thead.js'></script>
     <script src='../../js/views/schedule/schedule_thead_th.js'></script>
     <script src='../../js/views/schedule/schedule_thead_tr.js'></script>
