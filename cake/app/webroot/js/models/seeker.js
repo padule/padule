@@ -23,6 +23,10 @@
       }
     };
 
+    Seeker.prototype.defaults = {
+      comment: ""
+    };
+
     Seeker.prototype.initialize = function(options) {
       if (options == null) {
         options = {};

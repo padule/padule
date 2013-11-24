@@ -7,6 +7,9 @@ class padule.Models.Seeker extends Backbone.Model
     else
       resp
 
+  defaults:
+    comment: ""
+
   initialize: (options ={})->
     @seeker_schedule = options.seeker_schedule
 

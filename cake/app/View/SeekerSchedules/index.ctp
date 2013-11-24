@@ -7,6 +7,16 @@
     <link href='../../css/datepicker.css' rel='stylesheet'>
     <link href='../../css/padule.css' rel='stylesheet'>
     <link href='../../css/schedule.css' rel='stylesheet'>
+    <meta content='スケジュール,調整' name='keywords'>
+    <meta content='日程調整をパズル感覚で行おう' name='description'>
+    <meta content='Padule' property='og:title'>
+    <meta content='' property='og_image'>
+    <meta content='' property='og:description'>
+    <meta content='website' property='og:type'>
+    <meta content='http://padule.me' property='og:url'>
+    <meta content='Padule' property='og:site_name'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   </head>
   <body>
     <div class='navbar navbar-inverse navbar-fixed-top padule-nav'>
