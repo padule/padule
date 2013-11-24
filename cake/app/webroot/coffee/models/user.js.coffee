@@ -6,3 +6,10 @@ class padule.Models.User extends Backbone.Model
       resp.responseText
     else
       resp
+
+  logout: ->
+    @sync 'create', @,
+      url: "/users/logout"
+      complete: ->
+        console.log "hogehoge"
+        location.href = "/users/login"

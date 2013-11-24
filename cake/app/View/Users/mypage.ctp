@@ -31,10 +31,13 @@
         <li class='dropdown'>
           <a class='pull-right' data-toggle='dropdown' href='#'>
             <i class='glyphicon glyphicon-user'></i>
+            <span id='userName'></span>
+            <b class='caret'></b>
           </a>
           <ul class='dropdown-menu'>
             <li>
-              <a href='#'>
+              <a href='#' id='logout'>
+                <i class='glyphicon glyphicon-off'></i>
                 ログアウト
               </a>
             </li>

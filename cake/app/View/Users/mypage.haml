@@ -34,10 +34,13 @@
         %li.dropdown
           %a{:href=>"#", :data=>{:toggle=>'dropdown'}, :class=> 'pull-right'}
             %i.glyphicon.glyphicon-user
+            %span#userName
+            %b.caret
 
           %ul.dropdown-menu
             %li
-              %a{:href=>"#"}
+              %a#logout{:href=>"#"}
+                %i.glyphicon.glyphicon-off
                 ログアウト
         :plain
           </ul>
