@@ -29,7 +29,8 @@
 
     ScheduleControl.prototype.render = function() {
       this.$el.html(this.template({
-        event: this.event.toJSON()
+        event: this.event.toJSON(),
+        url: "" + (location.href.match(/^http?:\/\/[^\/]+/)) + (this.event.get('url'))
       }));
       this.datepicker = this.$('#scheduleDatepicker');
       this.timepicker = this.$('#scheduleTimepicker');
