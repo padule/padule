@@ -1,13 +1,17 @@
 class padule.Views.ScheduleTbody extends Backbone.View
   tagName: 'tbody'
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
+    @modal = options.modal
+    @info_area = options.info_area
     @listenTo @collection, 'add', @renderOne
 
   renderOne: (schedule)->
     view = new padule.Views.ScheduleTbodyTr
       model: schedule
+      modal: @modal
+      info_area: @info_area
     @$el.append view.render().el
 
   render: ->

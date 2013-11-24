@@ -111,7 +111,9 @@
       return new padule.Views.Schedule({
         collection: new padule.Collections.Schedules(false, {
           _event: this.model
-        })
+        }),
+        modal: this.modal,
+        info_area: this.infoArea
       });
     };
 

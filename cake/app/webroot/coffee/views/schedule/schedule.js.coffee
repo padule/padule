@@ -1,8 +1,11 @@
 class padule.Views.Schedule extends Backbone.View
   el: $ '#scheduleContents'
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
+
+    @modal = options.modal
+    @info_area = options.info_area
 
     @tableContainer = @$ '.schedule-table-container'
     @controlContainer = @$ '.control-container'
@@ -23,6 +26,8 @@ class padule.Views.Schedule extends Backbone.View
   render: ->
     @table = new padule.Views.ScheduleTable
       collection: @collection
+      modal: @modal
+      info_area: @info_area
     @tableContainer.html @table.render().el
 
     @control = new padule.Views.ScheduleControl

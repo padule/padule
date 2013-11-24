@@ -170,6 +170,10 @@ body > #scheduleContents {
       @include box-emboss;
       margin: $margin1;
       margin-bottom: $margin2;
+      tfoot>tr>td {
+        max-width: 140px;
+        text-align: left;
+      }
     }
   }
 

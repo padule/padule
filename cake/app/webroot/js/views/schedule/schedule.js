@@ -13,8 +13,13 @@
 
     Schedule.prototype.el = $('#scheduleContents');
 
-    Schedule.prototype.initialize = function() {
+    Schedule.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
+      this.modal = options.modal;
+      this.info_area = options.info_area;
       this.tableContainer = this.$('.schedule-table-container');
       this.controlContainer = this.$('.control-container');
       this.buttonContainer = this.$('.button-container');
@@ -33,7 +38,9 @@
 
     Schedule.prototype.render = function() {
       this.table = new padule.Views.ScheduleTable({
-        collection: this.collection
+        collection: this.collection,
+        modal: this.modal,
+        info_area: this.info_area
       });
       this.tableContainer.html(this.table.render().el);
       this.control = new padule.Views.ScheduleControl({

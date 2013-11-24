@@ -13,15 +13,22 @@
 
     ScheduleTbody.prototype.tagName = 'tbody';
 
-    ScheduleTbody.prototype.initialize = function() {
+    ScheduleTbody.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
+      this.modal = options.modal;
+      this.info_area = options.info_area;
       return this.listenTo(this.collection, 'add', this.renderOne);
     };
 
     ScheduleTbody.prototype.renderOne = function(schedule) {
       var view;
       view = new padule.Views.ScheduleTbodyTr({
-        model: schedule
+        model: schedule,
+        modal: this.modal,
+        info_area: this.info_area
       });
       return this.$el.append(view.render().el);
     };

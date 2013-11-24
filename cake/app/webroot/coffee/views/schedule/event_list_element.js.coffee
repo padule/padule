@@ -74,6 +74,8 @@ class padule.Views.EventListElement extends Backbone.View
 
     new padule.Views.Schedule
       collection: new padule.Collections.Schedules false, _event: @model
+      modal: @modal
+      info_area: @infoArea
 
   focus: ->
     setTimeout =>
