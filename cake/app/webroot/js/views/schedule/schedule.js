@@ -13,14 +13,41 @@
 
     Schedule.prototype.el = $('#scheduleContents');
 
-    Schedule.prototype.initialize = function() {
+    Schedule.prototype.events = {
+      'click #confirmButton': function() {
+        return this.modal.show({
+          title: 'スケジュールを確定',
+          contents: "スケジュールを確定してよろしいですか？",
+          model: this.collection
+        });
+      }
+    };
+
+    Schedule.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
+      this.modal = options.modal;
+      this.info_area = options.info_area;
       this.tableContainer = this.$('.schedule-table-container');
       this.controlContainer = this.$('.control-container');
       this.buttonContainer = this.$('.button-container');
       this.listenTo(this.collection, 'sync', this._clear);
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
+      this.listenTo(this.collection.event, 'change', this.render);
+      this.listenTo(this.modal, "clickOk:" + this.collection.id, function() {
+        this.collection.each(function(schedule) {
+          return schedule.seeker_schedules.each(function(seeker_schedule) {
+            return seeker_schedule.confirm();
+          });
+        });
+        return this.info_area.show({
+          text: 'スケジュールを確定しました',
+          class_name: 'label-info'
+        });
+      });
       this.clear();
       this.startLoading();
       return this.collection.fetchByEvent();
@@ -33,7 +60,9 @@
 
     Schedule.prototype.render = function() {
       this.table = new padule.Views.ScheduleTable({
-        collection: this.collection
+        collection: this.collection,
+        modal: this.modal,
+        info_area: this.info_area
       });
       this.tableContainer.html(this.table.render().el);
       this.control = new padule.Views.ScheduleControl({

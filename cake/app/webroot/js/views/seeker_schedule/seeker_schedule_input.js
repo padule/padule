@@ -27,9 +27,29 @@
       }
       _.bindAll(this);
       this.event = this.collection.event;
+      this.modal = new padule.Views.AlertModal;
       this.seeker = options.seeker;
+      this.listenTo(this.modal, "clickOk:" + this.collection.cid, function() {
+        this.seeker.set('event_id', this.event.id);
+        return this.seeker.save();
+      });
       this.listenTo(this.event, 'sync', this.render_event_info);
       this.listenTo(this.seeker, 'change', this.changeSendButtonEnable);
+      this.listenTo(this.seeker, 'sync', function(seeker) {
+        var _this = this;
+        this.seeker = seeker;
+        return this.collection.each(function(schedule) {
+          var seeker_schedule;
+          seeker_schedule = schedule.seeker_schedules.last();
+          seeker_schedule.set('seeker_id', seeker.id);
+          seeker_schedule.set('schedule_id', schedule.id);
+          return seeker_schedule.save({}, {
+            success: function(seeker_schedule) {
+              return _this.afterSending();
+            }
+          });
+        });
+      });
       this.event_container = this.$('.event-container');
       this.seeker_container = this.$('.seeker-container');
       this.control_container = this.$('.control-container');
@@ -37,7 +57,6 @@
         collection: this.collection,
         seeker: this.seeker
       });
-      this.modal = new padule.Views.AlertModal;
       this.collection.fetchByEvent();
       return this.event.fetch();
     };
@@ -48,29 +67,10 @@
     };
 
     SeekerScheduleInput.prototype.sendSeekerSchedule = function() {
-      var _this = this;
-      return this.modal.render({
+      return this.modal.show({
+        model: this.collection,
         title: 'スケジュールを送信します',
-        contents: 'よろしいですか？',
-        callback: function() {
-          _this.seeker.set('event_id', _this.event.id);
-          return _this.seeker.save(null, {
-            success: function(seeker) {
-              return _this.collection.each(function(schedule) {
-                var seeker_schedule;
-                seeker_schedule = schedule.seeker_schedules.last();
-                seeker_schedule.set('seeker_id', seeker.id);
-                seeker_schedule.set('schedule_id', schedule.id);
-                return seeker_schedule.save({}, {
-                  success: function(seeker_schedule) {
-                    console.log("success");
-                    return _this.afterSending();
-                  }
-                });
-              });
-            }
-          });
-        }
+        contents: 'よろしいですか？'
       });
     };
 

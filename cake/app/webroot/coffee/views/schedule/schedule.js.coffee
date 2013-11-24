@@ -1,8 +1,20 @@
 class padule.Views.Schedule extends Backbone.View
   el: $ '#scheduleContents'
 
-  initialize: ->
+  events:
+    'click #confirmButton' : ->
+      @modal.show
+        title: 'スケジュールを確定'
+        contents: "スケジュールを確定してよろしいですか？"
+        model: @collection
+
+
+
+  initialize: (options = {})->
     _.bindAll @
+
+    @modal = options.modal
+    @info_area = options.info_area
 
     @tableContainer = @$ '.schedule-table-container'
     @controlContainer = @$ '.control-container'
@@ -11,6 +23,14 @@ class padule.Views.Schedule extends Backbone.View
     @listenTo @collection, 'sync', @_clear
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
+    @listenTo @collection.event, 'change', @render
+    @listenTo @modal, "clickOk:#{@collection.id}", ->
+      @collection.each (schedule)->
+        schedule.seeker_schedules.each (seeker_schedule)->
+          seeker_schedule.confirm()
+      @info_area.show
+        text: 'スケジュールを確定しました'
+        class_name: 'label-info'
 
     @clear()
     @startLoading()
@@ -23,6 +43,8 @@ class padule.Views.Schedule extends Backbone.View
   render: ->
     @table = new padule.Views.ScheduleTable
       collection: @collection
+      modal: @modal
+      info_area: @info_area
     @tableContainer.html @table.render().el
 
     @control = new padule.Views.ScheduleControl

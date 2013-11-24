@@ -1,8 +1,10 @@
 class padule.Views.ScheduleTbodyTr extends Backbone.View
   tagName: 'tr'
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
+    @modal = options.modal
+    @info_area = options.info_area
     @seeker_schedules = @model.seeker_schedules
 
   renderOne: (seeker_schedule)->
@@ -19,6 +21,8 @@ class padule.Views.ScheduleTbodyTr extends Backbone.View
   renderTh: ->
     view = new padule.Views.ScheduleTbodyTh
       model: @model
+      modal: @modal
+      info_area: @info_area
     @$el.append view.render().el
 
   changeEditable: ->

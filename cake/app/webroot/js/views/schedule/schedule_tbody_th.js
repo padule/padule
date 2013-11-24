@@ -19,9 +19,24 @@
       'click .schedule-delete-button': 'deleteSchedule'
     };
 
-    ScheduleTbodyTh.prototype.initialize = function() {
+    ScheduleTbodyTh.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
-      return this.start_time = padule.dateformatyyyyMMddWhhmm(this.model.get('start_time'));
+      this.modal = options.modal;
+      this.info_area = options.info_area;
+      this.start_time = padule.dateformatyyyyMMddWhhmm(this.model.get('start_time'));
+      this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
+        return this.model.destroy();
+      });
+      return this.listenTo(this.model, 'destroy', function() {
+        this.remove();
+        return this.info_area.show({
+          text: 'スケジュールを削除しました',
+          class_name: 'label-info'
+        });
+      });
     };
 
     ScheduleTbodyTh.prototype.render = function() {
@@ -32,22 +47,11 @@
     };
 
     ScheduleTbodyTh.prototype.deleteSchedule = function(e) {
-      var _this = this;
       e.preventDefault();
-      return padule.modal.show({
+      return this.modal.show({
+        model: this.model,
         title: 'スケジュールを削除',
-        contents: "『" + this.start_time + "』の日程を削除してよろしいですか？",
-        callback: function() {
-          return _this.model.destroy({
-            success: function() {
-              padule.info_area.show({
-                text: 'スケジュールを削除しました',
-                class_name: 'label-info'
-              });
-              return _this.remove();
-            }
-          });
-        }
+        contents: "『" + this.start_time + "』の日程を削除してよろしいですか？"
       });
     };
 

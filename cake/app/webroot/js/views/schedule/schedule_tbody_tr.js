@@ -13,8 +13,13 @@
 
     ScheduleTbodyTr.prototype.tagName = 'tr';
 
-    ScheduleTbodyTr.prototype.initialize = function() {
+    ScheduleTbodyTr.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
+      this.modal = options.modal;
+      this.info_area = options.info_area;
       return this.seeker_schedules = this.model.seeker_schedules;
     };
 
@@ -36,7 +41,9 @@
     ScheduleTbodyTr.prototype.renderTh = function() {
       var view;
       view = new padule.Views.ScheduleTbodyTh({
-        model: this.model
+        model: this.model,
+        modal: this.modal,
+        info_area: this.info_area
       });
       return this.$el.append(view.render().el);
     };

@@ -5,9 +5,19 @@ class padule.Views.ScheduleTbodyTh extends Backbone.View
   events:
     'click .schedule-delete-button' : 'deleteSchedule'
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
+    @modal = options.modal
+    @info_area = options.info_area
     @start_time = padule.dateformatyyyyMMddWhhmm @model.get('start_time')
+
+    @listenTo @modal, "clickOk:#{@model.cid}", ->
+      @model.destroy()
+    @listenTo @model, 'destroy', ->
+      @remove()
+      @info_area.show
+        text: 'スケジュールを削除しました'
+        class_name: 'label-info'
 
   render: ->
     @$el.html @template
@@ -16,13 +26,8 @@ class padule.Views.ScheduleTbodyTh extends Backbone.View
 
   deleteSchedule: (e)->
     e.preventDefault()
-    padule.modal.show
+    @modal.show
+      model: @model
       title: 'スケジュールを削除'
       contents: "『#{@start_time}』の日程を削除してよろしいですか？"
-      callback: =>
-        @model.destroy
-          success: =>
-            padule.info_area.show
-              text: 'スケジュールを削除しました'
-              class_name: 'label-info'
-            @remove()
+

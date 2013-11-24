@@ -170,6 +170,10 @@ body > #scheduleContents {
       @include box-emboss;
       margin: $margin1;
       margin-bottom: $margin2;
+      tfoot>tr>td {
+        max-width: 140px;
+        text-align: left;
+      }
     }
   }
 
@@ -187,15 +191,15 @@ body > #scheduleContents {
   }
 
   tbody th {
-    max-width: 200px;
-    width: 200px;
+    max-width: 170px;
+    width: 170px;
     .schedule-delete-button {
       width: 20px;
       font-size: 18px;
     }
     .schedule-time {
-      width: 150px;
-      max-width: 150px;
+      width: 120px;
+      max-width: 120px;
     }
   }
 

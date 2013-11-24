@@ -36,7 +36,7 @@
     };
 
     SeekerSchedule.prototype.initialize = function(models, options) {
-      var _ref1;
+      var _ref1, _ref2;
       if (options == null) {
         options = {};
       }
@@ -44,6 +44,8 @@
         seeker_schedule: this
       }));
       this.schedule = (_ref1 = this.collection) != null ? _ref1.schedule : void 0;
+      this.set('seeker_id', this.seeker.id);
+      this.set('schedule_id', (_ref2 = this.schedule) != null ? _ref2.id : void 0);
       this.changeEditable();
       return this.listenTo(this, 'change:type', this.changeEditable);
     };
@@ -69,20 +71,37 @@
     };
 
     SeekerSchedule.prototype.changeType = function() {
+      var _this = this;
       if (this.isOK() || this.isConfirmed()) {
         this.set('type', this.types.temp);
       } else if (this.isTemp()) {
         this.set('type', this.types.ok);
       }
-      return this.save({
+      return this.save({}, {
         success: function() {
           var editable;
-          editable = !this.isTemp() && !this.isConfirmed();
-          this.collection.changeEditable(editable);
-          this.collection.changeEditableBySeeker();
-          return this.collection.schedule.collection.trigger('changeType');
+          editable = !_this.isTemp() && !_this.isConfirmed();
+          _this.collection.changeEditable(editable);
+          _this.collection.changeEditableBySeeker();
+          return _this.collection.schedule.collection.trigger('changeType');
         }
       });
+    };
+
+    SeekerSchedule.prototype.confirm = function() {
+      var _this = this;
+      if (this.isTemp()) {
+        this.set('type', this.types.confirmed);
+        return this.save({}, {
+          success: function() {
+            var editable;
+            editable = !_this.isTemp() && !_this.isConfirmed();
+            _this.collection.changeEditable(editable);
+            _this.collection.changeEditableBySeeker();
+            return _this.collection.schedule.collection.trigger('changeType');
+          }
+        });
+      }
     };
 
     SeekerSchedule.prototype.changeEditable = function(editable) {
