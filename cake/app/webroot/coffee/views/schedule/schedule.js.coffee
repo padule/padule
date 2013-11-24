@@ -8,8 +8,6 @@ class padule.Views.Schedule extends Backbone.View
         contents: "スケジュールを確定してよろしいですか？"
         model: @collection
 
-
-
   initialize: (options = {})->
     _.bindAll @
 
@@ -35,6 +33,12 @@ class padule.Views.Schedule extends Backbone.View
     @startLoading()
     @collection.fetchByEvent()
 
+  setTableHeight: ->
+    console.log $('.control-container').height()
+    console.log $('.button-container').height()
+    height = $(window).height() - $('.control-container').height() - $('.button-container').height() - $('.padule-nav').height() - 65
+    @$('.schedule-table-container').height(height)
+
   clear: ->
     @tableContainer.empty()
     @controlContainer.empty()
@@ -52,6 +56,8 @@ class padule.Views.Schedule extends Backbone.View
     @controlContainer.html @control.render().el
 
     @updateInfoArea()
+
+    @setTableHeight()
 
     @enableConfirmButton()
     @buttonContainer.show()
