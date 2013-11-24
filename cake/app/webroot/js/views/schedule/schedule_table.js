@@ -13,7 +13,7 @@
 
     ScheduleTable.prototype.tagName = 'table';
 
-    ScheduleTable.prototype.className = 'table table-hover table-condensed';
+    ScheduleTable.prototype.className = 'table table-hover table-condensed schedule-table';
 
     ScheduleTable.prototype.initialize = function() {
       _.bindAll(this);
