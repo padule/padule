@@ -3,7 +3,12 @@ class padule.Views.Schedule extends Backbone.View
 
   events:
     'click #confirmButton' : ->
-      console.log "--------------"
+      @modal.show
+        title: 'スケジュールを確定'
+        contents: "スケジュールを確定してよろしいですか？"
+        model: @collection
+
+
 
   initialize: (options = {})->
     _.bindAll @
@@ -19,6 +24,13 @@ class padule.Views.Schedule extends Backbone.View
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
     @listenTo @collection.event, 'change', @render
+    @listenTo @modal, "clickOk:#{@collection.id}", ->
+      @collection.each (schedule)->
+        schedule.seeker_schedules.each (seeker_schedule)->
+          seeker_schedule.confirm()
+      @info_area.show
+        text: 'スケジュールを確定しました'
+        class_name: 'label-info'
 
     @clear()
     @startLoading()

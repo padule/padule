@@ -53,6 +53,16 @@ class padule.Models.SeekerSchedule extends Backbone.Model
         @collection.changeEditableBySeeker()
         @collection.schedule.collection.trigger 'changeType'
 
+  confirm: ->
+    if @isTemp()
+      @set 'type', @types.confirmed
+      @save {},
+        success: =>
+          editable = !@isTemp() and !@isConfirmed()
+          @collection.changeEditable editable
+          @collection.changeEditableBySeeker()
+          @collection.schedule.collection.trigger 'changeType'
+
   changeEditable: (editable)->
     if @isConfirmed() or @isTemp()
       @editable = true

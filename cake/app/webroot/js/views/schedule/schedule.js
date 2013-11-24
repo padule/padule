@@ -15,7 +15,11 @@
 
     Schedule.prototype.events = {
       'click #confirmButton': function() {
-        return console.log("--------------");
+        return this.modal.show({
+          title: 'スケジュールを確定',
+          contents: "スケジュールを確定してよろしいですか？",
+          model: this.collection
+        });
       }
     };
 
@@ -33,6 +37,17 @@
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
       this.listenTo(this.collection.event, 'change', this.render);
+      this.listenTo(this.modal, "clickOk:" + this.collection.id, function() {
+        this.collection.each(function(schedule) {
+          return schedule.seeker_schedules.each(function(seeker_schedule) {
+            return seeker_schedule.confirm();
+          });
+        });
+        return this.info_area.show({
+          text: 'スケジュールを確定しました',
+          class_name: 'label-info'
+        });
+      });
       this.clear();
       this.startLoading();
       return this.collection.fetchByEvent();

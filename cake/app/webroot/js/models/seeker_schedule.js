@@ -88,6 +88,22 @@
       });
     };
 
+    SeekerSchedule.prototype.confirm = function() {
+      var _this = this;
+      if (this.isTemp()) {
+        this.set('type', this.types.confirmed);
+        return this.save({}, {
+          success: function() {
+            var editable;
+            editable = !_this.isTemp() && !_this.isConfirmed();
+            _this.collection.changeEditable(editable);
+            _this.collection.changeEditableBySeeker();
+            return _this.collection.schedule.collection.trigger('changeType');
+          }
+        });
+      }
+    };
+
     SeekerSchedule.prototype.changeEditable = function(editable) {
       if (this.isConfirmed() || this.isTemp()) {
         this.editable = true;
