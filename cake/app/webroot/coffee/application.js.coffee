@@ -35,7 +35,7 @@ window.padule.dateformatyyyyMMddWhhmm = (string_date) ->
   w = date.getDay()
   wNames = ['日', '月', '火', '水', '木', '金', '土']
 
-  if m < 100
+  if m < 10
     m = '0' + m
   if d < 10
     d = '0' + d

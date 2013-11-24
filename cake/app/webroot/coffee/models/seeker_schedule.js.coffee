@@ -22,7 +22,7 @@ class padule.Models.SeekerSchedule extends Backbone.Model
     @schedule = @collection?.schedule
 
     @set 'seeker_id', @seeker.id
-    @set 'schedule_id', @schedule.id
+    @set 'schedule_id', @schedule?.id
     @changeEditable()
     @listenTo @, 'change:type', @changeEditable
 

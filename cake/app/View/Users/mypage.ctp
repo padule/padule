@@ -21,7 +21,7 @@
   <body>
     <div class='navbar navbar-inverse navbar-fixed-top padule-nav'>
       <div class='container-fluid'>
-        <a class='navbar-brand' href='/'>
+        <a class='navbar-brand' href='/users/mypage'>
           Padule
         </a>
         <div class='info-area pull-left'>

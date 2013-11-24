@@ -36,7 +36,7 @@
     };
 
     SeekerSchedule.prototype.initialize = function(models, options) {
-      var _ref1;
+      var _ref1, _ref2;
       if (options == null) {
         options = {};
       }
@@ -45,7 +45,7 @@
       }));
       this.schedule = (_ref1 = this.collection) != null ? _ref1.schedule : void 0;
       this.set('seeker_id', this.seeker.id);
-      this.set('schedule_id', this.schedule.id);
+      this.set('schedule_id', (_ref2 = this.schedule) != null ? _ref2.id : void 0);
       this.changeEditable();
       return this.listenTo(this, 'change:type', this.changeEditable);
     };
