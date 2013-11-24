@@ -13,6 +13,12 @@
 
     Schedule.prototype.el = $('#scheduleContents');
 
+    Schedule.prototype.events = {
+      'click #confirmButton': function() {
+        return console.log("--------------");
+      }
+    };
+
     Schedule.prototype.initialize = function(options) {
       if (options == null) {
         options = {};

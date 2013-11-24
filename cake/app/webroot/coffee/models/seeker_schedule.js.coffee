@@ -20,6 +20,9 @@ class padule.Models.SeekerSchedule extends Backbone.Model
   initialize: (models, options={})->
     @seeker = new padule.Models.Seeker @get 'seeker', {seeker_schedule: @}
     @schedule = @collection?.schedule
+
+    @set 'seeker_id', @seeker.id
+    @set 'schedule_id', @schedule.id
     @changeEditable()
     @listenTo @, 'change:type', @changeEditable
 
@@ -43,9 +46,8 @@ class padule.Models.SeekerSchedule extends Backbone.Model
       @set 'type', @types.temp
     else if @isTemp()
       @set 'type', @types.ok
-
-    @save
-      success: ->
+    @save {},
+      success: =>
         editable = !@isTemp() and !@isConfirmed()
         @collection.changeEditable editable
         @collection.changeEditableBySeeker()

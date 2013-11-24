@@ -1,6 +1,10 @@
 class padule.Views.Schedule extends Backbone.View
   el: $ '#scheduleContents'
 
+  events:
+    'click #confirmButton' : ->
+      console.log "--------------"
+
   initialize: (options = {})->
     _.bindAll @
 
