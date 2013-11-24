@@ -13,12 +13,18 @@
 
     ScheduleTheadTh.prototype.tagName = 'th';
 
+    ScheduleTheadTh.prototype.template = JST['templates/schedule_seeker'];
+
     ScheduleTheadTh.prototype.initialize = function() {
       return _.bindAll(this);
     };
 
     ScheduleTheadTh.prototype.render = function() {
-      this.$el.html(this.model.seeker.get('name'));
+      this.$el.html(this.template({
+        name: this.model.seeker.get('name'),
+        mail: this.model.seeker.get('mail')
+      }));
+      this.$('.seeker_info').popover();
       return this;
     };
 
