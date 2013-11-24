@@ -71,6 +71,17 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
     @checkMail()
 
   checkMail: ->
+    if @validateMail(@$('#inputEmail').val()) or @$('#inputEmail').val() is ''
+      @$('.input-email > .important').html '(必須)'
+      @$('.input-email').removeClass 'has-error'
+      @seeker.set 'mail', @$('#inputEmail').val()
+    else
+      @$('.input-email > .important').html 'メールアドレスが正しくありません'
+      @$('.input-email').addClass 'has-error'
+      @$('.input-email2 > .important').html '(必須)'
+      @$('.input-email2').removeClass 'has-error'
+      return false
+
     if @$('#inputEmail').val() is @$('#inputEmail2').val()
       @$('.input-email2 > .important').html '(必須)'
       @$('.input-email2').removeClass 'has-error'
@@ -80,6 +91,12 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
       @$('.input-email2 > .important').html 'メールアドレスが一致しません'
       @$('.input-email2').addClass 'has-error'
       return false
+
+  validateMail: (str)->
+    if str.match(/.+@.+\..+/) is null
+      return false
+    else
+      return true
 
   setText: (e)->
     @seeker.set 'comment', $(e.currentTarget).val()

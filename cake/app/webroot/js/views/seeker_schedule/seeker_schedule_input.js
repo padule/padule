@@ -99,6 +99,17 @@
     };
 
     SeekerScheduleInput.prototype.checkMail = function() {
+      if (this.validateMail(this.$('#inputEmail').val()) || this.$('#inputEmail').val() === '') {
+        this.$('.input-email > .important').html('(必須)');
+        this.$('.input-email').removeClass('has-error');
+        this.seeker.set('mail', this.$('#inputEmail').val());
+      } else {
+        this.$('.input-email > .important').html('メールアドレスが正しくありません');
+        this.$('.input-email').addClass('has-error');
+        this.$('.input-email2 > .important').html('(必須)');
+        this.$('.input-email2').removeClass('has-error');
+        return false;
+      }
       if (this.$('#inputEmail').val() === this.$('#inputEmail2').val()) {
         this.$('.input-email2 > .important').html('(必須)');
         this.$('.input-email2').removeClass('has-error');
@@ -108,6 +119,14 @@
         this.$('.input-email2 > .important').html('メールアドレスが一致しません');
         this.$('.input-email2').addClass('has-error');
         return false;
+      }
+    };
+
+    SeekerScheduleInput.prototype.validateMail = function(str) {
+      if (str.match(/.+@.+\..+/) === null) {
+        return false;
+      } else {
+        return true;
       }
     };
 

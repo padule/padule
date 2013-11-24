@@ -41,7 +41,7 @@
         </label>
         <input class='necessary input-sm form-control' id='inputName' placeholder='氏名' type='text'>
       </div>
-      <div class='form-group'>
+      <div class='form-group input-email'>
         <label for='inputEmail'>
           メールアドレス
         </label>
