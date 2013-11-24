@@ -36,7 +36,7 @@ class AppController extends Controller {
     var $components = array(
         'Session',
         'Auth' => Array(
-            'loginRedirect' => Array('controller'  => 'events', 'action' => 'padule'),
+            'loginRedirect' => Array('controller' => 'users', 'action' => 'mypage'),
             'logoutRedirect' => Array('controller' => 'users', 'action' => 'login'),
             'loginAction' => Array('controller' => 'users', 'action' => 'login'),
             'authError' => 'Did you really think you are allowed to see that?',
@@ -52,5 +52,14 @@ class AppController extends Controller {
     function beforeFilter() {
         $this->autoLayout = false;
         $this->Auth->allow();
+
+        $this->responseText = array();
+        $this->env = array();
+
+        $this->url = $this->here;
+    }
+
+    function beforeRender() {
+        $this->set(array('responseText' => $this->responseText,'url' => $this->url,'env' => $this->env));
     }
 }
