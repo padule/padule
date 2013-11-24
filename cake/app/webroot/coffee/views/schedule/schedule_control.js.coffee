@@ -5,9 +5,10 @@ class padule.Views.ScheduleControl extends Backbone.View
     'change #scheduleDatepicker' : 'toggleAddButton'
     'change #scheduleTimepicker' : 'toggleAddButton'
 
-  initialize: ->
+  initialize: (options)->
     _.bindAll @
     @event = @collection.event
+    @info_area = options.info_area
 
   render: ->
     @$el.html @template
@@ -30,15 +31,15 @@ class padule.Views.ScheduleControl extends Backbone.View
       start_time: @_getStartTime()
     @collection.push new_schedule
     new_schedule.saveByEvent
-      success: ->
-        padule.info_area.show
-          text: 'スケジュールを追加しました。'
+      success: =>
+        @info_area.show
+          text: '日程を追加しました。'
           class_name: 'label-info'
 
   _validateDatetime: ->
     date = @datepicker.val()
     unless padule.checkDateFormat date
-      padule.info_area.show
+      @info_area.show
         text: '日づけのフォーマットが正しく入力してください。'
         class_name: 'label-danger'
       return false

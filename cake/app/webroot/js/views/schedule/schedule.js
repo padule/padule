@@ -33,7 +33,6 @@
       this.tableContainer = this.$('.schedule-table-container');
       this.controlContainer = this.$('.control-container');
       this.buttonContainer = this.$('.button-container');
-      this.listenTo(this.collection, 'sync', this._clear);
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
       this.listenTo(this.collection.event, 'change', this.render);
@@ -66,12 +65,33 @@
       });
       this.tableContainer.html(this.table.render().el);
       this.control = new padule.Views.ScheduleControl({
-        collection: this.collection
+        collection: this.collection,
+        info_area: this.info_area
       });
       this.controlContainer.html(this.control.render().el);
+      this.updateInfoArea();
       this.enableConfirmButton();
       this.buttonContainer.show();
       return this.endLoading();
+    };
+
+    Schedule.prototype.updateInfoArea = function() {
+      var _ref1;
+      if (this.collection.length <= 0) {
+        return this.info_area.show({
+          text: 'まだ日程が登録されていません。',
+          class_name: 'label-warning',
+          ms: 20000
+        });
+      } else if (((_ref1 = this.collection.at(0)) != null ? _ref1.seeker_schedules.length : void 0) <= 0) {
+        return this.info_area.show({
+          text: 'まだ求職者からの日程登録はありません。',
+          class_name: 'label-warning',
+          ms: 20000
+        });
+      } else {
+        return this.info_area.hide();
+      }
     };
 
     Schedule.prototype.startLoading = function() {

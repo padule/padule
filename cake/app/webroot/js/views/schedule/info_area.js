@@ -18,15 +18,25 @@
     };
 
     InfoArea.prototype.show = function(options) {
-      var _this = this;
+      var ms,
+        _this = this;
       if (options == null) {
         options = {};
       }
-      this.$('.label').addClass(options.class_name).html(options.text);
+      if (options.ms) {
+        ms = options.ms;
+      } else {
+        ms = 4000;
+      }
+      this.$('.label').removeClass().addClass('label').addClass(options.class_name).html(options.text);
       this.$el.removeClass('show').addClass('show');
       return setTimeout(function() {
         return _this.$el.removeClass('show');
-      }, 4000);
+      }, ms);
+    };
+
+    InfoArea.prototype.hide = function() {
+      return this.$el.removeClass('show');
     };
 
     return InfoArea;

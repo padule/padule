@@ -79,11 +79,11 @@ window.JST["templates/schedule_control"] = function(__obj) {
     
       _print(this.event.title);
     
-      _print(_safe('</h3>\n    </div>\n\n    <div class="schedule-add form-inline col-md-4">\n      <div class="bootstrap-datepicker pull-left">\n        <input type="text" id="scheduleDatepicker" class="span2 form-control" placeholder="年月日">\n      </div>\n      <div class="bootstrap-timepicker pull-left">\n        <input id="scheduleTimepicker" class="span2 form-control" type="text" placeholder="開始時間">\n      </div>\n      <button id="addScheduleButton" class="btn btn-default disabled">\n        日程追加\n      </button>\n    </div>\n  </div>\n\n  <div class="input-group">\n    <span class="input-group-addon">共有URL</span>\n    <input class="form-control" type="text" value="'));
+      _print(_safe('</h3>\n    </div>\n\n    <div class="schedule-add form-inline col-md-4">\n      <div class="bootstrap-datepicker pull-left">\n        <input type="text" id="scheduleDatepicker" class="span2 form-control" placeholder="年月日">\n      </div>\n      <div class="bootstrap-timepicker pull-left">\n        <input id="scheduleTimepicker" class="span2 form-control" type="text" placeholder="開始時間">\n      </div>\n      <button id="addScheduleButton" class="btn btn-primary disabled">\n        日程追加\n      </button>\n    </div>\n  </div>\n\n  <div class="input-group">\n    <span class="input-group-addon">共有URL</span>\n    <input class="form-control" type="text" value="'));
     
       _print(this.event.url);
     
-      _print(_safe('" onclick="this.select(0,this.value.length)">\n  </div>\n</div>\n'));
+      _print(_safe('" onclick="this.select(0,this.value.length)">\n  </div>\n\n</div>\n'));
     
     }).call(this);
     

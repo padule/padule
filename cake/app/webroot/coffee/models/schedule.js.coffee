@@ -16,10 +16,11 @@ class padule.Models.Schedule extends Backbone.Model
     else
       @seeker_schedules = new padule.Collections.SeekerSchedules false, schedule: @
 
-  saveByEvent: ->
+  saveByEvent: (options = {})->
     @seeker_schedules.each (seeker_schedule)->
       seeker_schedule.save()
 
     options =
       url: @url() + "?event_id=" + @get 'event_id'
+      success: options.success()
     @save null, options

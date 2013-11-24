@@ -21,9 +21,10 @@
       'change #scheduleTimepicker': 'toggleAddButton'
     };
 
-    ScheduleControl.prototype.initialize = function() {
+    ScheduleControl.prototype.initialize = function(options) {
       _.bindAll(this);
-      return this.event = this.collection.event;
+      this.event = this.collection.event;
+      return this.info_area = options.info_area;
     };
 
     ScheduleControl.prototype.render = function() {
@@ -46,7 +47,8 @@
     };
 
     ScheduleControl.prototype.addSchedule = function() {
-      var new_schedule;
+      var new_schedule,
+        _this = this;
       new_schedule = new padule.Models.Schedule({
         event_id: this.event.id,
         start_time: this._getStartTime()
@@ -54,8 +56,8 @@
       this.collection.push(new_schedule);
       return new_schedule.saveByEvent({
         success: function() {
-          return padule.info_area.show({
-            text: 'スケジュールを追加しました。',
+          return _this.info_area.show({
+            text: '日程を追加しました。',
             class_name: 'label-info'
           });
         }
@@ -66,7 +68,7 @@
       var date;
       date = this.datepicker.val();
       if (!padule.checkDateFormat(date)) {
-        padule.info_area.show({
+        this.info_area.show({
           text: '日づけのフォーマットが正しく入力してください。',
           class_name: 'label-danger'
         });
