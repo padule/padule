@@ -49,7 +49,9 @@
     <div class='schedule-container container-fluid'>
       <div class='row-fluid'>
         <div id='eventSidebar'>
-          <ul class='nav' id='eventList'></ul>
+          <div class='sidebar-container'>
+            <ul class='nav' id='eventList'></ul>
+          </div>
           <div id='addEventButtonContainer'>
             <button class='add-event-btn btn btn-primary'>
               スケジュール追加

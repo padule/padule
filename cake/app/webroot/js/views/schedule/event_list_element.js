@@ -21,7 +21,11 @@
 
     EventListElement.prototype.events = {
       'click .js-delete-event-btn': 'deleteEvent',
-      'click a': 'showSchedule',
+      'click a': function(e) {
+        e.preventDefault();
+        this.showSchedule();
+        return window.localStorage.setItem('scrollTop', $('.sidebar-container').scrollTop());
+      },
       'dblclick a': 'editEvent',
       'keypress .edit': function(e) {
         if (e.keyCode === 13) {
@@ -78,8 +82,9 @@
         this.model.set('title', value);
         this.model.save();
         this.$el.removeClass('editing');
-        return this.showSchedule();
+        this.showSchedule();
       }
+      return $('.sidebar-container').scrollTop($('.sidebar-container')[0].scrollHeight);
     };
 
     EventListElement.prototype.render = function() {
@@ -96,6 +101,7 @@
       if ((active_event_id != null) && active_event_id === this.model.id) {
         this.showSchedule();
       }
+      $('.sidebar-container').scrollTop(window.localStorage.getItem('scrollTop'));
       return this;
     };
 

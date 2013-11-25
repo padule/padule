@@ -34,8 +34,6 @@ class padule.Views.Schedule extends Backbone.View
     @collection.fetchByEvent()
 
   setTableHeight: ->
-    console.log $('.control-container').height()
-    console.log $('.button-container').height()
     height = $(window).height() - $('.control-container').height() - $('.button-container').height() - $('.padule-nav').height() - 65
     @$('.schedule-table-container').height(height)
 
