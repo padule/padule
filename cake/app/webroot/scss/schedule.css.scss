@@ -150,6 +150,7 @@ body > #scheduleContents {
 }
 
 #scheduleContents {
+  overflow: hidden;
   position: relative;
   margin-left: $sidebar-width;
   height: 100%;
@@ -157,7 +158,10 @@ body > #scheduleContents {
   background-color: $gray2;
 
   .schedule-table-container {
+    overflow: scroll;
+    height: 100px;
     width: auto;
+    margin: $margin1;
     font-size: $font-size1;
     .no-event {
       padding: $margin1;
@@ -168,8 +172,7 @@ body > #scheduleContents {
       width: auto;
       border: 1px solid #ddd;
       @include box-emboss;
-      margin: $margin1;
-      margin-bottom: $margin2;
+      margin-bottom: 0;
       tfoot>tr>td {
         max-width: 140px;
         text-align: left;
