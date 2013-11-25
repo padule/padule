@@ -21,6 +21,16 @@
       }
     };
 
+    User.prototype.logout = function() {
+      return this.sync('create', this, {
+        url: "/users/logout",
+        complete: function() {
+          console.log("hogehoge");
+          return location.href = "/users/login";
+        }
+      });
+    };
+
     return User;
 
   })(Backbone.Model);

@@ -13,6 +13,7 @@ class padule.Views.ScheduleControl extends Backbone.View
   render: ->
     @$el.html @template
       event: @event.toJSON()
+      url: "#{location.href.match(/^http?:\/\/[^\/]+/)}#{@event.get('url')}"
     @datepicker = @$('#scheduleDatepicker')
     @timepicker = @$('#scheduleTimepicker')
     @_initDatepicker()

@@ -13,10 +13,19 @@
 
     UserInfo.prototype.el = $('#userInfo');
 
+    UserInfo.prototype.events = {
+      'click #logout': function(e) {
+        if (e != null) {
+          e.preventDefault();
+        }
+        return this.model.logout();
+      }
+    };
+
     UserInfo.prototype.initialize = function() {
       _.bindAll(this);
       this.listenTo(this.model, 'sync', function(model) {
-        return this.$el.find('.dropdown a').append(model.get('name'));
+        return $('#userName').html(model.get('name'));
       });
       this.model.set('id', this.$el.attr('data-userid'));
       return this.model.fetch();
