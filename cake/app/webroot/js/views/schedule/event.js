@@ -51,8 +51,10 @@
     Event.prototype.setSidebarHeight = function() {
       var height;
       height = $(window).height() - $('.padule-nav').height() - $('#addEventButtonContainer').height() - 30;
-      if ($('#eventList').height() < height) {
+      if ($('#eventList').height() > height) {
         height = $('#eventList').height();
+      } else {
+        height = '';
       }
       return this.$('.sidebar-container').height(height);
     };

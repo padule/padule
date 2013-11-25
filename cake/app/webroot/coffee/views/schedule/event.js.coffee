@@ -36,7 +36,9 @@ class padule.Views.Event extends Backbone.View
 
   setSidebarHeight: ->
     height = $(window).height() - $('.padule-nav').height() - $('#addEventButtonContainer').height() - 30
-    if $('#eventList').height() < height
+    if $('#eventList').height() > height
       height = $('#eventList').height()
+    else
+      height = ''
 
     @$('.sidebar-container').height(height)
