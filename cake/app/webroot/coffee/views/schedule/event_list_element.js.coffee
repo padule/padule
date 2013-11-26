@@ -22,7 +22,7 @@ class padule.Views.EventListElement extends Backbone.View
     @modal = options.modal
     @infoArea = options.infoArea
 
-    @listenTo @model, 'change', @render
+    @listenTo @model, 'change:title', @render
 
     @listenTo @model, 'unactive', ->
       @$el.removeClass 'active'

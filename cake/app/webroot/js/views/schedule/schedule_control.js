@@ -18,13 +18,37 @@
     ScheduleControl.prototype.events = {
       'click #addScheduleButton': 'addSchedule',
       'change #scheduleDatepicker': 'toggleAddButton',
-      'change #scheduleTimepicker': 'toggleAddButton'
+      'change #scheduleTimepicker': 'toggleAddButton',
+      'click #eventTextSaveBtn': function() {
+        this.event.save({
+          'text': padule.changeLine($('.event-text-form').val())
+        });
+        return this.$('.event-text').removeClass('editing');
+      },
+      'click #eventTextCancelBtn': function() {
+        return this.$('.event-text').removeClass('editing');
+      },
+      'dblclick .event-text': 'editText',
+      'click #toggleBtn': function() {
+        if (this.$('.event-text').hasClass('hide')) {
+          this.$('.event-text').removeClass('hide');
+          return this.$('#toggleBtn i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        } else {
+          this.$('.event-text').addClass('hide');
+          return this.$('#toggleBtn i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+        }
+      }
     };
 
     ScheduleControl.prototype.initialize = function(options) {
       _.bindAll(this);
       this.event = this.collection.event;
       return this.info_area = options.info_area;
+    };
+
+    ScheduleControl.prototype.editText = function() {
+      this.$('.event-text').addClass('editing');
+      return this.focus();
     };
 
     ScheduleControl.prototype.render = function() {
@@ -38,6 +62,9 @@
       this._initTimepicker();
       if (this.collection.length <= 0) {
         this.focus(this.datepicker);
+      }
+      if (!this.event.get('text').length) {
+        this.$('.event-text').addClass('editing');
       }
       return this;
     };
@@ -111,7 +138,7 @@
     ScheduleControl.prototype.focus = function(input) {
       var _this = this;
       return setTimeout(function() {
-        return input.focus();
+        return _this.$('.event-text-form').focus();
       }, 0);
     };
 

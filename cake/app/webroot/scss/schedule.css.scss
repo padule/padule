@@ -253,12 +253,38 @@ body > #scheduleContents {
   .event-contents {
     border-bottom: 1px solid $gray1;
 
+    button {
+      width: auto;
+    }
+
     h3 {
       margin-top: 0;
       font-weight: bold;
     }
     >.row {
       margin-bottom: $margin1;
+    }
+  }
+
+  .event-text {
+    border-left: 5px solid $gray4;
+    .event-text-form {
+      margin-bottom: $margin1;
+      &:focus {
+        outline: 0;
+        border-color: $orange1 * 1.1 !important;
+      }
+    }
+    .text-edit {
+      display: none;
+    }
+    &.editing {
+      .text-edit {
+        display: block;
+      }
+      .text-view {
+        display: none;
+      }
     }
   }
 

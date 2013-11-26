@@ -71,6 +71,21 @@ window.padule.checkDateFormat = (stringdate) ->
   else
     return false
 
+window.padule.changeLine = (txt)->
+  txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+  # txt =  txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
+  # lines = txt.split('\n')
+  # target = ''
+  # for line in lines
+  #   target = "#{target}#{line}<br />"
+  # target
+
+window.padule.changeTxtBrToTxtP = (txt)->
+  lines = txt.split('<br />')
+  target = ''
+  for line in lines
+    target = "#{target}<p>#{line}</p>"
+
 
 Backbone.ajaxSync = Backbone.sync
 Backbone.sync = (method, model, options, error)->
