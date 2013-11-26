@@ -60,9 +60,14 @@ body > .seeker-schedule-container {
   top: $nav-height;
   bottom: 0;
   left: $margin1;
+  overflow: hidden;
   width: $sidebar-width;
   background-color: $gray2;
   @include line-right;
+
+  .sidebar-container {
+    overflow: auto;
+  }
 
   #addEventButtonContainer {
     padding: 10px;

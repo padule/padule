@@ -5,7 +5,10 @@ class padule.Views.EventListElement extends Backbone.View
 
   events:
     'click .js-delete-event-btn' : 'deleteEvent'
-    'click a' : 'showSchedule'
+    'click a' : (e)->
+      e.preventDefault()
+      @showSchedule()
+      window.localStorage.setItem 'scrollTop', $('.sidebar-container').scrollTop()
     'dblclick a' : 'editEvent'
     'keypress .edit': (e)->
       if e.keyCode is 13 then @close()
@@ -51,6 +54,8 @@ class padule.Views.EventListElement extends Backbone.View
       @$el.removeClass 'editing'
       @showSchedule()
 
+    $('.sidebar-container').scrollTop $('.sidebar-container')[0].scrollHeight
+
   render: =>
     @$el.html @template
       event: @model.toJSON()
@@ -62,6 +67,8 @@ class padule.Views.EventListElement extends Backbone.View
     active_event_id = window.localStorage.getItem @model.className
     if active_event_id? && active_event_id is @model.id
       @showSchedule()
+
+    $('.sidebar-container').scrollTop window.localStorage.getItem('scrollTop')
 
     @
 
