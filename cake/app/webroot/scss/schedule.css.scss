@@ -267,7 +267,8 @@ body > #scheduleContents {
   }
 
   .event-text {
-    border-left: 5px solid $gray4;
+    background-color: $gray4;
+    border-radius: 6px;
     .event-text-form {
       margin-bottom: $margin1;
       &:focus {
