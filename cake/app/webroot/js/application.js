@@ -78,6 +78,9 @@
     target = '';
     for (_i = 0, _len = lines.length; _i < _len; _i++) {
       line = lines[_i];
+      if (line === '') {
+        line = '&nbsp;';
+      }
       target = "" + target + "<p>" + line + "</p>";
     }
     return target;

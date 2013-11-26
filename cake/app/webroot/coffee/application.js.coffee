@@ -78,6 +78,8 @@ window.padule.changeTxtList = (txt)->
   lines = txt.split('\n')
   target = ''
   for line in lines
+    if line is ''
+      line = '&nbsp;'
     target = "#{target}<p>#{line}</p>"
   target
 
