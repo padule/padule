@@ -72,16 +72,15 @@
     return txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   };
 
-  window.padule.changeTxtBrToTxtP = function(txt) {
-    var line, lines, target, _i, _len, _results;
-    lines = txt.split('<br />');
+  window.padule.changeTxtList = function(txt) {
+    var line, lines, target, _i, _len;
+    lines = txt.split('\n');
     target = '';
-    _results = [];
     for (_i = 0, _len = lines.length; _i < _len; _i++) {
       line = lines[_i];
-      _results.push(target = "" + target + "<p>" + line + "</p>");
+      target = "" + target + "<p>" + line + "</p>";
     }
-    return _results;
+    return target;
   };
 
   Backbone.ajaxSync = Backbone.sync;

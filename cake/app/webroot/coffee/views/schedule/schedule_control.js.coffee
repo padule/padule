@@ -18,6 +18,17 @@ class padule.Views.ScheduleControl extends Backbone.View
         @$('.event-text').addClass 'hide'
         @$('#toggleBtn i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up')
 
+    'keyup .event-text-form' : 'toggleTextBtns'
+
+
+  toggleTextBtns: ->
+    if @$('.event-text-form').val()
+      @$('#eventTextSaveBtn').removeClass('disabled')
+      @$('#eventTextCancelBtn').removeClass('disabled')
+    else
+      @$('#eventTextSaveBtn').addClass('disabled')
+      @$('#eventTextCancelBtn').addClass('disabled')
+
   initialize: (options)->
     _.bindAll @
     @event = @collection.event
@@ -31,6 +42,8 @@ class padule.Views.ScheduleControl extends Backbone.View
     @$el.html @template
       event: @event.toJSON()
       url: "#{location.href.match(/^http?:\/\/[^\/]+/)}#{@event.get('url')}"
+
+    @$('.text-view').html padule.changeTxtList @event.get('text')
     @datepicker = @$('#scheduleDatepicker')
     @timepicker = @$('#scheduleTimepicker')
     @_initDatepicker()
@@ -41,6 +54,8 @@ class padule.Views.ScheduleControl extends Backbone.View
 
     if !@event.get('text').length
       @$('.event-text').addClass 'editing'
+
+    @toggleTextBtns()
 
     @
 

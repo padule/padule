@@ -37,6 +37,17 @@
           this.$('.event-text').addClass('hide');
           return this.$('#toggleBtn i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
         }
+      },
+      'keyup .event-text-form': 'toggleTextBtns'
+    };
+
+    ScheduleControl.prototype.toggleTextBtns = function() {
+      if (this.$('.event-text-form').val()) {
+        this.$('#eventTextSaveBtn').removeClass('disabled');
+        return this.$('#eventTextCancelBtn').removeClass('disabled');
+      } else {
+        this.$('#eventTextSaveBtn').addClass('disabled');
+        return this.$('#eventTextCancelBtn').addClass('disabled');
       }
     };
 
@@ -56,6 +67,7 @@
         event: this.event.toJSON(),
         url: "" + (location.href.match(/^http?:\/\/[^\/]+/)) + (this.event.get('url'))
       }));
+      this.$('.text-view').html(padule.changeTxtList(this.event.get('text')));
       this.datepicker = this.$('#scheduleDatepicker');
       this.timepicker = this.$('#scheduleTimepicker');
       this._initDatepicker();
@@ -66,6 +78,7 @@
       if (!this.event.get('text').length) {
         this.$('.event-text').addClass('editing');
       }
+      this.toggleTextBtns();
       return this;
     };
 

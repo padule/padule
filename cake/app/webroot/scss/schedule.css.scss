@@ -275,6 +275,11 @@ body > #scheduleContents {
         border-color: $orange1 * 1.1 !important;
       }
     }
+    .text-view {
+      p {
+        font-size: $font-size1;
+      }
+    }
     .text-edit {
       display: none;
     }
