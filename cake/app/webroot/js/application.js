@@ -68,6 +68,24 @@
     }
   };
 
+  window.padule.changeLine = function(txt) {
+    return txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  };
+
+  window.padule.changeTxtList = function(txt) {
+    var line, lines, target, _i, _len;
+    lines = txt.split('\n');
+    target = '';
+    for (_i = 0, _len = lines.length; _i < _len; _i++) {
+      line = lines[_i];
+      if (line === '') {
+        line = '&nbsp;';
+      }
+      target = "" + target + "<p>" + line + "</p>";
+    }
+    return target;
+  };
+
   Backbone.ajaxSync = Backbone.sync;
 
   Backbone.sync = function(method, model, options, error) {

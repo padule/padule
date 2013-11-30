@@ -75,11 +75,19 @@ window.JST["templates/schedule_control"] = function(__obj) {
       return _safe(result);
     };
     (function() {
-      _print(_safe('<div class="event-contents">\n  <div class="row">\n    <div class="col-md-8">\n      <h3>'));
+      _print(_safe('<div class="event-contents">\n  <div class="row">\n    <div class="col-md-8">\n      <h3>\n        '));
     
       _print(this.event.title);
     
-      _print(_safe('</h3>\n    </div>\n\n    <div class="schedule-add form-inline col-md-4">\n      <div class="bootstrap-datepicker pull-left">\n        <input type="text" id="scheduleDatepicker" class="span2 form-control" placeholder="年月日">\n      </div>\n      <div class="bootstrap-timepicker pull-left">\n        <input id="scheduleTimepicker" class="span2 form-control" type="text" placeholder="開始時間">\n      </div>\n      <button id="addScheduleButton" class="btn btn-primary disabled">\n        日程追加\n      </button>\n    </div>\n  </div>\n\n  <div class="input-group">\n    <span class="input-group-addon">共有URL</span>\n    <input class="form-control" type="text" value="'));
+      _print(_safe('\n        <button id="toggleBtn" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-chevron-down"></i></button>\n      </h3>\n\n      <blockquote class="event-text hide">\n        <div class="text-view">\n          '));
+    
+      _print(this.event.text);
+    
+      _print(_safe('\n        </div>\n        <div class="text-edit">\n          <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。">'));
+    
+      _print(this.event.text);
+    
+      _print(_safe('</textarea>\n          <button id="eventTextSaveBtn" class="event-text-btn btn btn-primary">保存</button>\n          <button id="eventTextCancelBtn" class="btn btn-default">キャンセル</button>\n        </div>\n      </blockquote>\n    </div>\n\n    <div class="schedule-add form-inline col-md-4">\n      <div class="bootstrap-datepicker pull-left">\n        <input type="text" id="scheduleDatepicker" class="span2 form-control" placeholder="年月日">\n      </div>\n      <div class="bootstrap-timepicker pull-left">\n        <input id="scheduleTimepicker" class="span2 form-control" type="text" placeholder="開始時間">\n      </div>\n      <button id="addScheduleButton" class="btn btn-primary disabled">\n        日程追加\n      </button>\n    </div>\n  </div>\n\n  <div class="input-group">\n    <span class="input-group-addon">共有URL</span>\n    <input class="form-control" type="text" value="'));
     
       _print(this.url);
     

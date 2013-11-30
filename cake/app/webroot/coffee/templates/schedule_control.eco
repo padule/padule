@@ -1,7 +1,21 @@
 <div class="event-contents">
   <div class="row">
     <div class="col-md-8">
-      <h3><%= @event.title %></h3>
+      <h3>
+        <%= @event.title %>
+        <button id="toggleBtn" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-chevron-down"></i></button>
+      </h3>
+
+      <blockquote class="event-text hide">
+        <div class="text-view">
+          <%= @event.text %>
+        </div>
+        <div class="text-edit">
+          <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。"><%= @event.text %></textarea>
+          <button id="eventTextSaveBtn" class="event-text-btn btn btn-primary">保存</button>
+          <button id="eventTextCancelBtn" class="btn btn-default">キャンセル</button>
+        </div>
+      </blockquote>
     </div>
 
     <div class="schedule-add form-inline col-md-4">

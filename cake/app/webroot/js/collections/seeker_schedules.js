@@ -17,6 +17,10 @@
 
     SeekerSchedules.prototype.localStorage = new Store("seeker_schedule");
 
+    SeekerSchedules.prototype.comparator = function(seeker_schedule) {
+      return seeker_schedule.seeker.id;
+    };
+
     SeekerSchedules.prototype.initialize = function(models, options) {
       return this.schedule = options.schedule;
     };
@@ -28,6 +32,28 @@
       }, {
         'silent': 'silent',
         'true': 'true'
+      });
+    };
+
+    SeekerSchedules.prototype.fillEmptySeekerSchedule = function() {
+      var first_seeker_schedules, first_seekers, seeker_ids,
+        _this = this;
+      first_seeker_schedules = this.schedule.collection.at(0).seeker_schedules;
+      if (first_seeker_schedules.length === this.length) {
+        return;
+      }
+      seeker_ids = _.pluck(this.pluck('seeker'), 'id');
+      first_seekers = first_seeker_schedules.map(function(seeker_schedule) {
+        return seeker_schedule.seeker;
+      });
+      return _.each(first_seekers, function(seeker) {
+        var seeker_schedule;
+        if (!_.contains(seeker_ids, seeker.id)) {
+          seeker_schedule = new padule.Models.SeekerSchedule({
+            'seeker': seeker.toJSON()
+          });
+          return _this.add(seeker_schedule);
+        }
       });
     };
 

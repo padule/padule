@@ -47,7 +47,7 @@
       _.bindAll(this);
       this.modal = options.modal;
       this.infoArea = options.infoArea;
-      this.listenTo(this.model, 'change', this.render);
+      this.listenTo(this.model, 'change:title', this.render);
       this.listenTo(this.model, 'unactive', function() {
         return this.$el.removeClass('active');
       });

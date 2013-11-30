@@ -18,7 +18,37 @@
     ScheduleControl.prototype.events = {
       'click #addScheduleButton': 'addSchedule',
       'change #scheduleDatepicker': 'toggleAddButton',
-      'change #scheduleTimepicker': 'toggleAddButton'
+      'change #scheduleTimepicker': 'toggleAddButton',
+      'click #eventTextSaveBtn': function() {
+        this.event.save({
+          'text': padule.changeLine($('.event-text-form').val())
+        });
+        return this.$('.event-text').removeClass('editing');
+      },
+      'click #eventTextCancelBtn': function() {
+        return this.$('.event-text').removeClass('editing');
+      },
+      'dblclick .event-text': 'editText',
+      'click #toggleBtn': function() {
+        if (this.$('.event-text').hasClass('hide')) {
+          this.$('.event-text').removeClass('hide');
+          return this.$('#toggleBtn i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+        } else {
+          this.$('.event-text').addClass('hide');
+          return this.$('#toggleBtn i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up');
+        }
+      },
+      'keyup .event-text-form': 'toggleTextBtns'
+    };
+
+    ScheduleControl.prototype.toggleTextBtns = function() {
+      if (this.$('.event-text-form').val()) {
+        this.$('#eventTextSaveBtn').removeClass('disabled');
+        return this.$('#eventTextCancelBtn').removeClass('disabled');
+      } else {
+        this.$('#eventTextSaveBtn').addClass('disabled');
+        return this.$('#eventTextCancelBtn').addClass('disabled');
+      }
     };
 
     ScheduleControl.prototype.initialize = function(options) {
@@ -27,11 +57,17 @@
       return this.info_area = options.info_area;
     };
 
+    ScheduleControl.prototype.editText = function() {
+      this.$('.event-text').addClass('editing');
+      return this.focus();
+    };
+
     ScheduleControl.prototype.render = function() {
       this.$el.html(this.template({
         event: this.event.toJSON(),
         url: "" + (location.href.match(/^http?:\/\/[^\/]+/)) + (this.event.get('url'))
       }));
+      this.$('.text-view').html(padule.changeTxtList(this.event.get('text')));
       this.datepicker = this.$('#scheduleDatepicker');
       this.timepicker = this.$('#scheduleTimepicker');
       this._initDatepicker();
@@ -39,6 +75,10 @@
       if (this.collection.length <= 0) {
         this.focus(this.datepicker);
       }
+      if (!this.event.get('text').length) {
+        this.$('.event-text').addClass('editing');
+      }
+      this.toggleTextBtns();
       return this;
     };
 
@@ -111,7 +151,7 @@
     ScheduleControl.prototype.focus = function(input) {
       var _this = this;
       return setTimeout(function() {
-        return input.focus();
+        return _this.$('.event-text-form').focus();
       }, 0);
     };
 

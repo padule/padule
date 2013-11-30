@@ -20,7 +20,8 @@
       _.bindAll(this);
       this.modal = options.modal;
       this.info_area = options.info_area;
-      return this.seeker_schedules = this.model.seeker_schedules;
+      this.seeker_schedules = this.model.seeker_schedules;
+      return this.seeker_schedules.fillEmptySeekerSchedule();
     };
 
     ScheduleTbodyTr.prototype.renderOne = function(seeker_schedule) {

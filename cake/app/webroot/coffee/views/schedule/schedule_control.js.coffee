@@ -4,16 +4,46 @@ class padule.Views.ScheduleControl extends Backbone.View
     'click #addScheduleButton' : 'addSchedule'
     'change #scheduleDatepicker' : 'toggleAddButton'
     'change #scheduleTimepicker' : 'toggleAddButton'
+    'click #eventTextSaveBtn' : ->
+      @event.save {'text': padule.changeLine($('.event-text-form').val())}
+      @$('.event-text').removeClass 'editing'
+    'click #eventTextCancelBtn' : ->
+      @$('.event-text').removeClass 'editing'
+    'dblclick .event-text' : 'editText'
+    'click #toggleBtn' : ->
+      if @$('.event-text').hasClass('hide')
+        @$('.event-text').removeClass 'hide'
+        @$('#toggleBtn i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up')
+      else
+        @$('.event-text').addClass 'hide'
+        @$('#toggleBtn i').addClass('glyphicon-chevron-down').removeClass('glyphicon-chevron-up')
+
+    'keyup .event-text-form' : 'toggleTextBtns'
+
+
+  toggleTextBtns: ->
+    if @$('.event-text-form').val()
+      @$('#eventTextSaveBtn').removeClass('disabled')
+      @$('#eventTextCancelBtn').removeClass('disabled')
+    else
+      @$('#eventTextSaveBtn').addClass('disabled')
+      @$('#eventTextCancelBtn').addClass('disabled')
 
   initialize: (options)->
     _.bindAll @
     @event = @collection.event
     @info_area = options.info_area
 
+  editText: ->
+    @$('.event-text').addClass 'editing'
+    @focus()
+
   render: ->
     @$el.html @template
       event: @event.toJSON()
       url: "#{location.href.match(/^http?:\/\/[^\/]+/)}#{@event.get('url')}"
+
+    @$('.text-view').html padule.changeTxtList @event.get('text')
     @datepicker = @$('#scheduleDatepicker')
     @timepicker = @$('#scheduleTimepicker')
     @_initDatepicker()
@@ -21,6 +51,11 @@ class padule.Views.ScheduleControl extends Backbone.View
 
     if @collection.length <= 0
       @focus @datepicker
+
+    if !@event.get('text').length
+      @$('.event-text').addClass 'editing'
+
+    @toggleTextBtns()
 
     @
 
@@ -73,5 +108,5 @@ class padule.Views.ScheduleControl extends Backbone.View
 
   focus: (input)->
     setTimeout =>
-      input.focus()
+      @$('.event-text-form').focus()
     , 0

@@ -2,12 +2,29 @@ class padule.Collections.SeekerSchedules extends Backbone.Collection
   model: padule.Models.SeekerSchedule
   url: "/seeker_schedules"
   localStorage: new Store "seeker_schedule"
-
+  comparator: (seeker_schedule)->
+    seeker_schedule.seeker.id
   initialize: (models, options)->
     @schedule = options.schedule
 
   resetType: ->
     @invoke 'set', {'type', '-1'}, {'silent', 'true'}
+
+  fillEmptySeekerSchedule: ->
+    first_seeker_schedules = @schedule.collection.at(0).seeker_schedules
+    # 日程が増えていなければ何もしない
+    if first_seeker_schedules.length is @length
+      return
+
+    seeker_ids = _.pluck(@pluck('seeker'), 'id')
+    first_seekers = first_seeker_schedules.map (seeker_schedule)->
+      seeker_schedule.seeker
+
+    # 求職者が送信後に日程追加した時、ないデータを作っておく
+    _.each first_seekers, (seeker)=>
+      unless _.contains(seeker_ids, seeker.id)
+        seeker_schedule = new padule.Models.SeekerSchedule {'seeker': seeker.toJSON()}
+        @add seeker_schedule
 
   findBySeeker: (seeker_schedule)->
     result = []
