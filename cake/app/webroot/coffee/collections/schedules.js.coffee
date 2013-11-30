@@ -11,7 +11,14 @@ class padule.Collections.Schedules extends Backbone.Collection
   initialize: (models, options={})->
     @event = options._event
 
-  fetchByEvent: ->
-    @fetch
-      data:
-        event_id: @event.id
+  fetchByEvent: (options={})->
+    defs = data:
+      event_id: @event.id
+    options = $.extend defs, options
+    @fetch options
+
+  poll: =>
+    @fetchByEvent
+      reset: true
+      success: (collection)=>
+        @collection = collection
