@@ -6,6 +6,7 @@ class padule.Views.ScheduleTbodyTr extends Backbone.View
     @modal = options.modal
     @info_area = options.info_area
     @seeker_schedules = @model.seeker_schedules
+    @seeker_schedules.fillEmptySeekerSchedule()
 
   renderOne: (seeker_schedule)->
     view = new padule.Views.ScheduleTd
