@@ -4,7 +4,7 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
   events:
     'keyup input#inputName' : 'setName'
     'keyup input#inputEmail' : 'setMail'
-    'keyup input#inputEmail2' : 'setMail'
+    'keyup input#inputEmail2' : 'changeSendButtonEnable'
     'keyup textarea#inputComment' : 'setText'
     'click #sendSeekerSchedule' : 'sendSeekerSchedule'
 
