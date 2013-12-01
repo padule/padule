@@ -41,8 +41,8 @@ class padule.Views.SeekerScheduleInput extends Backbone.View
     @event.fetch()
 
   render_event_info: ->
-    @event_container.find('h4').html @event.get 'title'
-    @event_container.find('.text').html @event.get 'text'
+    @event_container.find('.event-title').html @event.get 'title'
+    @event_container.find('.event-text').html padule.changeTxtList @event.get('text')
 
   sendSeekerSchedule: ->
     @modal.show
