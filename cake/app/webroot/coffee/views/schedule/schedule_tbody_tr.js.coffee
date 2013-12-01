@@ -1,5 +1,8 @@
 class padule.Views.ScheduleTbodyTr extends Backbone.View
   tagName: 'tr'
+  className: ->
+    if @model.isNew()
+      'new-schedule'
 
   initialize: (options = {})->
     _.bindAll @
