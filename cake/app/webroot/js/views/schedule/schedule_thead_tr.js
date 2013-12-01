@@ -30,8 +30,11 @@
     };
 
     ScheduleTheadTr.prototype.render = function() {
+      var _ref1;
       this.$el.append('<th></th>');
-      this.seeker_schedules.each(this.renderOne);
+      if ((_ref1 = this.seeker_schedules) != null) {
+        _ref1.each(this.renderOne);
+      }
       return this;
     };
 

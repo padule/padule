@@ -14,5 +14,5 @@ class padule.Views.ScheduleTheadTr extends Backbone.View
 
   render: ->
     @$el.append '<th></th>'
-    @seeker_schedules.each @renderOne
+    @seeker_schedules?.each @renderOne
     @

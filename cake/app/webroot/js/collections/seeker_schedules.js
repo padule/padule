@@ -39,7 +39,7 @@
       var first_seeker_schedules, first_seekers, seeker_ids,
         _this = this;
       first_seeker_schedules = this.schedule.collection.first_schedule().seeker_schedules;
-      if (first_seeker_schedules.length === this.length) {
+      if ((first_seeker_schedules == null) || first_seeker_schedules.length === this.length) {
         return;
       }
       seeker_ids = _.pluck(this.pluck('seeker'), 'id');

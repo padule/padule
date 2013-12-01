@@ -30,8 +30,11 @@
     };
 
     ScheduleTfootTr.prototype.render = function() {
+      var _ref1;
       this.$el.append('<td></td>');
-      this.seeker_schedules.each(this.renderOne);
+      if ((_ref1 = this.seeker_schedules) != null) {
+        _ref1.each(this.renderOne);
+      }
       return this;
     };
 
