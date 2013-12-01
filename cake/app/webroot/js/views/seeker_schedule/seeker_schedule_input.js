@@ -62,8 +62,8 @@
     };
 
     SeekerScheduleInput.prototype.render_event_info = function() {
-      this.event_container.find('h4').html(this.event.get('title'));
-      return this.event_container.find('.text').html(this.event.get('text'));
+      this.event_container.find('.event-title').html(this.event.get('title'));
+      return this.event_container.find('.event-text').html(padule.changeTxtList(this.event.get('text')));
     };
 
     SeekerScheduleInput.prototype.sendSeekerSchedule = function() {
