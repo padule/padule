@@ -11,6 +11,8 @@ class padule.Views.Schedule extends Backbone.View
   initialize: (options = {})->
     _.bindAll @
 
+    padule.clearTimeoutAll()
+
     @modal = options.modal
     @info_area = options.info_area
 

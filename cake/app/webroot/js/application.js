@@ -86,6 +86,16 @@
     return target;
   };
 
+  window.padule.clearTimeoutAll = function() {
+    var highestTimeoutId, i, _i, _results;
+    highestTimeoutId = setTimeout(';');
+    _results = [];
+    for (i = _i = 0; 0 <= highestTimeoutId ? _i <= highestTimeoutId : _i >= highestTimeoutId; i = 0 <= highestTimeoutId ? ++_i : --_i) {
+      _results.push(clearTimeout(i));
+    }
+    return _results;
+  };
+
   Backbone.ajaxSync = Backbone.sync;
 
   Backbone.sync = function(method, model, options, error) {

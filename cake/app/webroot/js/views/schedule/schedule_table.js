@@ -15,6 +15,8 @@
 
     ScheduleTable.prototype.className = 'table table-hover table-condensed schedule-table';
 
+    ScheduleTable.prototype.pollingInterval = 5000;
+
     ScheduleTable.prototype.initialize = function(options) {
       if (options == null) {
         options = {};
@@ -28,9 +30,10 @@
         modal: options.modal,
         info_area: options.info_area
       });
-      return this.tfoot = new padule.Views.ScheduleTfoot({
+      this.tfoot = new padule.Views.ScheduleTfoot({
         collection: this.collection
       });
+      return setTimeout(this.collection.poll, this.pollingInterval);
     };
 
     ScheduleTable.prototype.render = function() {

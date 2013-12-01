@@ -28,6 +28,7 @@
         options = {};
       }
       _.bindAll(this);
+      padule.clearTimeoutAll();
       this.modal = options.modal;
       this.info_area = options.info_area;
       this.tableContainer = this.$('.schedule-table-container');

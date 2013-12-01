@@ -83,6 +83,11 @@ window.padule.changeTxtList = (txt)->
     target = "#{target}<p>#{line}</p>"
   target
 
+window.padule.clearTimeoutAll = ->
+  highestTimeoutId = setTimeout ';'
+  for i in [0..highestTimeoutId]
+    clearTimeout i
+
 Backbone.ajaxSync = Backbone.sync
 Backbone.sync = (method, model, options, error)->
   (Backbone.getSyncMethod model).apply this, [method, model, options, error]
