@@ -41,6 +41,11 @@ class padule.Views.Schedule extends Backbone.View
     @tableContainer.empty()
     @controlContainer.empty()
 
+  clearAllEvents: ->
+    @undelegateEvents()
+    @off()
+    @stopListening()
+
   render: ->
     @table = new padule.Views.ScheduleTable
       collection: @collection

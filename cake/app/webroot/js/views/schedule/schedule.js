@@ -63,6 +63,12 @@
       return this.controlContainer.empty();
     };
 
+    Schedule.prototype.clearAllEvents = function() {
+      this.undelegateEvents();
+      this.off();
+      return this.stopListening();
+    };
+
     Schedule.prototype.render = function() {
       this.table = new padule.Views.ScheduleTable({
         collection: this.collection,
