@@ -22,7 +22,7 @@ class padule.Views.Schedule extends Backbone.View
 
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
-    @listenTo @collection.event, 'change', @render
+    @listenTo @collection.event, 'change', @renderControlView
     @listenTo @modal, "clickOk:#{@collection.id}", ->
       @collection.each (schedule)->
         schedule.seeker_schedules.each (seeker_schedule)->
@@ -32,6 +32,7 @@ class padule.Views.Schedule extends Backbone.View
         class_name: 'label-info'
 
     @clear()
+    @renderControlView()
     @startLoading()
     @collection.fetchByEvent()
 
@@ -48,17 +49,18 @@ class padule.Views.Schedule extends Backbone.View
     @off()
     @stopListening()
 
+  renderControlView: ->
+    @control = new padule.Views.ScheduleControl
+      collection: @collection
+      info_area: @info_area
+    @controlContainer.html @control.render().el
+
   render: ->
     @table = new padule.Views.ScheduleTable
       collection: @collection
       modal: @modal
       info_area: @info_area
     @tableContainer.html @table.render().el
-
-    @control = new padule.Views.ScheduleControl
-      collection: @collection
-      info_area: @info_area
-    @controlContainer.html @control.render().el
 
     @updateInfoArea()
 

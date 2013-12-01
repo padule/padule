@@ -36,7 +36,7 @@
       this.buttonContainer = this.$('.button-container');
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
-      this.listenTo(this.collection.event, 'change', this.render);
+      this.listenTo(this.collection.event, 'change', this.renderControlView);
       this.listenTo(this.modal, "clickOk:" + this.collection.id, function() {
         this.collection.each(function(schedule) {
           return schedule.seeker_schedules.each(function(seeker_schedule) {
@@ -49,6 +49,7 @@
         });
       });
       this.clear();
+      this.renderControlView();
       this.startLoading();
       return this.collection.fetchByEvent();
     };
@@ -70,6 +71,14 @@
       return this.stopListening();
     };
 
+    Schedule.prototype.renderControlView = function() {
+      this.control = new padule.Views.ScheduleControl({
+        collection: this.collection,
+        info_area: this.info_area
+      });
+      return this.controlContainer.html(this.control.render().el);
+    };
+
     Schedule.prototype.render = function() {
       this.table = new padule.Views.ScheduleTable({
         collection: this.collection,
@@ -77,11 +86,6 @@
         info_area: this.info_area
       });
       this.tableContainer.html(this.table.render().el);
-      this.control = new padule.Views.ScheduleControl({
-        collection: this.collection,
-        info_area: this.info_area
-      });
-      this.controlContainer.html(this.control.render().el);
       this.updateInfoArea();
       this.setTableHeight();
       this.enableConfirmButton();
