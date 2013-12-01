@@ -26,6 +26,7 @@ class padule.Views.EventListElement extends Backbone.View
 
     @listenTo @model, 'unactive', ->
       @$el.removeClass 'active'
+      @scheduleView?.clearAllEvents()
 
     @listenTo @model, 'destroy', ->
       @remove()
@@ -87,7 +88,7 @@ class padule.Views.EventListElement extends Backbone.View
 
     window.localStorage.setItem @model.className, @model.id
 
-    new padule.Views.Schedule
+    @scheduleView = new padule.Views.Schedule
       collection: new padule.Collections.Schedules false, _event: @model
       modal: @modal
       info_area: @infoArea

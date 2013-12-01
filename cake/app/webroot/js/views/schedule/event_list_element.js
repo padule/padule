@@ -49,7 +49,9 @@
       this.infoArea = options.infoArea;
       this.listenTo(this.model, 'change:title', this.render);
       this.listenTo(this.model, 'unactive', function() {
-        return this.$el.removeClass('active');
+        var _ref1;
+        this.$el.removeClass('active');
+        return (_ref1 = this.scheduleView) != null ? _ref1.clearAllEvents() : void 0;
       });
       this.listenTo(this.model, 'destroy', function() {
         this.remove();
@@ -123,7 +125,7 @@
       });
       this.$el.addClass('active');
       window.localStorage.setItem(this.model.className, this.model.id);
-      return new padule.Views.Schedule({
+      return this.scheduleView = new padule.Views.Schedule({
         collection: new padule.Collections.Schedules(false, {
           _event: this.model
         }),
