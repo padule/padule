@@ -4,4 +4,5 @@ cake/[Cc]onfig/database.php
 cake/app/tmp/*
 cake/app/[Cc]onfig/core.php
 cake/app/[Cc]onfig/database.php
+.sass-cache/
 !empty
