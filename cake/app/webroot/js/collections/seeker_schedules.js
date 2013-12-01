@@ -38,7 +38,7 @@
     SeekerSchedules.prototype.fillEmptySeekerSchedule = function() {
       var first_seeker_schedules, first_seekers, seeker_ids,
         _this = this;
-      first_seeker_schedules = this.schedule.collection.at(0).seeker_schedules;
+      first_seeker_schedules = this.schedule.collection.first_schedule().seeker_schedules;
       if (first_seeker_schedules.length === this.length) {
         return;
       }

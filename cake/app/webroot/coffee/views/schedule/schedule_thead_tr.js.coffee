@@ -5,7 +5,7 @@ class padule.Views.ScheduleTheadTr extends Backbone.View
     _.bindAll @
     @seeker_schedules = []
     if @collection.models.length > 0
-      @seeker_schedules = @collection.at(0).seeker_schedules
+      @seeker_schedules = @collection.first_schedule().seeker_schedules
 
   renderOne: (seeker_schedule)->
     view = new padule.Views.ScheduleTheadTh

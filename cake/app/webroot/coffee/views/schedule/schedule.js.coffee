@@ -77,7 +77,7 @@ class padule.Views.Schedule extends Backbone.View
         text: 'まだ日程が登録されていません。'
         class_name: 'label-warning'
         ms: 20000
-    else if @collection.at(0)?.seeker_schedules.length <= 0
+    else if @collection.first_schedule()?.seeker_schedules.length <= 0
       @info_area.show
         text: 'まだ求職者からの日程登録はありません。'
         class_name: 'label-warning'

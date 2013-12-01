@@ -17,7 +17,7 @@
       _.bindAll(this);
       this.seeker_schedules = [];
       if (this.collection.models.length > 0) {
-        return this.seeker_schedules = this.collection.at(0).seeker_schedules;
+        return this.seeker_schedules = this.collection.first_schedule().seeker_schedules;
       }
     };
 

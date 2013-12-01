@@ -2,6 +2,7 @@ class padule.Collections.Schedules extends Backbone.Collection
   model: padule.Models.Schedule
   url: "/schedules"
   localStorage: new Store("schedule")
+  comparator: 'start_time'
   parse: (resp)->
     if _.isArray(resp)
       resp
@@ -22,3 +23,7 @@ class padule.Collections.Schedules extends Backbone.Collection
       reset: true
       success: (collection)=>
         @collection = collection
+
+  first_schedule: ->
+    @min (schedule)->
+      schedule.id

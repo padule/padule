@@ -19,6 +19,8 @@
 
     Schedules.prototype.localStorage = new Store("schedule");
 
+    Schedules.prototype.comparator = 'start_time';
+
     Schedules.prototype.parse = function(resp) {
       if (_.isArray(resp)) {
         return resp;
@@ -55,6 +57,12 @@
         success: function(collection) {
           return _this.collection = collection;
         }
+      });
+    };
+
+    Schedules.prototype.first_schedule = function() {
+      return this.min(function(schedule) {
+        return schedule.id;
       });
     };
 
