@@ -7,9 +7,8 @@ class padule.Views.Event extends Backbone.View
   initialize: ->
     _.bindAll @
     @listenTo @collection, 'sync', @endLoading
-    @listenTo @collection, 'add', @setSidebarHeight
-    @listenTo @collection, 'remove', @setSidebarHeight
 
+    @setSidebarHeight()
 
     @modal = new padule.Views.AlertModal
     @infoArea = new padule.Views.InfoArea
@@ -26,7 +25,7 @@ class padule.Views.Event extends Backbone.View
     @collection.fetch()
 
   addEvent: ->
-    @collection.push new padule.Models.Event
+    @collection.add new padule.Models.Event
 
   startLoading: ->
     @$el.addClass 'loading'
@@ -36,9 +35,4 @@ class padule.Views.Event extends Backbone.View
 
   setSidebarHeight: ->
     height = $(window).height() - $('.padule-nav').height() - $('#addEventButtonContainer').height() - 30
-    if $('#eventList').height() > height
-      height = $('#eventList').height()
-    else
-      height = ''
-
     @$('.sidebar-container').height(height)

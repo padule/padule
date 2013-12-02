@@ -14,4 +14,4 @@ class padule.Views.EventList extends Backbone.View
       modal: @modal
       infoArea: @infoArea
 
-    @$el.append view.render().el
+    @$el.prepend view.render().el
