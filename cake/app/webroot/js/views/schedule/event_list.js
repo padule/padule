@@ -30,7 +30,7 @@
         modal: this.modal,
         infoArea: this.infoArea
       });
-      return this.$el.append(view.render().el);
+      return this.$el.prepend(view.render().el);
     };
 
     return EventList;

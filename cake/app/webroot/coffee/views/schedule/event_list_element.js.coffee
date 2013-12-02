@@ -55,8 +55,6 @@ class padule.Views.EventListElement extends Backbone.View
       @$el.removeClass 'editing'
       @showSchedule()
 
-    $('.sidebar-container').scrollTop $('.sidebar-container')[0].scrollHeight
-
   render: =>
     @$el.html @template
       event: @model.toJSON()
