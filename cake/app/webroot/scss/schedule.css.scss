@@ -69,8 +69,10 @@ body > .seeker-schedule-container {
     overflow: auto;
   }
 
-  #addEventButtonContainer {
+  .add-container {
     padding: 10px;
+    @include gradient-top-lighten($gray4);
+    @include line-bottom;
     button {
       width: 100%;
     }

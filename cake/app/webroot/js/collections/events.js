@@ -17,6 +17,10 @@
 
     Events.prototype.localStorage = new Store("event");
 
+    Events.prototype.comparator = function(model) {
+      return -1 * model.id;
+    };
+
     Events.prototype.parse = function(resp) {
       if (_.isArray(resp)) {
         return resp;
