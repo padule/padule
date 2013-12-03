@@ -84,9 +84,8 @@
         this.model.set('title', value);
         this.model.save();
         this.$el.removeClass('editing');
-        this.showSchedule();
+        return this.showSchedule();
       }
-      return $('.sidebar-container').scrollTop($('.sidebar-container')[0].scrollHeight);
     };
 
     EventListElement.prototype.render = function() {

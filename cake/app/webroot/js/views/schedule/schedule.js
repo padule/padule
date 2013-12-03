@@ -76,7 +76,8 @@
         collection: this.collection,
         info_area: this.info_area
       });
-      return this.controlContainer.html(this.control.render().el);
+      this.controlContainer.html(this.control.render().el);
+      return this.endLoading();
     };
 
     Schedule.prototype.render = function() {

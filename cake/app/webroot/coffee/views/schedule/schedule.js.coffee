@@ -54,6 +54,7 @@ class padule.Views.Schedule extends Backbone.View
       collection: @collection
       info_area: @info_area
     @controlContainer.html @control.render().el
+    @endLoading()
 
   render: ->
     @table = new padule.Views.ScheduleTable
