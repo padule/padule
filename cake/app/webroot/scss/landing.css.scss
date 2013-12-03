@@ -1,0 +1,129 @@
+@import "compass";
+
+$white1: #fefefe;
+$blue1: #edf3f7;
+$blue2: #f9f9f9;
+$gray1: #4B4848;
+
+$margin1: 12px;
+$margin2: 40px;
+$font-size1: 14px;
+
+@mixin line-top($op1: .2, $op2: .3) {
+  border-top: 1px solid rgba(0, 0, 0, $op1);
+  @include box-shadow(rgba(255,255,255, $op2) 0 1px 0 inset);
+}
+
+body{
+  @include background-image(linear-gradient(to top, #fff, #d6d5ff 10%, #83a9be));
+}
+
+.landing-container{
+  padding-top: $margin1;
+  @include background-image(linear-gradient($white1 0%, $blue1 86%, $blue2 100%));
+
+  .logo-container{
+    margin-left: $margin1;
+    width: 100%;
+    max-width: 250px;
+    height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('/img/logo.png');
+    @include background-size(100% auto);
+  }
+
+  .lead{
+    font-size: $font-size1;
+    padding: $margin1;
+  }
+
+  .image-container{
+    background-position: center;
+    background-repeat: no-repeat;
+    @include background-size(100% auto);
+  }
+
+  .image-main{
+    width: 100%;
+    min-height: 470px;
+    margin-left: $margin1;
+    background-image: url('/img/ss_main.png');
+  }
+
+  .image-web{
+    width: 100%;
+    min-height: 470px;
+    margin-left: $margin1;
+    background-image: url('/img/ss_web.png');
+  }
+
+  .image-mobile{
+    width: 100%;
+    min-height: 470px;
+    @include background-size(auto 95%);
+    margin-left: $margin1;
+    background-image: url('/img/ss_mobile.png');
+  }
+
+  .i-catch-container{
+    padding: $margin1;
+    text-align: center;
+
+    .text{
+      margin-top: $margin1;
+    }
+    .i-catch{
+      margin-top: $margin2;
+      min-height: 60px;
+      background-position: center;
+      background-repeat: no-repeat;
+      @include background-size(auto auto);
+      &.calendar{
+        background-image: url('/img/icon_calendar.png');
+      }
+      &.stack{
+        background-image: url('/img/icon_stack.png');
+      }
+      &.money{
+        background-image: url('/img/icon_money.png');
+      }
+    }
+  }
+
+  .image-web-container, .image-mobile-container{
+    margin-top: $margin2;
+    @include line-top;
+
+    .description-container{
+      margin-top: 24px;
+    }
+
+    .description{
+      padding: $margin1;
+      text-align: center;
+      .title{
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  .image-mobile-container{
+    .description{
+      padding-top: 50px;
+    }
+  }
+}
+
+.footer-container{
+  width: 100%;
+  padding: $margin1;
+  background-color: $gray1;
+  color: $white1 !important;
+  .mail-container{
+    padding-left: $margin1;
+  }
+  a {
+    color: $white1;
+  }
+}
