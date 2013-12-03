@@ -40,8 +40,8 @@
     };
 
     ScheduleTbody.prototype.changeEditable = function() {
-      if (this.collection.length > 0 && this.collection.at(0).seeker_schedules.length > 0) {
-        return this.collection.at(0).seeker_schedules.changeEditableBySeeker();
+      if (this.collection.length > 0 && this.collection.first_schedule().seeker_schedules.length > 0) {
+        return this.collection.first_schedule().seeker_schedules.changeEditableBySeeker();
       }
     };
 

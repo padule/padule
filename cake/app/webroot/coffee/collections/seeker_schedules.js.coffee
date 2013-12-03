@@ -11,9 +11,9 @@ class padule.Collections.SeekerSchedules extends Backbone.Collection
     @invoke 'set', {'type', '-1'}, {'silent', 'true'}
 
   fillEmptySeekerSchedule: ->
-    first_seeker_schedules = @schedule.collection.at(0).seeker_schedules
+    first_seeker_schedules = @schedule.collection.first_schedule().seeker_schedules
     # 日程が増えていなければ何もしない
-    if first_seeker_schedules.length is @length
+    if !first_seeker_schedules? or first_seeker_schedules.length is @length
       return
 
     seeker_ids = _.pluck(@pluck('seeker'), 'id')

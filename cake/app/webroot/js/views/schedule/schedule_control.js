@@ -97,7 +97,7 @@
         event_id: this.event.id,
         start_time: this._getStartTime()
       });
-      this.collection.push(new_schedule);
+      this.collection.add(new_schedule);
       return new_schedule.saveByEvent({
         success: function() {
           return _this.info_area.show({

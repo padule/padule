@@ -69,7 +69,7 @@ class padule.Views.ScheduleControl extends Backbone.View
     new_schedule = new padule.Models.Schedule
       event_id: @event.id
       start_time: @_getStartTime()
-    @collection.push new_schedule
+    @collection.add new_schedule
     new_schedule.saveByEvent
       success: =>
         @info_area.show

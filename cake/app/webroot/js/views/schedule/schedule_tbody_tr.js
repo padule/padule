@@ -13,6 +13,12 @@
 
     ScheduleTbodyTr.prototype.tagName = 'tr';
 
+    ScheduleTbodyTr.prototype.className = function() {
+      if (this.model.isNew()) {
+        return 'new-schedule';
+      }
+    };
+
     ScheduleTbodyTr.prototype.initialize = function(options) {
       if (options == null) {
         options = {};

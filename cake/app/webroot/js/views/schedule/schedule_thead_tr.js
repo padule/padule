@@ -17,7 +17,7 @@
       _.bindAll(this);
       this.seeker_schedules = [];
       if (this.collection.models.length > 0) {
-        return this.seeker_schedules = this.collection.at(0).seeker_schedules;
+        return this.seeker_schedules = this.collection.first_schedule().seeker_schedules;
       }
     };
 
@@ -30,8 +30,11 @@
     };
 
     ScheduleTheadTr.prototype.render = function() {
+      var _ref1;
       this.$el.append('<th></th>');
-      this.seeker_schedules.each(this.renderOne);
+      if ((_ref1 = this.seeker_schedules) != null) {
+        _ref1.each(this.renderOne);
+      }
       return this;
     };
 

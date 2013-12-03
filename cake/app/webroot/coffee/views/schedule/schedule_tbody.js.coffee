@@ -20,6 +20,6 @@ class padule.Views.ScheduleTbody extends Backbone.View
     @
 
   changeEditable: ->
-    if @collection.length > 0 and @collection.at(0).seeker_schedules.length > 0
+    if @collection.length > 0 and @collection.first_schedule().seeker_schedules.length > 0
       # 同じ求職者で未確定、確定済のものがある場合は編集不可
-      @collection.at(0).seeker_schedules.changeEditableBySeeker()
+      @collection.first_schedule().seeker_schedules.changeEditableBySeeker()
