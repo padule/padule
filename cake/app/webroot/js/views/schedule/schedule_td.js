@@ -16,13 +16,31 @@
     ScheduleTd.prototype.template = JST['templates/schedule_status'];
 
     ScheduleTd.prototype.events = {
-      'click .schedule-btn': 'changeType'
+      'click .schedule-btn': function(e) {
+        if (this.model.isConfirmed()) {
+          e.preventDefault();
+          return this.modal.show({
+            title: 'スケジュールを取り消し',
+            contents: "確定したスケジュールを取り消しますか？",
+            model: this.model
+          });
+        } else {
+          return this.changeType(e);
+        }
+      }
     };
 
-    ScheduleTd.prototype.initialize = function() {
+    ScheduleTd.prototype.initialize = function(options) {
+      if (options == null) {
+        options = {};
+      }
       _.bindAll(this);
+      this.modal = options.modal;
       this.listenTo(this.model, 'change:type', this.render);
-      return this.listenTo(this.model, 'afterChangeEditable', this.changeDisabled);
+      this.listenTo(this.model, 'afterChangeEditable', this.changeDisabled);
+      return this.listenTo(this.modal, "clickOk:" + this.model.cid, function(e) {
+        return this.changeType(e);
+      });
     };
 
     ScheduleTd.prototype.render = function(editable) {
@@ -44,7 +62,9 @@
     };
 
     ScheduleTd.prototype.changeType = function(e) {
-      e.preventDefault();
+      if (e != null) {
+        e.preventDefault();
+      }
       return this.model.changeType();
     };
 

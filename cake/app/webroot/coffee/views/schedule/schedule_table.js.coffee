@@ -1,7 +1,7 @@
 class padule.Views.ScheduleTable extends Backbone.View
   tagName: 'table'
   className: 'table table-hover table-condensed schedule-table'
-  pollingInterval: 5000
+  pollingInterval: 10000
 
   initialize: (options = {})->
     _.bindAll @

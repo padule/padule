@@ -14,6 +14,7 @@ class padule.Views.ScheduleTbodyTr extends Backbone.View
   renderOne: (seeker_schedule)->
     view = new padule.Views.ScheduleTd
         model: seeker_schedule
+        modal: @modal
     @$el.append view.render().el
 
   render: ->

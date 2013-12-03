@@ -23,7 +23,7 @@ class padule.Views.Schedule extends Backbone.View
     @listenTo @collection, 'sync', @render
     @listenTo @collection, 'changeType', @enableConfirmButton
     @listenTo @collection.event, 'change', @renderControlView
-    @listenTo @modal, "clickOk:#{@collection.id}", ->
+    @listenTo @modal, "clickOk:#{@collection.cid}", ->
       @collection.each (schedule)->
         schedule.seeker_schedules.each (seeker_schedule)->
           seeker_schedule.confirm()
