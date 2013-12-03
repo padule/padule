@@ -33,7 +33,8 @@
     ScheduleTbodyTr.prototype.renderOne = function(seeker_schedule) {
       var view;
       view = new padule.Views.ScheduleTd({
-        model: seeker_schedule
+        model: seeker_schedule,
+        modal: this.modal
       });
       return this.$el.append(view.render().el);
     };

@@ -37,7 +37,7 @@
       this.listenTo(this.collection, 'sync', this.render);
       this.listenTo(this.collection, 'changeType', this.enableConfirmButton);
       this.listenTo(this.collection.event, 'change', this.renderControlView);
-      this.listenTo(this.modal, "clickOk:" + this.collection.id, function() {
+      this.listenTo(this.modal, "clickOk:" + this.collection.cid, function() {
         this.collection.each(function(schedule) {
           return schedule.seeker_schedules.each(function(seeker_schedule) {
             return seeker_schedule.confirm();

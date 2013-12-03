@@ -15,7 +15,7 @@
 
     ScheduleTable.prototype.className = 'table table-hover table-condensed schedule-table';
 
-    ScheduleTable.prototype.pollingInterval = 5000;
+    ScheduleTable.prototype.pollingInterval = 10000;
 
     ScheduleTable.prototype.initialize = function(options) {
       if (options == null) {

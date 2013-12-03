@@ -2,12 +2,23 @@ class padule.Views.ScheduleTd extends Backbone.View
   tagName: 'td'
   template: JST['templates/schedule_status']
   events:
-    'click .schedule-btn' : 'changeType'
+    'click .schedule-btn' : (e)->
+      if @model.isConfirmed()
+        e.preventDefault()
+        @modal.show
+          title: 'スケジュールを取り消し'
+          contents: "確定したスケジュールを取り消しますか？"
+          model: @model
+      else
+        @changeType(e)
 
-  initialize: ->
+  initialize: (options = {})->
     _.bindAll @
+    @modal = options.modal
     @listenTo @model, 'change:type', @render
     @listenTo @model, 'afterChangeEditable', @changeDisabled
+    @listenTo @modal, "clickOk:#{@model.cid}", (e)->
+      @changeType(e)
 
   render: (editable)->
     @$el.html @template
@@ -24,7 +35,7 @@ class padule.Views.ScheduleTd extends Backbone.View
       @$('.schedule-btn').removeClass('disabled').addClass('disabled')
 
   changeType: (e)->
-    e.preventDefault()
+    e?.preventDefault()
     @model.changeType()
 
   btnAttrs: ->
