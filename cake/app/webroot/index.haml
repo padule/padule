@@ -19,12 +19,36 @@
     %meta{:name => 'viewport', :content => 'width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no'}
 
   %body
+    .navbar.navbar-inverse.navbar-fixed-top.landing-nav{:role => 'navigation'}
+      .container
+        .navbar-header
+          %a.navbar-brand{:href=>"/"}
+            %img.logo{:src => '/img/logo.png'}
+        .social-container
+          %ul.pull-right
+            %li
+              / Facebook
+              :plain
+                <div class="fb-like" data-href="http://padule.me/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+            %li
+              / Twitter
+              :plain
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://padule.me" data-text="Padule -日程調整をパズル感覚で-" data-hashtags="padule">Tweet</a>
+            %li
+              / GooglePlus
+              :plain
+                <div class="g-plusone" data-size="medium"></div>
+            %li
+              / Hatena
+              :plain
+                <a href="http://b.hatena.ne.jp/entry/http://padule.me" class="hatena-bookmark-button" data-hatena-bookmark-title="Padule -日程調整をパズル感覚で-" data-hatena-bookmark-layout="standard-balloon" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+
     .container.landing-container
       .row
-        .col-md-4
-          .logo-container
+        .col-md-5
           %p.lead
-            同じ候補日で複数の人を調整するのは大変ではありませんか。Padule（パジュール）を使うことで、簡単に早く調整することができます。
+            %span='同じ候補日で複数の人を調整するのは大変ではありませんか？'
+            %span='Padule（パジュール）を使うことで、簡単に早く調整することができます！'
 
           %form.form-horizontal{:action => '/users/regist', :method => 'post', :role => 'form'}
             .form-group
@@ -59,7 +83,7 @@
                 %a.btn.btn-lg.btn-block.btn-info{:href => '/users/login', :role => 'button'}
                   ベータ版ログイン
 
-        .col-md-8
+        .col-md-7
           .image-container.image-main
 
       .row.i-catch-container
@@ -113,3 +137,25 @@
       .pull-right
         %a{:href => '/privacy.html'}
           プライバシーポリシー
+
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=118785338301077";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    :javascript
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    :javascript
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+
+    %script{:type => 'text/javascript', :src => 'http://b.st-hatena.com/js/bookmark_button.js', :charset => 'utf-8', :async => 'async'}
+
+    %script{:type => 'text/javascript', :src => 'js/libs/jquery-2.0.3.min.js'}
+    %script{:type => 'text/javascript', :src => 'js/libs/bootstrap.min.js'}
