@@ -96,7 +96,7 @@
     </div>
     <script>
       var lettering = function(el, callback) {
-        $(el).show().lettering().animateLetters({opacity:0},{opacity:1},{randomOrder:false,time:200}, callback);
+        $(el).show().lettering().animateLetters({opacity:0},{opacity:1},{randomOrder:false,time:150}, callback);
       };
       (function() {
         lettering("#description1", function(){
