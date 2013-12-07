@@ -9,7 +9,7 @@ class padule.Views.ScheduleControl extends Backbone.View
       @$('.event-text').removeClass 'editing'
     'click #eventTextCancelBtn' : ->
       @$('.event-text').removeClass 'editing'
-    'dblclick .event-text' : 'editText'
+    'click #eventTextEditBtn' : 'editText'
     'click #toggleBtn' : ->
       if @$('.event-text').hasClass('hide')
         @$('.event-text').removeClass 'hide'
@@ -43,7 +43,7 @@ class padule.Views.ScheduleControl extends Backbone.View
       event: @event.toJSON()
       url: "#{location.href.match(/^http?:\/\/[^\/]+/)}#{@event.get('url')}"
 
-    @$('.text-view').html padule.changeTxtList @event.get('text')
+    @$('#eventText').html padule.changeTxtList @event.get('text')
     @datepicker = @$('#scheduleDatepicker')
     @timepicker = @$('#scheduleTimepicker')
     @_initDatepicker()

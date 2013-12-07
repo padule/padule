@@ -28,7 +28,7 @@
       'click #eventTextCancelBtn': function() {
         return this.$('.event-text').removeClass('editing');
       },
-      'dblclick .event-text': 'editText',
+      'click #eventTextEditBtn': 'editText',
       'click #toggleBtn': function() {
         if (this.$('.event-text').hasClass('hide')) {
           this.$('.event-text').removeClass('hide');
@@ -67,7 +67,7 @@
         event: this.event.toJSON(),
         url: "" + (location.href.match(/^http?:\/\/[^\/]+/)) + (this.event.get('url'))
       }));
-      this.$('.text-view').html(padule.changeTxtList(this.event.get('text')));
+      this.$('#eventText').html(padule.changeTxtList(this.event.get('text')));
       this.datepicker = this.$('#scheduleDatepicker');
       this.timepicker = this.$('#scheduleTimepicker');
       this._initDatepicker();

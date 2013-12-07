@@ -288,6 +288,9 @@ body > #scheduleContents {
       p {
         font-size: $font-size1;
       }
+      #eventText{
+        margin-bottom: $margin1;
+      }
     }
     .text-edit {
       display: none;

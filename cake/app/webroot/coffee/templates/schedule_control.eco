@@ -8,7 +8,8 @@
 
       <blockquote class="event-text hide">
         <div class="text-view">
-          <%= @event.text %>
+          <div id='eventText'><%= @event.text %></div>
+          <button id="eventTextEditBtn" class="btn btn-default">編集</button>
         </div>
         <div class="text-edit">
           <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。"><%= @event.text %></textarea>
