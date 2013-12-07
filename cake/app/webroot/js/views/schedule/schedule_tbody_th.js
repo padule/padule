@@ -27,15 +27,8 @@
       this.modal = options.modal;
       this.info_area = options.info_area;
       this.start_time = padule.dateformatyyyyMMddWhhmm(this.model.get('start_time'));
-      this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
+      return this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
         return this.model.destroy();
-      });
-      return this.listenTo(this.model, 'destroy', function() {
-        this.remove();
-        return this.info_area.show({
-          text: 'スケジュールを削除しました',
-          class_name: 'label-info'
-        });
       });
     };
 
