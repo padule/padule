@@ -33,6 +33,7 @@ module.exports = (grunt)->
           'cake/app/View/SeekerSchedules/index.ctp': 'cake/app/View/SeekerSchedules/index.haml'
           'cake/app/View/Users/mypage.ctp': 'cake/app/View/Users/mypage.haml'
           'cake/app/View/Users/login.ctp': 'cake/app/View/Users/login.haml'
+          'cake/app/View/Users/complete.ctp': 'cake/app/View/Users/complete.haml'
           'cake/app/webroot/index.html': 'cake/app/webroot/index.haml'
     eco:
       app:
