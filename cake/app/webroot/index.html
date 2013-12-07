@@ -234,8 +234,16 @@
           }
         };
       
+        window.clearError = function() {
+          $('#formCompanyName').removeClass('has-error');
+          $('#formUserName').removeClass('has-error');
+          $('#formUserMail').removeClass('has-error');
+          return $('formTermsCheck').removeClass('has-error');
+        };
+      
         window.submitAfterValidation = function() {
           var $companyName, $termsCheck, $userMail, $userName;
+          clearError();
           $companyName = $('#companyName');
           $userName = $('#userName');
           $userMail = $('#userMail');
@@ -255,12 +263,12 @@
           }
           if (!validateMail($userMail.val())) {
             showAlert('メールアドレスが正しくありません');
-            $('formUserMail').addClass('has-error');
+            $('#formUserMail').addClass('has-error');
             return;
           }
           if (!$termsCheck.prop('checked')) {
             showAlert('利用規約に同意してください');
-            $('formTermsCheck').addClass('has-error');
+            $('#formTermsCheck').addClass('has-error');
             return;
           }
           return document.registerForm.submit();

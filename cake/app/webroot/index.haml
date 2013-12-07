@@ -181,7 +181,13 @@
           false
         else
           true
+      window.clearError = ->
+        $('#formCompanyName').removeClass 'has-error'
+        $('#formUserName').removeClass 'has-error'
+        $('#formUserMail').removeClass 'has-error'
+        $('formTermsCheck').removeClass 'has-error'
       window.submitAfterValidation = ->
+        clearError()
         $companyName = $ '#companyName'
         $userName = $ '#userName'
         $userMail = $ '#userMail'
@@ -194,10 +200,10 @@
           return
         unless validateMail $userMail.val()
           showAlert 'メールアドレスが正しくありません'
-          $('formUserMail').addClass 'has-error'
+          $('#formUserMail').addClass 'has-error'
           return
         unless $termsCheck.prop 'checked'
           showAlert '利用規約に同意してください'
-          $('formTermsCheck').addClass 'has-error'
+          $('#formTermsCheck').addClass 'has-error'
           return
         document.registerForm.submit()
