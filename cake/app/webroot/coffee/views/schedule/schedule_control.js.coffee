@@ -9,7 +9,9 @@ class padule.Views.ScheduleControl extends Backbone.View
       @$('.event-text').removeClass 'editing'
     'click #eventTextCancelBtn' : ->
       @$('.event-text').removeClass 'editing'
-    'click #eventTextEditBtn' : 'editText'
+    'click #eventTextEditBtn' : (e)->
+      e?.preventDefault()
+      @editText()
     'click #toggleBtn' : ->
       if @$('.event-text').hasClass('hide')
         @$('.event-text').removeClass 'hide'

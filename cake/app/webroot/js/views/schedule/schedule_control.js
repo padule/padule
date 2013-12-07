@@ -28,7 +28,12 @@
       'click #eventTextCancelBtn': function() {
         return this.$('.event-text').removeClass('editing');
       },
-      'click #eventTextEditBtn': 'editText',
+      'click #eventTextEditBtn': function(e) {
+        if (e != null) {
+          e.preventDefault();
+        }
+        return this.editText();
+      },
       'click #toggleBtn': function() {
         if (this.$('.event-text').hasClass('hide')) {
           this.$('.event-text').removeClass('hide');
