@@ -42,9 +42,9 @@ class padule.Models.SeekerSchedule extends Backbone.Model
     @types.temp is @get 'type'
 
   changeType: ->
-    if @isOK() or @isConfirmed()
+    if @isOK()
       @set 'type', @types.temp
-    else if @isTemp()
+    else if @isTemp() or @isConfirmed()
       @set 'type', @types.ok
     @save {},
       success: =>
