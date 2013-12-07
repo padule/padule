@@ -128,6 +128,12 @@
         .col-md-6
           .image-container.image-mobile
 
+      .row.like-box-container
+        .container
+          :plain
+            <div class="fb-like-box" data-href="http://www.facebook.com/padule.me" data-width="600" data-height="300" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+    #fb-root
+
     .container.footer-container
       .pull-left
         [推奨動作環境]　OS : Windows 7以上, Mac X以上 / ブラウザ : IE8以上, Chrome 最新版
@@ -154,6 +160,14 @@
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })();
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
 
     %script{:type => 'text/javascript', :src => 'http://b.st-hatena.com/js/bookmark_button.js', :charset => 'utf-8', :async => 'async'}
 
