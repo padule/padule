@@ -51,33 +51,38 @@
             %span='同じ候補日で複数の人を調整するのは大変ではありませんか？'
             %span='Padule（パジュール）を使うことで、簡単に早く調整することができます！'
 
-          %form.form-horizontal{:action => '/users/regist', :method => 'post', :role => 'form'}
-            .form-group
+          %form.form-horizontal{:name => 'registerForm', :action => '/users/regist', :method => 'post', :role => 'form'}
+            .form-group#formCompanyName
               %label.col-sm-3.control-label{:for => 'companyName'}
                 会社名
               .col-sm-9
                 %input#companyName.form-control{:type => 'text', :name => 'TmpUser[company]', :placeholder => '会社名'}
-            .form-group
+            .form-group#formUserName
               %label.col-sm-3.control-label{:for => 'userName'}
                 お名前
               .col-sm-9
                 %input#userName.form-control{:type => 'text', :name => 'TmpUser[username]', :placeholder => 'お名前'}
-            .form-group
+            .form-group#formUserMail
               %label.col-sm-3.control-label{:for => 'userMail'}
                 Eメール
               .col-sm-9
                 %input#userMail.form-control{:type => 'email', :name => 'TmpUser[mail]', :placeholder => 'Eメール'}
-            .form-group
+            .form-group#formTermsCheck
               .col-sm-offset-3.col-sm-9
                 .checkbox
                   %label
-                    %input.forms{:type => 'checkbox'}
+                    %input#termsCheck.forms{:type => 'checkbox'}
                     %a{:href => '/terms.html'}
                       利用規約
                     に同意する
+            .alert-container#alertArea.hide
+              .col-sm-offset-3.col-sm-9
+                .alert.alert-danger.alert-dismissable
+                  %i.glyphicon.glyphicon-exclamation-sign
+                  %span#alertText
             .form-group
               .col-sm-offset-3.col-sm-9
-                %input.btn.btn-lg.btn-block.btn-primary{:type => 'submit', :value => '新規登録する'}
+                %input#registerBtn.btn.btn-lg.btn-block.btn-primary{:type => 'button', :value => '新規登録する', :onclick => 'submitAfterValidation()'}
             .form-group
               .col-sm-offset-3.col-sm-9
                 %a.btn.btn-lg.btn-block.btn-info{:href => '/users/login', :role => 'button'}
@@ -165,3 +170,40 @@
 
     %script{:type => 'text/javascript', :src => 'js/libs/jquery-2.0.3.min.js'}
     %script{:type => 'text/javascript', :src => 'js/libs/bootstrap.min.js'}
+
+    :coffeescript
+      window.showAlert = (text)->
+        $alertArea = $ '#alertArea'
+        $alertArea.find('#alertText').html text
+        $alertArea.removeClass 'hide'
+      window.validateMail = (str)->
+        if str.match(/.+@.+\..+/) is null
+          false
+        else
+          true
+      window.clearError = ->
+        $('#formCompanyName').removeClass 'has-error'
+        $('#formUserName').removeClass 'has-error'
+        $('#formUserMail').removeClass 'has-error'
+        $('formTermsCheck').removeClass 'has-error'
+      window.submitAfterValidation = ->
+        clearError()
+        $companyName = $ '#companyName'
+        $userName = $ '#userName'
+        $userMail = $ '#userMail'
+        $termsCheck = $ '#termsCheck'
+        if $companyName.val() is '' || $userName.val() is '' || $userMail.val() is ''
+          showAlert '全ての項目を入力してください'
+          $('#formCompanyName').addClass 'has-error' if $companyName.val() is ''
+          $('#formUserName').addClass 'has-error' if $userName.val() is ''
+          $('#formUserMail').addClass 'has-error' if $userMail.val() is ''
+          return
+        unless validateMail $userMail.val()
+          showAlert 'メールアドレスが正しくありません'
+          $('#formUserMail').addClass 'has-error'
+          return
+        unless $termsCheck.prop 'checked'
+          showAlert '利用規約に同意してください'
+          $('#formTermsCheck').addClass 'has-error'
+          return
+        document.registerForm.submit()
