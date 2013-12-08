@@ -37,6 +37,7 @@ module.exports = (grunt)->
           'cake/app/webroot/index.html': 'cake/app/webroot/index.haml'
           'cake/app/webroot/privacy.html': 'cake/app/webroot/privacy.haml'
           'cake/app/webroot/terms.html': 'cake/app/webroot/terms.haml'
+          'cake/app/View/Pages/home.ctp': 'cake/app/webroot/index.haml'
 
     eco:
       app:
