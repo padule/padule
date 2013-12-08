@@ -27,7 +27,14 @@
       this.modal = options.modal;
       this.info_area = options.info_area;
       this.seeker_schedules = this.model.seeker_schedules;
-      return this.seeker_schedules.fillEmptySeekerSchedule();
+      this.seeker_schedules.fillEmptySeekerSchedule();
+      return this.listenTo(this.model, 'destroy', function() {
+        this.remove();
+        return this.info_area.show({
+          text: 'スケジュールを削除しました',
+          class_name: 'label-info'
+        });
+      });
     };
 
     ScheduleTbodyTr.prototype.renderOne = function(seeker_schedule) {

@@ -13,11 +13,6 @@ class padule.Views.ScheduleTbodyTh extends Backbone.View
 
     @listenTo @modal, "clickOk:#{@model.cid}", ->
       @model.destroy()
-    @listenTo @model, 'destroy', ->
-      @remove()
-      @info_area.show
-        text: 'スケジュールを削除しました'
-        class_name: 'label-info'
 
   render: ->
     @$el.html @template

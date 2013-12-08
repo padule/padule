@@ -123,19 +123,15 @@ var $uses = array('Schedule','Lock','Event','User','JobSeeker');
 	}
 
     public function delete($id) {
-
         $this->env = false;
-        if(!$this->Lock->findByScheduleId($id)) {
-            if($this->request->is('delete')) {
-                $this->Schedule->id = $id;
-                if($this->Schedule->delete()){
+        if($this->request->is('delete')) {
+            if($this->Lock->deleteAll(array('Lock.schedule_id' => $id), false)) {
+                if($this->Schedule->delete($id, true)){
                     $this->env = true;
-                }
-            }
-        }
-
+                };
+            };
+        };
         $this->render('json');
-
     }
 
 	public function newpadule() {

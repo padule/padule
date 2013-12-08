@@ -11,6 +11,12 @@ class padule.Views.ScheduleTbodyTr extends Backbone.View
     @seeker_schedules = @model.seeker_schedules
     @seeker_schedules.fillEmptySeekerSchedule()
 
+    @listenTo @model, 'destroy', ->
+      @remove()
+      @info_area.show
+        text: 'スケジュールを削除しました'
+        class_name: 'label-info'
+
   renderOne: (seeker_schedule)->
     view = new padule.Views.ScheduleTd
         model: seeker_schedule

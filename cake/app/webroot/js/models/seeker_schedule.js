@@ -72,9 +72,9 @@
 
     SeekerSchedule.prototype.changeType = function() {
       var _this = this;
-      if (this.isOK() || this.isConfirmed()) {
+      if (this.isOK()) {
         this.set('type', this.types.temp);
-      } else if (this.isTemp()) {
+      } else if (this.isTemp() || this.isConfirmed()) {
         this.set('type', this.types.ok);
       }
       return this.save({}, {

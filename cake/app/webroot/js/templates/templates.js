@@ -79,11 +79,11 @@ window.JST["templates/schedule_control"] = function(__obj) {
     
       _print(this.event.title);
     
-      _print(_safe('\n        <button id="toggleBtn" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-chevron-down"></i></button>\n      </h3>\n\n      <blockquote class="event-text hide">\n        <div class="text-view">\n          '));
+      _print(_safe('\n        <button id="toggleBtn" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-chevron-down"></i></button>\n      </h3>\n\n      <blockquote class="event-text hide">\n        <div class="text-view">\n          <div id=\'eventText\'>'));
     
       _print(this.event.text);
     
-      _print(_safe('\n        </div>\n        <div class="text-edit">\n          <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。">'));
+      _print(_safe('</div>\n          <button id="eventTextEditBtn" class="btn btn-default">編集</button>\n        </div>\n        <div class="text-edit">\n          <textarea class="event-text-form form-control" rows="3" placeholder="詳細やメモを入力できます。">'));
     
       _print(this.event.text);
     
