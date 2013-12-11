@@ -169,7 +169,21 @@ var $uses = array('User','Company','TmpUser');
         }
 
         $user = $this->Auth->user();
+        if ($user['company_id'] == 9999) {
+            $this->redirect(array('controller' => 'users','action' => 'admin'));
+        }
         $this->set('userId', $user['id']);
+    }
+
+    public function admin() {
+        $user = $this->Auth->user();
+        if (!($user['company_id'] == 9999)) {
+            $this->redirect(array('controller' => 'users','action' => 'login'));
+        }
+        $TmpUsers = $this->TmpUser->find('all', array(
+            'order' => array('TmpUser.created DESC')
+            ));
+        $this->set('tmpUsers', $TmpUsers);
     }
 
 }
