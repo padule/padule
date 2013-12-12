@@ -13,7 +13,8 @@
 
     Schedules.prototype.routes = {
       'users/mypage': 'mypage',
-      'seeker_schedules/index/:id': 'seeker_schedules'
+      'seeker_schedules/index/:id': 'seeker_schedules',
+      'feedback': 'feedback'
     };
 
     Schedules.prototype.mypage = function() {
@@ -32,6 +33,12 @@
           })
         }),
         seeker: new padule.Models.Seeker
+      });
+    };
+
+    Schedules.prototype.feedback = function() {
+      return new padule.Views.FeedbackIndex({
+        collection: new padule.Collections.Feedbacks
       });
     };
 
