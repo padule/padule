@@ -2,7 +2,7 @@ class padule.Routers.Schedules extends Backbone.Router
   routes:
     'users/mypage' : 'mypage'
     'seeker_schedules/index/:id' : 'seeker_schedules'
-    'feedback' : 'feedback'
+    'feedbacks' : 'feedbacks'
 
   mypage: ->
     new padule.Views.Event
@@ -15,6 +15,6 @@ class padule.Routers.Schedules extends Backbone.Router
       collection: new padule.Collections.Schedules false, _event: new padule.Models.Event {id: event_id}
       seeker: new padule.Models.Seeker
 
-  feedback: ->
+  feedbacks: ->
     new padule.Views.FeedbackIndex
       collection: new padule.Collections.Feedbacks

@@ -1,0 +1,11 @@
+<td class='center'><%= @feedback.categoryText() %></td>
+<td><%= @content %></td>
+<td class='center'>
+  <% if @isOwn: %>
+    <button class='btn btn-danger js-delete-btn' type='button'>削除</button>
+  <% end %>
+</td>
+<td class='center'><%= @user.username %></td>
+<td class='center'><%= @feedback.responseText() %></td>
+<td><%= @comment %></td>
+<td class='created-date center'><%= @created %></td>

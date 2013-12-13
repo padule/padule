@@ -14,7 +14,7 @@
     Schedules.prototype.routes = {
       'users/mypage': 'mypage',
       'seeker_schedules/index/:id': 'seeker_schedules',
-      'feedback': 'feedback'
+      'feedbacks': 'feedbacks'
     };
 
     Schedules.prototype.mypage = function() {
@@ -36,7 +36,7 @@
       });
     };
 
-    Schedules.prototype.feedback = function() {
+    Schedules.prototype.feedbacks = function() {
       return new padule.Views.FeedbackIndex({
         collection: new padule.Collections.Feedbacks
       });
