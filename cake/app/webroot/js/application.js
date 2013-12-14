@@ -74,6 +74,9 @@
 
   window.padule.changeTxtList = function(txt) {
     var line, lines, target, _i, _len;
+    if (txt === '' || txt === null || txt === void 0) {
+      return txt;
+    }
     lines = txt.split('\n');
     target = '';
     for (_i = 0, _len = lines.length; _i < _len; _i++) {

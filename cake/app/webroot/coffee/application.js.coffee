@@ -75,6 +75,8 @@ window.padule.changeLine = (txt)->
   txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
 
 window.padule.changeTxtList = (txt)->
+  if txt is '' || txt is null || txt is undefined
+    return txt
   lines = txt.split('\n')
   target = ''
   for line in lines

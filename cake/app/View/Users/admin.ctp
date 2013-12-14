@@ -26,6 +26,10 @@
         font-size: 60px;
         font-weight: bold;
       }
+      .button-container{
+        margin-top: 5px;
+        margin-right: 6px;
+      }
     </style>
   </head>
   <body>
@@ -33,6 +37,16 @@
       <div class='container-fluid'>
         <a class='navbar-brand' href='../users/admin'>
           Padule管理ページ
+        </a>
+      </div>
+      <div class='button-container pull-right'>
+        <a class='btn btn-default btn-sm' href='/users/logout'>
+          ログアウト
+        </a>
+      </div>
+      <div class='button-container pull-right'>
+        <a class='btn btn-info btn-sm' href='/feedbacks'>
+          フィードバックページ
         </a>
       </div>
     </div>
