@@ -15,6 +15,7 @@ class padule.Views.FeedbackIndex extends Backbone.View
   initialize: (options = {})->
     _.bindAll @
     @user_id = $('#userName').attr 'data-userid'
+    @is_admin = $('#userName').attr 'data-isadmin'
     @model = new padule.Models.Feedback
     @modal = new padule.Views.AlertModal
 
@@ -53,5 +54,6 @@ class padule.Views.FeedbackIndex extends Backbone.View
       model: model
       modal: @modal
       user_id: @user_id
+      is_admin: @is_admin
 
     @$('#feedbackTable tbody').prepend view.render().el

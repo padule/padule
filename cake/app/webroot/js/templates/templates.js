@@ -81,27 +81,59 @@ window.JST["templates/feedback"] = function(__obj) {
     
       _print(_safe('</td>\n<td>'));
     
-      _print(this.content);
+      _print(this.safe(padule.changeTxtList(this.content)));
     
       _print(_safe('</td>\n<td class=\'center\'>\n  '));
     
-      if (this.isOwn) {
+      if (this.isOwn || this.isAdmin) {
         _print(_safe('\n    <button class=\'btn btn-danger js-delete-btn\' type=\'button\'>削除</button>\n  '));
+      }
+    
+      _print(_safe('\n  '));
+    
+      if (this.isAdmin) {
+        _print(_safe('\n    <button class=\'btn btn-success js-edit-btn disabled\' type=\'button\'>保存</button>\n  '));
       }
     
       _print(_safe('\n</td>\n<td class=\'center\'>'));
     
       _print(this.user.username);
     
-      _print(_safe('</td>\n<td class=\'center\'>'));
+      _print(_safe('</td>\n<td class=\'center\'>\n  '));
     
-      _print(this.feedback.responseText());
+      if (this.isAdmin) {
+        _print(_safe('\n    <select class=\'js-response-kb form-control\'>\n      <option value=\'1\' '));
+        if (this.feedback.get('response_kb') === '1') {
+          _print(_safe('selected'));
+        }
+        _print(_safe('>\n        未対応\n      </option>\n      <option value=\'2\' '));
+        if (this.feedback.get('response_kb') === '2') {
+          _print(_safe('selected'));
+        }
+        _print(_safe('>\n        対応します\n      </option>\n      <option value=\'3\' '));
+        if (this.feedback.get('response_kb') === '3') {
+          _print(_safe('selected'));
+        }
+        _print(_safe('>\n        対応しません\n      </option>\n    </select>\n  '));
+      } else {
+        _print(_safe('\n    '));
+        _print(this.feedback.responseText());
+        _print(_safe('\n  '));
+      }
     
-      _print(_safe('</td>\n<td>'));
+      _print(_safe('\n</td>\n<td>\n  '));
     
-      _print(this.comment);
+      if (this.isAdmin) {
+        _print(_safe('\n    <textarea class=\'js-comment form-control\' row=\'3\' placeholder=\'フィードバックにコメント\'>'));
+        _print(this.comment);
+        _print(_safe('</textarea>\n  '));
+      } else {
+        _print(_safe('\n    '));
+        _print(this.safe(padule.changeTxtList(this.comment)));
+        _print(_safe('\n  '));
+      }
     
-      _print(_safe('</td>\n<td class=\'created-date center\'>'));
+      _print(_safe('\n</td>\n<td class=\'created-date center\'>'));
     
       _print(this.created);
     

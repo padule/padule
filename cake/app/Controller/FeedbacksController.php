@@ -13,6 +13,7 @@ class FeedbacksController extends AppController {
 
     $this->set('user', $user);
     $this->set('feedbacks', $feedbacks);
+    $this->set('isAdmin', ($user['company_id']==9999));
 
     if (isset($this->params['url']['json'])){
       $responseText = array();
@@ -59,6 +60,18 @@ class FeedbacksController extends AppController {
     }
 
     $this->render('json');
+  }
+
+  public function edit($id) {
+    if ($this->request->is('post') || $this->request->is('put')) {
+      $this->Feedback->id = $id;
+      $feedback = $this->Feedback->save($this->request->data);
+      $responseText = $feedback['Feedback'];
+      $responseText['User'] = $feedback['User'];
+
+      $this->responseText = $responseText;
+      $this->render('json');
+    }
   }
 
 }

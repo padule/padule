@@ -40,6 +40,7 @@
       }
       _.bindAll(this);
       this.user_id = $('#userName').attr('data-userid');
+      this.is_admin = $('#userName').attr('data-isadmin');
       this.model = new padule.Models.Feedback;
       this.modal = new padule.Views.AlertModal;
       this.listenTo(this.collection, 'add', function(model) {
@@ -88,7 +89,8 @@
       view = new padule.Views.FeedbackListElement({
         model: model,
         modal: this.modal,
-        user_id: this.user_id
+        user_id: this.user_id,
+        is_admin: this.is_admin
       });
       return this.$('#feedbackTable tbody').prepend(view.render().el);
     };

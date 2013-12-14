@@ -9,6 +9,7 @@
 
     function FeedbackListElement() {
       this.render = __bind(this.render, this);
+      this.editFeedback = __bind(this.editFeedback, this);
       _ref = FeedbackListElement.__super__.constructor.apply(this, arguments);
       return _ref;
     }
@@ -18,7 +19,18 @@
     FeedbackListElement.prototype.template = JST['templates/feedback'];
 
     FeedbackListElement.prototype.events = {
-      'click .js-delete-btn': 'deleteFeedback'
+      'click .js-delete-btn': 'deleteFeedback',
+      'click .js-edit-btn': 'editFeedback',
+      'change .js-response-kb': function(e) {
+        var response_kb;
+        response_kb = $(e.target).prop('selectedIndex') + 1;
+        return this.model.set('response_kb', response_kb);
+      },
+      'keyup .js-comment': function(e) {
+        var comment;
+        comment = padule.changeLine($(e.target).val());
+        return this.model.set('comment', comment);
+      }
     };
 
     FeedbackListElement.prototype.initialize = function(options) {
@@ -28,9 +40,17 @@
       _.bindAll(this);
       this.modal = options.modal;
       this.user_id = options.user_id;
-      return this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
+      this.is_admin = !!options.is_admin;
+      this.listenTo(this.modal, "clickOk:" + this.model.cid, function() {
         this.model.destroy();
         return this.remove();
+      });
+      return this.listenTo(this.model, 'change', function() {
+        if (this.model.hasChanged()) {
+          return this.$('.js-edit-btn').removeClass('disabled');
+        } else {
+          return this.$('.js-edit-btn').addClass('disabled');
+        }
       });
     };
 
@@ -42,12 +62,23 @@
       });
     };
 
+    FeedbackListElement.prototype.editFeedback = function() {
+      var _this = this;
+      return this.model.save({}, {
+        success: function(model) {
+          _this.model = model;
+          return alert('保存しました');
+        }
+      });
+    };
+
     FeedbackListElement.prototype.render = function() {
       this.$el.html(this.template({
         feedback: this.model,
         content: this.model.get('content'),
         user: this.model.get('User'),
         isOwn: this.model.get('User').id === this.user_id,
+        isAdmin: this.is_admin,
         comment: this.model.get('comment'),
         created: padule.dateformatyyyyMMddWhhmm(this.model.get('created'))
       }));

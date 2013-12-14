@@ -22,14 +22,14 @@
             %a{:href=>"#", :data=>{:toggle=>'dropdown'}, :class=> 'pull-right'}
               %i.glyphicon.glyphicon-user
               :plain
-                <span id='userName' data-userid='<?php echo $user["id"]; ?>'>
+                <span id='userName' data-userid='<?php echo $user["id"]; ?>' data-isadmin='<?php echo $isAdmin; ?>'>
                   <?php echo $user['username'];?>
                 </span>
               %b.caret
 
             %ul.dropdown-menu
               %li
-                %a#logout{:href=>"#"}
+                %a#logout{:href=>"/users/logout"}
                   %i.glyphicon.glyphicon-off
                   ログアウト
 
