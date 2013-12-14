@@ -60,9 +60,9 @@
               <th>内容</th>
               <th></th>
               <th>報告者</th>
+              <th>登録日</th>
               <th>対応区分</th>
               <th>運営コメント</th>
-              <th>登録日</th>
             </tr>
             <tr class='new-feedback'>
               <td class='center feedback_kb'>
@@ -82,8 +82,8 @@
               </td>
               <td class='center'></td>
               <td class='center'></td>
-              <td></td>
               <td class='center'></td>
+              <td></td>
             </tr>
           </thead>
           <tbody></tbody>

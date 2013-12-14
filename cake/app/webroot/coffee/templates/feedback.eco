@@ -9,6 +9,9 @@
   <% end %>
 </td>
 <td class='center'><%= @user.username %></td>
+<td class='created-date center'>
+  <%= @created %>
+</td>
 <td class='center'>
   <% if @isAdmin: %>
     <select class='js-response-kb form-control'>
@@ -33,4 +36,3 @@
     <%= @safe padule.changeTxtList(@comment) %>
   <% end %>
 </td>
-<td class='created-date center'><%= @created %></td>

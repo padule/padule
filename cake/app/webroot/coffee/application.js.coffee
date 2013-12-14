@@ -76,7 +76,7 @@ window.padule.changeLine = (txt)->
 
 window.padule.changeTxtList = (txt)->
   if txt is '' || txt is null || txt is undefined
-    return txt
+    return '<p></p>'
   lines = txt.split('\n')
   target = ''
   for line in lines

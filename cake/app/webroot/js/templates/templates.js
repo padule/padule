@@ -99,7 +99,11 @@ window.JST["templates/feedback"] = function(__obj) {
     
       _print(this.user.username);
     
-      _print(_safe('</td>\n<td class=\'center\'>\n  '));
+      _print(_safe('</td>\n<td class=\'created-date center\'>\n  '));
+    
+      _print(this.created);
+    
+      _print(_safe('\n</td>\n<td class=\'center\'>\n  '));
     
       if (this.isAdmin) {
         _print(_safe('\n    <select class=\'js-response-kb form-control\'>\n      <option value=\'1\' '));
@@ -133,11 +137,7 @@ window.JST["templates/feedback"] = function(__obj) {
         _print(_safe('\n  '));
       }
     
-      _print(_safe('\n</td>\n<td class=\'created-date center\'>'));
-    
-      _print(this.created);
-    
-      _print(_safe('</td>\n'));
+      _print(_safe('\n</td>\n'));
     
     }).call(this);
     
