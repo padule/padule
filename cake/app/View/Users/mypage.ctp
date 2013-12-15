@@ -44,6 +44,12 @@
           </ul>
         </li>
         </ul>
+        <div class='feedback-container pull-right'>
+          <a class='btn btn-default btn-sm' href='/feedbacks'>
+            <i class='glyphicon glyphicon-edit'></i>
+            フィードバックはこちらから！
+          </a>
+        </div>
       </div>
     </div>
     <div class='schedule-container container-fluid'>
