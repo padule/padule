@@ -46,11 +46,17 @@ var $uses = array('User','Company','TmpUser');
  * @return void
  */
 	public function add() {
+
+        $user = $this->Auth->user();
+        if (!($user['company_id'] == 9999)) {
+            $this->redirect(array('controller' => 'users','action' => 'login'));
+        }
+
 		if ($this->request->is('post')) {
-        //$this->request->data['User']['username'] = 'padule@padule.me';
-        //$this->request->data['User']['password'] = 'padule';
-        $this->request->data['User']['company_id'] = 1;
-        $this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
+            //$this->request->data['User']['username'] = 'padule@padule.me';
+            //$this->request->data['User']['password'] = 'padule';
+            $this->request->data['User']['company_id'] = 1;
+            $this->request->data['User']['password'] = AuthComponent::password($this->request->data['User']['password']);
 
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
@@ -65,10 +71,6 @@ var $uses = array('User','Company','TmpUser');
 	}
 
     public function login() {
-        $user = $this->Auth->user();
-        if (!($user['company_id'] == 9999)) {
-            $this->redirect(array('controller' => 'users','action' => 'login'));
-        }
         if($this->Auth->user()) {
             return $this->redirect($this->Auth->redirect());
         }
