@@ -85,5 +85,36 @@
         </tbody>
       </table>
     </div>
+    <div class='count-container'>
+      <span>ユーザー数</span>
+      <span class='user-number'>
+        <?php echo count($users);?>
+      </span>
+      <span>人</span>
+    </div>
+    <div class='users-container'>
+      <table class='table table-hover table-condensed users-table'>
+        <thead>
+          <th>アカウント</th>
+          <th>暗号化したパスワード</th>
+          <th>作成日</th>
+        </thead>
+        <tbody>
+          <?php foreach ($users as $user):?>
+            <tr>
+              <td>
+                <?php echo $user['User']['username'];?>
+              </td>
+              <td>
+                <?php $user['User']['password'];?>
+              </td>
+              <td>
+                <?php echo $user['User']['created'];?>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>
