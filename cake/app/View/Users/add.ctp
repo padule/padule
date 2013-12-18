@@ -1,55 +1,59 @@
-<!DOCTYPE HTML>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <title>Padule ー日程調整をパズル感覚で</title>
-
-    <style>
-.navbar-inverse .navbar-inner {
-background-color: #1b1b1b;
-background-image: -moz-linear-gradient(top,#ffffff,#f8f8ff);
-background-image: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#f8f8ff));
-background-image: -webkit-linear-gradient(top,#ffffff,#f8f8ff);
-background-image: -o-linear-gradient(top,#ffffff,#f8f8ff);
-background-image: linear-gradient(to bottom,#ffffff,#f8f8ff);
-background-repeat: repeat-x;
-border-color: #f8f8ff;
-
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff222222',endColorstr='#ff111111',GradientType=0);
-}
-</style>
-</head>
-<body>
-
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#"><img src="/img/header_logo.png" alt=""></a>
-
-            <!--/.nav-collapse -->
-        </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Padule</title>
+    <link href='/img/favicon.ico' rel='shortcut icon'>
+    <link href='/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='/css/bootstrap-responsive.css' rel='stylesheet'>
+    <link href='/css/padule.css' rel='stylesheet'>
+    <link href='/css/login.css' rel='stylesheet'>
+    <meta content='スケジュール,調整' name='keywords'>
+    <meta content='日程調整をパズル感覚で行おう' name='description'>
+    <meta content='Padule' property='og:title'>
+    <meta content='' property='og_image'>
+    <meta content='' property='og:description'>
+    <meta content='website' property='og:type'>
+    <meta content='http://padule.me' property='og:url'>
+    <meta content='Padule' property='og:site_name'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  </head>
+  <body id='usersLogin'>
+    <div class='navbar navbar-inverse navbar-fixed-top padule-nav'>
+      <div class='container-fluid'>
+        <a class='navbar-brand' href='/users/login'>
+          Padule
+        </a>
+      </div>
     </div>
-</div>
-
-<div class="container">
-
-        <form class="form-signin" action="/users/add" id="UserAddForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>
-        <input type="text" name="data[User][username]" class="input-block-level" placeholder="Email address">
-        <input type="password" name="data[User][password]" class="input-block-level" placeholder="Password">
-
-        <button class="btn btn-large btn-primary" type="submit">新規登録</button>
-
+    <div class='container-fluid'>
+      <form action='/users/add' class='form-signin' id='userLoginForm' method='post'>
+        <p class='form-signin-heading'>
+          ユーザー新規登録画面（仮）
+        </p>
+        <p>
+          <?php echo $this->Session->flash(); ?>
+        </p>
+        <input autofocus='' class='form-control' id='userName' name='data[User][username]' placeholder='メールアドレス' required='' type='text'>
+        <input class='form-control' id='userPassword' name='data[User][password]' placeholder='パスワード' required='' type='password'>
+        <button class='btn btn-lg btn-primary btn-block' type='submit'>
+          新規登録
+        </button>
       </form>
-</div>
-</body>
+    </div>
+    <div class='container-fluid footer-container'>
+      © 2013 Padule Inc. - Started by
+      <a href='http://tokyo.startupweekend.org/'>
+        Startup Weekend Tokyo
+      </a>
+    </div>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-45987329-1', 'padule.me');
+      ga('send', 'pageview');
+    </script>
+  </body>
 </html>
