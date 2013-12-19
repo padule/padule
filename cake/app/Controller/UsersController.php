@@ -189,7 +189,12 @@ var $uses = array('User','Company','TmpUser');
         $TmpUsers = $this->TmpUser->find('all', array(
             'order' => array('TmpUser.created DESC')
             ));
+        $Users = $this->User->find('all', array(
+            'order' => array('User.created DESC')
+            ));
         $this->set('tmpUsers', $TmpUsers);
+        $this->set('users', $Users);
+
     }
 
 }

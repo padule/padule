@@ -80,3 +80,33 @@
                 </td>
               </tr>
             <?php endforeach; ?>
+
+    .count-container
+      %span='ユーザー数 '
+      :plain
+        <span class='user-number'>
+          <?php echo count($users);?>
+        </span>
+      %span='人'
+
+    .users-container
+      %table.table.table-hover.table-condensed.users-table
+        %thead
+          %th='アカウント'
+          %th='暗号化したパスワード'
+          %th='作成日'
+        %tbody
+          :plain
+            <?php foreach ($users as $user):?>
+              <tr>
+                <td>
+                  <?php echo $user['User']['username'];?>
+                </td>
+                <td>
+                  <?php $user['User']['password'];?>
+                </td>
+                <td>
+                  <?php echo $user['User']['created'];?>
+                </td>
+              </tr>
+            <?php endforeach; ?>
