@@ -14,9 +14,10 @@
     Feedback.prototype.urlRoot = '/feedbacks';
 
     Feedback.prototype.categories = {
-      request: '1',
-      question: '2',
-      bug: '3'
+      idea: '1',
+      nice: '2',
+      question: '3',
+      bug: '4'
     };
 
     Feedback.prototype.responses = {
@@ -37,8 +38,10 @@
     };
 
     Feedback.prototype.categoryText = function() {
-      if (this.get('category_kb') === this.categories.request) {
-        return '要望';
+      if (this.get('category_kb') === this.categories.idea) {
+        return 'アイデア';
+      } else if (this.get('category_kb') === this.categories.nice) {
+        return 'いいね！';
       } else if (this.get('category_kb') === this.categories.question) {
         return '質問';
       } else {

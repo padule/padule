@@ -56,22 +56,31 @@
         <table class='table table-hover table-condensed table-bordered' id='feedbackTable'>
           <thead>
             <tr>
-              <th>報告区分</th>
-              <th>内容</th>
               <th></th>
-              <th>報告者</th>
+              <?php if ($user["company_id"] == 9999): ?>
+                <th>報告者</th>
+              <?php endif; ?>
+              <th>コメント</th>
+              <th></th>
               <th>登録日</th>
-              <th>対応区分</th>
+              <th>対応状況</th>
               <th>運営コメント</th>
+              <?php if ($user["company_id"] == 9999): ?>
+                <th></th>
+              <?php endif; ?>
             </tr>
             <tr class='new-feedback'>
               <td class='center feedback_kb'>
                 <select class='form-control' id='feedbackKb'>
-                  <option value='1'>要望</option>
-                  <option value='2'>質問</option>
-                  <option value='3'>バグ</option>
+                  <option value='1'>アイデア</option>
+                  <option value='2'>いいね！</option>
+                  <option value='3'>質問</option>
+                  <option value='4'>バグ</option>
                 </select>
               </td>
+              <?php if ($user["company_id"] == 9999): ?>
+                <td></td>
+              <?php endif; ?>
               <td>
                 <textarea class='form-control' id='feedbackContent' placeholder='要望や質問を記入し、送信ボタンを押してください' rows='3'></textarea>
               </td>
@@ -82,8 +91,10 @@
               </td>
               <td class='center'></td>
               <td class='center'></td>
-              <td class='center'></td>
               <td></td>
+              <?php if ($user["company_id"] == 9999): ?>
+                <td></td>
+              <?php endif; ?>
             </tr>
           </thead>
           <tbody></tbody>

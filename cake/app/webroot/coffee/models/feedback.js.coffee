@@ -2,9 +2,10 @@ class padule.Models.Feedback extends Backbone.Model
   urlRoot: '/feedbacks'
 
   categories:
-    request: '1'
-    question: '2'
-    bug: '3'
+    idea: '1'
+    nice: '2'
+    question: '3'
+    bug: '4'
 
   responses:
     not_confirmed: '1'
@@ -20,8 +21,10 @@ class padule.Models.Feedback extends Backbone.Model
       '内容を入力してください。'
 
   categoryText: ->
-    if @get('category_kb') is @categories.request
-      '要望'
+    if @get('category_kb') is @categories.idea
+      'アイデア'
+    else if @get('category_kb') is @categories.nice
+      'いいね！'
     else if @get('category_kb') is @categories.question
       '質問'
     else

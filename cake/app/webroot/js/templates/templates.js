@@ -79,7 +79,15 @@ window.JST["templates/feedback"] = function(__obj) {
     
       _print(this.feedback.categoryText());
     
-      _print(_safe('</td>\n<td>'));
+      _print(_safe('</td>\n\n'));
+    
+      if (this.isAdmin) {
+        _print(_safe('\n  <td class=\'center\'>\n    '));
+        _print(this.user.username);
+        _print(_safe('\n  </td>\n'));
+      }
+    
+      _print(_safe('\n\n<td>'));
     
       _print(this.safe(padule.changeTxtList(this.content)));
     
@@ -89,17 +97,7 @@ window.JST["templates/feedback"] = function(__obj) {
         _print(_safe('\n    <button class=\'btn btn-danger js-delete-btn\' type=\'button\'>削除</button>\n  '));
       }
     
-      _print(_safe('\n  '));
-    
-      if (this.isAdmin) {
-        _print(_safe('\n    <button class=\'btn btn-success js-edit-btn disabled\' type=\'button\'>保存</button>\n  '));
-      }
-    
-      _print(_safe('\n</td>\n<td class=\'center\'>'));
-    
-      _print(this.user.username);
-    
-      _print(_safe('</td>\n<td class=\'created-date center\'>\n  '));
+      _print(_safe('\n</td>\n<td class=\'created-date center\'>\n  '));
     
       _print(this.created);
     
@@ -137,7 +135,13 @@ window.JST["templates/feedback"] = function(__obj) {
         _print(_safe('\n  '));
       }
     
-      _print(_safe('\n</td>\n'));
+      _print(_safe('\n</td>\n\n'));
+    
+      if (this.isAdmin) {
+        _print(_safe('\n  <td class=\'center\'>\n    <button class=\'btn btn-success js-edit-btn disabled\' type=\'button\'>保存</button>\n  </td>\n'));
+      }
+    
+      _print(_safe('\n'));
     
     }).call(this);
     
