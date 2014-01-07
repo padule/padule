@@ -33,6 +33,7 @@
         </p>
         <p>
           <?php echo $this->Session->flash(); ?>
+          <?php echo $this->Form->error('User.username'); ?>
         </p>
         <input autofocus='' class='form-control' id='userName' name='data[User][username]' placeholder='メールアドレス' required='' type='text'>
         <input class='form-control' id='userPassword' name='data[User][password]' placeholder='パスワード' required='' type='password'>
